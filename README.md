@@ -1,1 +1,1 @@
-# Tezonator Tezos Baker
+# Tezonator - the Tezos baker
