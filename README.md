@@ -1,1 +1,1 @@
-# Tezonator - the Tezos baker
+# Tezonator - the ultimate ꜩ baker
