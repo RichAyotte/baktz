@@ -5,10 +5,11 @@ module.exports = {
 	}
 	, extends: [
 		'eslint:recommended'
-		, 'plugin:vue/essential'
+		, 'plugin:vue/vue3-strongly-recommended'
 		, 'plugin:@typescript-eslint/recommended'
 		, 'ayotte'
 	]
+	, parser: 'vue-eslint-parser'
 	, parserOptions: {
 		ecmaVersion: 'latest'
 		, parser: '@typescript-eslint/parser'
