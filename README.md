@@ -1,4 +1,4 @@
-# Tezonator - the ultimate ꜩ baker
+# bākꜩ
 
 ### Contributing
 This repo uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary). Recommended commit prefixes are

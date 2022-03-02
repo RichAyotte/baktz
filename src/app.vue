@@ -1,3 +1,3 @@
 <template>
-  <h1>Tezonator - the ultimate ꜩ baker</h1>
+  <h1>bākꜩ</h1>
 </template>
