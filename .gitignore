@@ -1,13 +1,11 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Packages
 node_modules
+*.log
+.nuxt
+nuxt.d.ts
 
-# Build
-dist
+#Build
+.output
+.env
 
 # Sublime Text
 *.sublime-*

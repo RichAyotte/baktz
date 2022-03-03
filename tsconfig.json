@@ -1,32 +1,5 @@
 {
-    "compilerOptions":
-    {
-        "esModuleInterop": true,
-        "jsx": "preserve",
-        "lib":
-        [
-            "esnext",
-            "dom"
-        ],
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "sourceMap": true,
-        "strict": true,
-        "target": "esnext",
-        "useDefineForClassFields": true
-    },
-    "include":
-    [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue"
-    ],
-    "references":
-    [
-        {
-            "path": "./tsconfig.node.json"
-        }
-    ]
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "resolveJsonModule": true
 }

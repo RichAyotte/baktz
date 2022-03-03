@@ -1,14 +1,28 @@
 # bākꜩ
+Tezos baking service.
 
-### Contributing
-This repo uses [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary). Recommended commit prefixes are
-- build:
-- chore:
-- ci:
-- docs:
-- feat:
-- fix:
-- perf:
-- refactor:
-- style:
-- test:
+## Setup
+
+Make sure to install the dependencies
+
+```bash
+npm i
+```
+
+## Development
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
