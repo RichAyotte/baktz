@@ -3,8 +3,6 @@ module.exports = {
 	apps: [
 		{
 			name: 'baktz'
-			, exec_mode: 'cluster'
-			, instances: 'max'
 			, cwd: '/opt/baktz/current'
 			, env: {
 				NODE_APP_INSTANCE: 'production'
