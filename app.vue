@@ -1,7 +1,9 @@
 <template>
   <img
     class="logo"
+    height="184"
     src="~assets/images/baktz-logo.svg"
+    width="529"
   >
   <h1>
     Tezos baking service.
@@ -35,6 +37,7 @@ h2 {
 }
 
 .logo {
+  aspect-ratio: attr(width) / attr(height);
   width: 80%;
   max-width: 500px;
   margin: 60px 0px 0px 0px;
