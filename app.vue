@@ -1,7 +1,7 @@
 <template>
   <img
     class="logo"
-    src="assets/images/baktz-logo.svg"
+    src="~assets/images/baktz-logo.svg"
   >
   <h1>
     Tezos baking service.
