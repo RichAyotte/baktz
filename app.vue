@@ -12,7 +12,6 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300&family=JetBrains+Mono:wght@500&display=swap');
 body {
   font-family: 'Alegreya Sans', sans-serif;
   text-align: center;
