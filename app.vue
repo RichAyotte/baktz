@@ -38,8 +38,8 @@ h2 {
 
 .logo {
   aspect-ratio: attr(width) / attr(height);
-  width: 80%;
-  max-width: 500px;
   margin: 60px 0px 0px 0px;
+  max-width: 500px;
+  width: 80%;
 }
 </style>
