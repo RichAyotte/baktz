@@ -9,7 +9,7 @@ module.exports = {
 				, NODE_CONFIG_DIR: '/opt/baktz/current/config'
 				, NODE_ENV: 'production'
 				, NODE_PATH: '/opt/baktz/current'
-				, NUXT_PORT: 3030
+				, PORT: 3030
 			}
 			, script: './.output/server/index.mjs'
 		}
