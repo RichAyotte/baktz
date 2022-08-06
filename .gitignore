@@ -6,9 +6,7 @@ nuxt.d.ts
 #Build
 .output
 .env
-
-# Sublime Text
-*.sublime-*
+dist
 
 # Shipit
 shipitfile.js
