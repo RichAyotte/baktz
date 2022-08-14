@@ -2,7 +2,10 @@ import {defineNuxtConfig} from 'nuxt'
 import pkg from './package.json'
 
 export default defineNuxtConfig({
-	meta: {
+	css: [
+		'@/assets/styles/global.scss'
+	]
+	, meta: {
 		title: pkg.name
 		, meta: [
 			{
@@ -22,7 +25,7 @@ export default defineNuxtConfig({
 				, crossorigin: true
 			}
 			, {
-				href: `https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300&family=JetBrains+Mono:wght@500&display=swap`
+				href: `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&family=Roboto:wght@300&display=swap`
 				, rel: `stylesheet`
 			}
 		]
