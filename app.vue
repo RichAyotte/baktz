@@ -1,8 +1,6 @@
 <template>
   <img
     class="logo"
-    width="142.333"
-    height="50"
     src="assets/images/baktz-logo.svg"
   >
   <div class="flex-container">
@@ -10,7 +8,7 @@
       width="800"
       height="800"
       class="tezzomboiz"
-      src="assets/images/batkz-tezzomboiz-transparent-800x800.webp"
+      src="assets/images/batkz-tezzomboiz-transparent.webp"
     >
     <div class="introduction">
       <h1>
@@ -61,7 +59,7 @@ const copyToClipboard = async function(text: string) {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  @include media(">tablet") {
+  @include media(">desktop") {
     padding-top: 10%;
   }
 
@@ -69,19 +67,28 @@ const copyToClipboard = async function(text: string) {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    @include media(">tablet") {
-      max-width: 600px;
+    @include media("landscape") {
+      max-width: 30vw;
     }
-
+    @include media(">tablet") {
+      max-width: 30vw;
+    }
   }
   .introduction {
     padding: 10px;
     text-align: center;
     font-size: larger;
-    max-width: 30em;
+    @include media("landscape") {
+      max-width: 50vw;
+    }
+    @include media(">tablet") {
+      max-width: 50vw;
+    }
+
     .text-logo {
-      height: 20px;
-      vertical-align: middle;
+      display: inline-block;
+      height: 21px;
+      vertical-align:text-bottom;
     }
 
   }
@@ -108,6 +115,11 @@ const copyToClipboard = async function(text: string) {
 }
 
 .logo {
-  margin: 3%;
+  width: 100px;
+  margin: 10px;
+  @include media(">desktop", "landscape") {
+    width: 150px;
+    margin: 15px;
+  }
 }
 </style>
