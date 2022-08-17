@@ -2,21 +2,21 @@
 @import 'include-media';
 
 body {
-	color: white;
+	color: $text-color;
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
 	background: url('assets/images/background-blocks.svg') no-repeat top right
 		, radial-gradient(circle at 50% 25%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-		, #1D2444;
+		, $background-color;
 	@include media(">=tablet") {
 		background: url('assets/images/background-blocks.svg') no-repeat top right
 			, radial-gradient(circle at 25% 50%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-			, #1D2444;
+			, $background-color;
 	}
 	@include media(">=1300px") {
 		background: url('assets/images/background-blocks.svg') no-repeat top right
 			, radial-gradient(circle at 40% 60%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-			, #1D2444;
+			, $background-color;
 	}
 }
 
@@ -25,9 +25,14 @@ pre {
 }
 
 strong {
-	color: $brand-accent;
+	color: $accent-color;
 }
 
 img {
 	aspect-ratio: attr(width) / attr(height);
+}
+
+::selection {
+  color: white;
+  background-color: $accent-color;
 }
