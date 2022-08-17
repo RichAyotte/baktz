@@ -1,12 +1,14 @@
 <template>
   <img
+    width="150"
+    height="52.69"
     class="logo"
     src="assets/images/baktz-logo.svg"
   >
   <div class="flex-container">
     <img
-      width="800"
-      height="800"
+      width="600"
+      height="600"
       class="tezzomboiz"
       src="assets/images/batkz-tezzomboiz-transparent.webp"
     >
@@ -116,10 +118,10 @@ const copyToClipboard = async function(text: string) {
 
 .logo {
   width: 100px;
-  margin: 10px;
+  margin: 15px 0 0 15px;
   @include media(">desktop", "landscape") {
     width: 150px;
-    margin: 15px;
+    margin: 20px 0 0 20px;
   }
 }
 </style>
