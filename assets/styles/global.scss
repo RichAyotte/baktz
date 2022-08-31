@@ -5,19 +5,31 @@ body {
 	color: $text-color;
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
-	background: url('assets/images/background-blocks.svg') no-repeat top right
-		, radial-gradient(circle at 50% 25%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-		, $background-color;
-	@include media(">=tablet") {
-		background: url('assets/images/background-blocks.svg') no-repeat top right
-			, radial-gradient(circle at 25% 50%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-			, $background-color;
-	}
-	@include media(">=1300px") {
-		background: url('assets/images/background-blocks.svg') no-repeat top right
-			, radial-gradient(circle at 40% 60%, rgba(104,110,12,0.5) 0%, rgba(104,110,12,0) 40%) no-repeat
-			, $background-color;
-	}
+	background: url('~/assets/images/background-blocks.svg') no-repeat top right,
+		radial-gradient(
+				circle closest-side at center 10%,
+					#826861, transparent
+			)
+			no-repeat, $background-color
+		;
+	// @include media('>=tablet') {
+	// 	background: url('assets/images/background-blocks.svg') no-repeat top right,
+	// 		radial-gradient(
+	// 				circle at 25% 50%,
+	// 				rgba(104, 110, 12, 1), transparent
+	// 			)
+	// 			no-repeat,
+	// 		$background-color;
+	// }
+	// @include media('>=1300px') {
+	// 	background: url('assets/images/background-blocks.svg') no-repeat top right,
+	// 		radial-gradient(
+	// 				circle at 40% 60%,
+	// 				rgba(104, 110, 12, 1), transparent
+	// 			)
+	// 			no-repeat,
+	// 		$background-color;
+	// }
 }
 
 pre {
@@ -25,14 +37,72 @@ pre {
 }
 
 strong {
-	color: $accent-color;
+	color: $primary-accent-color;
 }
 
 img {
 	aspect-ratio: attr(width) / attr(height);
 }
 
+button {
+	background-color: $primary-accent-color;
+	border-radius: 20px;
+	border: none;
+	color: $background-color;
+	font-weight: bold;
+	margin: 10px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	transition: all 0.3s;
+	&:hover, &:active {
+		box-shadow: 0 0 30px 0px $primary-accent-color;
+		color: $text-color;
+		cursor: pointer;
+	}
+}
+
+input {
+	background: transparent;
+	border: none;
+	padding: 10px;
+	border-bottom: 1px solid $primary-accent-color;
+	text-align: right;
+	color: white;
+	&:hover, &:active, &:focus {
+		 outline-width: 0;
+		border-bottom: 1px solid white;
+	}
+}
+
+h1, h2 {
+	text-align: center;
+	margin: 10px;
+}
+
 ::selection {
   color: white;
-  background-color: $accent-color;
+  background-color: $primary-accent-color;
+}
+
+.gradient-box-border {
+	background-color: $background-color;
+	border-image: linear-gradient(
+			to bottom,
+			#665c82 10.41669%,
+			#867379 21.875%,
+			#755d4b 30.7292%,
+			#7d553f 41.6667%,
+			#707a56 53.6458%,
+			#729270 63.5417%,
+			#89b6a4 72.3958%,
+			#9ca3ac 84.375%,
+			rgba(189, 164, 174, 0.25) 92.7083%,
+			rgba(221, 182, 183, 0) 100%
+		)
+		1 1;
+	border-color: #665c82;
+	border-style: solid;
+	border-width: 1px;
+	// ***FIXME*** Border radius doesn't work with border-image.
+	// border-radius: 30px;
 }

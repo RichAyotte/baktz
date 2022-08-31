@@ -1,3 +1,6 @@
-$accent-color: #9eafff;
+@use "sass:color";
+
+$primary-accent-color: #9eafff;
+$secondary-accent-color: #3FF266;
 $background-color: #1d2444;
-$text-color: white;
+$text-color: color.adjust($background-color, $lightness: 75%);
