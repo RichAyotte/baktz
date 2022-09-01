@@ -13,24 +13,24 @@
   },
   "devDependencies": {
     "@types/libsodium-wrappers": "^0.7.9",
-    "@typescript-eslint/eslint-plugin": "^5.36.0",
-    "@typescript-eslint/parser": "^5.36.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "eslint": "^8.23.0",
     "eslint-config-ayotte": "^1.5.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier-vue": "^4.2.0",
     "eslint-plugin-vue": "^9.4.0",
     "fs-extra": "^10.1.0",
     "include-media": "^1.4.10",
     "nuxt": "^3.0.0-rc.8",
     "prettier": "^2.7.1",
-    "sass": "^1.54.6",
+    "sass": "^1.54.8",
     "sass-loader": "^13.0.2",
     "shipit-cli": "^5.3.0",
     "shipit-deploy": "^5.3.0",
     "vue-eslint-parser": "^9.0.3",
-    "vue-tsc": "^0.40.4"
+    "vue-tsc": "^0.40.5"
   },
   "dependencies": {
     "tweetnacl": "^1.0.3"
