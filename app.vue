@@ -28,7 +28,7 @@
 @import 'include-media';
 
 main {
-	&>* {
+	& > * {
 		padding: 30px;
 	}
 }
