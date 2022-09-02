@@ -1,12 +1,21 @@
 <template>
 	<section class="section-home">
 		<div class="section-home-content"></div>
-		<img
-			width="600"
-			height="600"
-			id="baktz-tezzomboi"
-			src="assets/images/batkz-tezzomboiz-transparent.webp"
-		/>
+		<figure>
+			<img
+				id="baktz-tezzomboi"
+				src="assets/images/batkz-tezzomboiz-transparent.webp"
+				alt="Baked Tezzomboi smoking weed"
+			/>
+			<figcaption>
+				<a href="https://objkt.com/asset/hicetnunc/468242"
+					>Tezzomboiz Series 1: 076</a
+				>
+				<br />
+				by
+				<a href="https://mattbag3d.artstation.com/resume">mattbag3d</a>
+			</figcaption>
+		</figure>
 		<div class="introduction">
 			<div id="title-container">
 				<h1>
@@ -77,11 +86,16 @@ function delegate() {
 @import 'include-media';
 
 h1 {
-	// text-transform: uppercase;
 	color: white;
 	font-size: 20pt;
 	font-weight: lighter;
 }
+
+figure {
+	margin: 0;
+	text-align: center;
+}
+
 #staking-rules {
 	background-color: color.adjust(
 		$background-color,
@@ -128,20 +142,15 @@ h1 {
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
-	// gap: 10px;
 	justify-content: center;
 	width: 100%;
-	// @include media('>desktop') {
-	// 	padding-top: 10%;
-	// }
+	@include media('>desktop') {
+		padding-top: 10%;
+	}
 }
 
 #baktz-tezzomboi {
-	box-sizing: border-box;
-	height: 100%;
-	object-fit: cover;
-	// padding: 50px;
-	width: 80%;
+	width: 100%;
 	@include media('landscape') {
 		max-width: 30vw;
 	}

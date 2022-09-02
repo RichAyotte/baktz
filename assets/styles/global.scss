@@ -1,3 +1,4 @@
+@use "sass:color";
 @import 'variables';
 @import 'include-media';
 
@@ -30,6 +31,13 @@ body {
 	// 			no-repeat,
 	// 		$background-color;
 	// }
+}
+
+a, a:visited {
+	color: $primary-accent-color;
+	&:hover, &:active {
+		color: color.adjust($primary-accent-color, $lightness: 10%);
+	}
 }
 
 pre {
