@@ -48,9 +48,9 @@
 					<td>2,233,321 ꜩ</td>
 				</tr>
 			</table>
-			<button @click="delegate()">delegate now</button>
-			<br />or copy the address below and paste it into your wallet's delegation
-			feature.
+			<p>
+				Copy the address below and paste it into your wallet's delegation feature.
+			</p>
 			<div
 				class="delegate-address-container"
 				@click="copyToClipboard(delegateAddress)"
@@ -66,18 +66,9 @@
 </template>
 
 <script setup lang="ts">
-import fetchWallet from '~/fetch-wallet'
 const copyToClipboard = async (text: string): Promise<void> =>
 	navigator.clipboard.writeText(text)
-
 const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
-const wallet = await fetchWallet({ walletAddress: 'some wallet address' })
-
-function delegate() {
-	// const txId = wallet.delegateTo(delegateAddress)
-	const keyPair = wallet.getKeyPair()
-	console.log(keyPair)
-}
 </script>
 
 <style lang="scss" scoped>
