@@ -14,7 +14,6 @@
 	<main>
 		<section-home />
 		<section-features />
-		<section-earnings />
 		<section-about />
 	</main>
 </template>
