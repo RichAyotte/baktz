@@ -48,10 +48,6 @@ strong {
 	color: $primary-accent-color;
 }
 
-img {
-	aspect-ratio: attr(width) / attr(height);
-}
-
 button {
 	background-color: $primary-accent-color;
 	border-radius: 20px;
