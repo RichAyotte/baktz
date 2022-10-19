@@ -81,6 +81,7 @@ const features = [
 </script>
 
 <style lang="scss">
+@import '~/assets/styles/variables';
 @import 'include-media';
 .carousel__slide {
 	box-sizing: border-box;
@@ -88,26 +89,55 @@ const features = [
 }
 
 .carousel__pagination-button {
-	padding: 10px;
-}
-.carousel__next,
-.carousel__prev {
-	top: 40%;
-	opacity: 0.5;
-}
-.carousel__next {
-	right: -15px;
-}
-.carousel__prev {
-	left: -15px;
-	opacity: 0.5;
+	&:hover,
+	&:active {
+		box-shadow: none;
+		color: var(--vc-nav-color);
+	}
+	&::after {
+		background-color: $primary-accent-color;
+		border-radius: 3px;
+		margin: 0 10px 0 10px;
+		opacity: 0.5;
+		padding: 5px;
+	}
 }
 
+.carousel__pagination-button:hover::after,
+.carousel__pagination-button--active::after {
+	background-color: $primary-accent-color;
+	opacity: 1;
+}
+
+.carousel__next,
+.carousel__prev {
+	background-color: $primary-accent-color;
+	border-radius: 3px;
+	top: 40%;
+	&:hover,
+	&:active {
+		box-shadow: none;
+		color: var(--vc-nav-color);
+	}
+}
+
+.carousel__next {
+	right: -30px;
+}
+
+.carousel__prev {
+	left: -30px;
+}
+
+.carousel__pagination {
+	padding: 0;
+}
 
 @include media('>tablet') {
 	.carousel__next,
 	.carousel__prev,
 	.carousel__pagination {
+		padding: none;
 		display: none;
 	}
 
@@ -121,7 +151,6 @@ const features = [
 		min-width: 30%;
 	}
 }
-
 </style>
 
 <style lang="scss" scoped>
