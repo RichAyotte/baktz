@@ -12,8 +12,8 @@
     "ship-production": "shipit production deploy"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "@typescript-eslint/parser": "^5.40.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.25.0",
     "eslint-config-ayotte": "^1.5.0",
     "eslint-config-prettier": "^8.5.0",
@@ -22,7 +22,7 @@
     "eslint-plugin-vue": "^9.6.0",
     "fs-extra": "^10.1.0",
     "include-media": "^1.4.10",
-    "nuxt": "^3.0.0-rc.11",
+    "nuxt": "^3.0.0-rc.12",
     "prettier": "^2.7.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
