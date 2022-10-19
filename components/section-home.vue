@@ -4,7 +4,7 @@
 		<figure>
 			<img
 				id="baktz-tezzomboi"
-				src="assets/images/batkz-tezzomboiz-transparent.webp"
+				src="~/assets/images/batkz-tezzomboiz-transparent.webp"
 				alt="Baked Tezzomboi smoking weed"
 			/>
 			<figcaption>
@@ -22,7 +22,7 @@
 					Professional<br />
 					<img
 						id="tezos-logo"
-						src="assets/images/tezos-logo-horizontal-white.svg"
+						src="~/assets/images/tezos-logo-horizontal-white.svg"
 					/><br />
 					Delegation Service
 				</h1>
@@ -30,7 +30,7 @@
 			<p>
 				<img
 					class="text-logo"
-					src="assets/images/baktz-logo.svg"
+					src="~/assets/images/baktz-logo.svg"
 				/>
 				is a secure, reliable, and community involved Tezos staking service.
 			</p>
@@ -59,7 +59,7 @@
 					{{ delegateAddress }}
 				</div>
 
-				<img src="assets/images/clipboard.svg" />
+				<img src="~/assets/images/clipboard.svg" />
 			</div>
 		</div>
 	</section>
@@ -73,7 +73,7 @@ const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 
 <style lang="scss" scoped>
 @use 'sass:color';
-@import 'assets/styles/variables';
+@import '~/assets/styles/variables';
 @import 'include-media';
 
 h1 {

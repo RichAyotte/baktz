@@ -3,13 +3,13 @@
 		<h2>About</h2>
 		<img
 			class="headshot"
-			src="assets/images/headshot.jpg"
+			src="~/assets/images/headshot.jpg"
 			alt="Photo of Richard Ayotte"
 		/>
 		<p>
 			<img
 				class="text-logo"
-				src="assets/images/baktz-logo.svg"
+				src="~/assets/images/baktz-logo.svg"
 			/>
 			is a <em><strong>Tezos only</strong></em> staking service started by Rich
 			Ayotte. Rich been baking since July of 2018 and opened up his bakery to the
