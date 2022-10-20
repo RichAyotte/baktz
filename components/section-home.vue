@@ -35,6 +35,9 @@
 				is a secure, reliable, and community involved Tezos baking service.
 			</p>
 			<table id="baking-rules">
+				<caption>
+					Fees and capacity
+				</caption>
 				<tr>
 					<th>Fee</th>
 					<td>10%</td>
@@ -86,17 +89,20 @@ figure {
 }
 
 #baking-rules {
+	caption {
+		font-size: clamp(1.5rem, 3vw, 2.2rem);
+		margin: 10px;
+	}
 	background-color: color.adjust(
 		$background-color,
 		$lightness: 5%,
 		$alpha: -0.5
 	);
 	border-collapse: collapse;
-	margin: 40px 0 0 0;
-	width: 100%;
+	margin: 70px auto;
 	td,
 	th {
-		padding: 10px;
+		padding: 10px 25px;
 		border: 1px solid color.adjust($background-color, $lightness: 25%);
 		box-shadow: #000;
 	}
@@ -119,7 +125,7 @@ figure {
 	h1 {
 		font-size: clamp(2rem, 10vw, 4rem);
 		img {
-			height: clamp(2rem, 10vw, 4rem);
+			height: clamp(3rem, 15vw, 5rem);
 			vertical-align: middle;
 		}
 	}
