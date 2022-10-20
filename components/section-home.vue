@@ -19,17 +19,17 @@
 		<div class="introduction">
 			<div id="title-container">
 				<h1>
-					Professional<br />
+					Reliable
 					<img
-						id="tezos-logo"
+						class="img-text"
 						src="~/assets/images/tezos-logo-horizontal-white.svg"
-					/><br />
-					Baking Service
+					/>
+					Delegation Service
 				</h1>
 			</div>
 			<p>
 				<img
-					class="text-logo"
+					class="img-text"
 					src="~/assets/images/baktz-logo.svg"
 				/>
 				is a secure, reliable, and community involved Tezos baking service.
@@ -111,19 +111,21 @@ figure {
 }
 
 #title-container {
-	margin: 40px 15px;
-	justify-content: center;
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+	margin: 60px 15px;
+	h1 {
+		font-size: clamp(2rem, 10vw, 4rem);
+		img {
+			height: clamp(2rem, 10vw, 4rem);
+			vertical-align: middle;
+		}
+	}
 	& > * {
 		flex: 1 1 30vw;
 	}
-}
-
-#tezos-logo {
-	height: 40px;
-	margin: 15px 0;
 }
 
 .section-home {
@@ -148,6 +150,11 @@ figure {
 	}
 }
 
+.img-text {
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
 .section-home {
 	// min-height: 100vh;
 	.introduction {
@@ -164,10 +171,8 @@ figure {
 		@include media('>tablet') {
 			max-width: 50vw;
 		}
-		.text-logo {
-			display: inline-block;
+		.img-text {
 			height: 21px;
-			vertical-align: text-bottom;
 		}
 	}
 }
