@@ -36,7 +36,7 @@
 			</p>
 			<table id="baking-rules">
 				<caption>
-					Fees and capacity
+					<h2>Fees and capacity</h2>
 				</caption>
 				<tr>
 					<th>Fee</th>
@@ -96,10 +96,6 @@ figure {
 }
 
 #baking-rules {
-	caption {
-		font-size: clamp(1.5rem, 3vw, 2.2rem);
-		margin: 10px;
-	}
 	background-color: color.adjust(
 		$background-color,
 		$lightness: 5%,
@@ -141,18 +137,6 @@ figure {
 	}
 }
 
-.section-home {
-	align-items: stretch;
-	box-sizing: border-box;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	width: 100%;
-	@include media('>desktop') {
-		padding-top: 10%;
-	}
-}
-
 #baktz-tezzomboi {
 	width: 100%;
 	@include media('landscape') {
@@ -169,7 +153,6 @@ figure {
 }
 
 .section-home {
-	// min-height: 100vh;
 	.introduction {
 		text-align: center;
 		p {
@@ -191,8 +174,10 @@ figure {
 }
 
 #delegate-address-container {
+	max-width: calc(100% - 10px);
 	background-color: $background-color;
 	display: inline-flex;
+	flex-wrap: wrap;
 	user-select: none;
 	img {
 		padding: 11px;
@@ -201,7 +186,9 @@ figure {
 }
 
 #delegate-address {
+	width: 50%;
 	border: 1px solid $primary-accent-color;
+	flex: 1 1;
 	font-family: 'JetBrains Mono', monospace;
 	overflow-wrap: break-word;
 	padding: 10px;
