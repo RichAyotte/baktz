@@ -32,9 +32,9 @@
 					class="text-logo"
 					src="~/assets/images/baktz-logo.svg"
 				/>
-				is a secure, reliable, and community involved Tezos staking service.
+				is a secure, reliable, and community involved Tezos baking service.
 			</p>
-			<table id="staking-rules">
+			<table id="baking-rules">
 				<tr>
 					<th>Fee</th>
 					<td>10%</td>
@@ -85,7 +85,7 @@ figure {
 	text-align: center;
 }
 
-#staking-rules {
+#baking-rules {
 	background-color: color.adjust(
 		$background-color,
 		$lightness: 5%,

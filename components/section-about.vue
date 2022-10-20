@@ -11,7 +11,7 @@
 				class="text-logo"
 				src="~/assets/images/baktz-logo.svg"
 			/>
-			is a <em><strong>Tezos only</strong></em> staking service started by Rich
+			is a <em><strong>Tezos only</strong></em> baking service started by Rich
 			Ayotte. Rich has been baking since July of 2018 and opened up his bakery to
 			the public during the fall of 2022.
 		</p>
