@@ -53,10 +53,10 @@
 			</table>
 			<p>Copy the address below and paste it into your wallet's baking feature.</p>
 			<div
-				class="delegate-address-container"
+				id="delegate-address-container"
 				@click="copyToClipboard(delegateAddress)"
 			>
-				<div class="delegate-address">
+				<div id="delegate-address">
 					{{ delegateAddress }}
 				</div>
 
@@ -183,21 +183,20 @@ figure {
 	}
 }
 
-.delegate-address-container {
-	margin-top: 30px;
+#delegate-address-container {
 	background-color: $background-color;
-	border: 1px solid $primary-accent-color;
-	display: flex;
+	display: inline-flex;
 	user-select: none;
 	img {
-		padding: 10px;
+		padding: 11px;
 		background: $primary-accent-color;
 	}
-	.delegate-address {
-		padding: 10px;
-		max-width: calc(100vw - 100px);
-		overflow-wrap: break-word;
-		font-family: 'JetBrains Mono', monospace;
-	}
+}
+
+#delegate-address {
+	border: 1px solid $primary-accent-color;
+	font-family: 'JetBrains Mono', monospace;
+	overflow-wrap: break-word;
+	padding: 10px;
 }
 </style>
