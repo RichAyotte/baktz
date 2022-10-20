@@ -24,7 +24,7 @@
 						id="tezos-logo"
 						src="~/assets/images/tezos-logo-horizontal-white.svg"
 					/><br />
-					Delegation Service
+					Baking Service
 				</h1>
 			</div>
 			<p>
@@ -48,9 +48,7 @@
 					<td>2,233,321 ꜩ</td>
 				</tr>
 			</table>
-			<p>
-				Copy the address below and paste it into your wallet's delegation feature.
-			</p>
+			<p>Copy the address below and paste it into your wallet's baking feature.</p>
 			<div
 				class="delegate-address-container"
 				@click="copyToClipboard(delegateAddress)"
