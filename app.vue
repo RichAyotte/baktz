@@ -1,8 +1,8 @@
 <template>
 	<notifications
 		position="top center"
-		ignore-duplicates="true"
-		pause-on-hover="true"
+		:ignore-duplicates="true"
+		:pause-on-hover="true"
 	/>
 	<header>
 		<img
