@@ -70,11 +70,16 @@
 import { notify } from '@kyvg/vue3-notification'
 
 const copyToClipboard = async (text: string): Promise<void> => {
-	await navigator.clipboard.writeText(text)
-	notify({
-		text: `copied to clipboard`,
-		title: text,
-	})
+	try {
+		await navigator.clipboard.writeText(text)
+		notify({
+			text: `copied to clipboard`,
+			title: text,
+		})
+	} catch (error) {
+		// Some browsers don't allow writing to the clipboard.
+		// Fail silently since we already know why.
+	}
 }
 const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 </script>
@@ -178,7 +183,6 @@ figure {
 	background-color: $background-color;
 	display: inline-flex;
 	flex-wrap: wrap;
-	user-select: none;
 	img {
 		padding: 11px;
 		background: $primary-accent-color;
