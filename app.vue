@@ -1,4 +1,9 @@
 <template>
+	<notifications
+		position="top center"
+		ignore-duplicates="true"
+		pause-on-hover="true"
+	/>
 	<header>
 		<img
 			id="header-baktz-img"
@@ -18,9 +23,7 @@
 	</main>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';

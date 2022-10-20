@@ -67,8 +67,15 @@
 </template>
 
 <script setup lang="ts">
-const copyToClipboard = async (text: string): Promise<void> =>
-	navigator.clipboard.writeText(text)
+import { notify } from '@kyvg/vue3-notification'
+
+const copyToClipboard = async (text: string): Promise<void> => {
+	await navigator.clipboard.writeText(text)
+	notify({
+		text: `copied to clipboard`,
+		title: text,
+	})
+}
 const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 </script>
 

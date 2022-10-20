@@ -110,3 +110,13 @@ h1, h2 {
 	// ***FIXME*** Border radius doesn't work with border-image.
 	// border-radius: 30px;
 }
+
+
+.vue-notification-template.vue-notification {
+	background-color: $primary-accent-color;
+	border-left: none;
+	border-radius: 3px;
+	box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.2);
+	margin-top: 10px;
+	text-align: center;
+}
