@@ -8,12 +8,18 @@
 				alt="Baked Tezzomboi smoking weed"
 			/>
 			<figcaption>
-				<a href="https://objkt.com/asset/hicetnunc/468242"
+				<a
+					target="_blank"
+					href="https://objkt.com/asset/hicetnunc/468242"
 					>Tezzomboiz Series 1: 076</a
 				>
 				<br />
 				by
-				<a href="https://mattbag3d.artstation.com/resume">mattbag3d</a>
+				<a
+					target="_blank"
+					href="https://mattbag3d.artstation.com/resume"
+					>mattbag3d</a
+				>
 			</figcaption>
 		</figure>
 		<div class="introduction">

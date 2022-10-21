@@ -16,10 +16,34 @@
 			public during the fall of 2022.
 		</p>
 		<ul id="personal-links">
-			<li><a href="https://www.linkedin.com/in/richayotte/">LinkedIn</a></li>
-			<li><a href="https://twitter.com/RichAyotte">Twitter</a></li>
-			<li><a href="https://github.com/RichAyotte">GitHub</a></li>
-			<li><a href="https://ayottesoftware.com">Homepage</a></li>
+			<li>
+				<a
+					target="_blank"
+					href="https://www.linkedin.com/in/richayotte/"
+					>LinkedIn</a
+				>
+			</li>
+			<li>
+				<a
+					target="_blank"
+					href="https://twitter.com/RichAyotte"
+					>Twitter</a
+				>
+			</li>
+			<li>
+				<a
+					target="_blank"
+					href="https://github.com/RichAyotte"
+					>GitHub</a
+				>
+			</li>
+			<li>
+				<a
+					target="_blank"
+					href="https://ayottesoftware.com"
+					>Homepage</a
+				>
+			</li>
 		</ul>
 	</section>
 </template>
