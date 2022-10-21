@@ -34,16 +34,10 @@ main {
 		padding: 30px;
 	}
 }
+
 img {
 	height: 30px;
 	margin: 15px;
-}
-
-#header-baktz-img {
-	@include media('>desktop', 'landscape') {
-		width: 150px;
-		margin: 20px 0 0 20px;
-	}
 }
 
 #header-twitter-img {
