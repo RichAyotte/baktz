@@ -35,7 +35,7 @@ main {
 	}
 }
 img {
-	height: 25px;
+	height: 30px;
 	margin: 15px;
 }
 
