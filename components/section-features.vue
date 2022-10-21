@@ -48,7 +48,7 @@ import peopleGroupSolid from '~/assets/images/people-group-solid.svg'
 const features = [
 	{
 		title: `Customer Support`,
-		description: `24/7 customer support through Twitter and email`,
+		description: `Customer support through <a target="_blank" href="https://twitter.com/realbaktz">Twitter</a> and <a target="_blank" href="mailto:support@baktz.com">email</a>`,
 		iconUrl: bellConciergeSolid,
 	},
 	{

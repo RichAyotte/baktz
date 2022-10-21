@@ -7,7 +7,7 @@
 				maskImage: `url(${iconUrl})`,
 			}"
 		></div>
-		<p>{{ description }}</p>
+		<p v-html="description" />
 	</div>
 </template>
 
