@@ -43,6 +43,10 @@
 					<td>10%</td>
 				</tr>
 				<tr>
+					<th>Minimum</th>
+					<td>10 XTZ</td>
+				</tr>
+				<tr>
 					<th>Capacity</th>
 					<td>2,500,000 ꜩ</td>
 				</tr>
