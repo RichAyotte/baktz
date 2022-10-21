@@ -60,10 +60,10 @@
 	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
 	display: block;
 	float: right;
-	margin: 10px 0 10px 10px;
+	margin: 0 0 20px 20px;
 	max-width: 300px;
 	transform: rotate(-8deg);
-	width: 40%;
+	width: 35%;
 }
 
 #personal-links {
@@ -77,6 +77,9 @@
 	li {
 		flex: 1 1;
 		text-align: center;
+		a {
+			text-decoration: none;
+		}
 	}
 }
 </style>
