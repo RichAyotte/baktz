@@ -40,27 +40,6 @@
 				/>
 				is a secure, reliable, and community involved Tezos baking service.
 			</p>
-			<table id="baking-rules">
-				<caption>
-					<h2>Fees and capacity</h2>
-				</caption>
-				<tr>
-					<th>Fee</th>
-					<td>10%</td>
-				</tr>
-				<tr>
-					<th>Minimum</th>
-					<td>10 XTZ</td>
-				</tr>
-				<tr>
-					<th>Capacity</th>
-					<td>2,500,000 ꜩ</td>
-				</tr>
-				<tr>
-					<th>Free Space</th>
-					<td>2,233,321 ꜩ</td>
-				</tr>
-			</table>
 			<p>Copy the address below and paste it into your wallet's baking feature.</p>
 			<div
 				id="delegate-address-container"
@@ -108,30 +87,6 @@ h1 {
 figure {
 	margin: 0;
 	text-align: center;
-}
-
-#baking-rules {
-	background-color: color.adjust(
-		$background-color,
-		$lightness: 5%,
-		$alpha: -0.5
-	);
-	border-collapse: collapse;
-	margin: 70px auto;
-	td,
-	th {
-		padding: 10px 25px;
-		border: 1px solid color.adjust($background-color, $lightness: 25%);
-		box-shadow: #000;
-	}
-	th {
-		text-align: left;
-	}
-	td {
-		color: white;
-		font-style: italic;
-		text-align: right;
-	}
 }
 
 #title-container {
