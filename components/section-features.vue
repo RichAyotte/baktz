@@ -192,12 +192,13 @@ const features = [
 // 	}
 // }
 
-#feature-boxes-container {
+.section-features {
 	background-image: url(/assets/images/wave-line.svg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 .feature-box {
 	background-color: $background-color;
 	border-image: linear-gradient(

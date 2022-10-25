@@ -30,7 +30,14 @@
 @import 'assets/styles/variables';
 @import 'include-media';
 
+header {
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
 main {
+	max-width: 1600px;
+	margin: 0 auto;
 	& > * {
 		padding: 30px;
 	}
