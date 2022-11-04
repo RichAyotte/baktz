@@ -22,18 +22,19 @@ import homeDescription from './home-description'
 		'tezzomboiz'
 		'title'
 		'description';
+	grid-template-columns: minmax(0, auto);
 
 	@include media('>=tablet') {
-		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
 			'tezzomboiz title'
 			'description description';
+		grid-template-columns: 1fr 1fr;
 	}
 	@include media('>=desktop') {
-		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
 			'tezzomboiz title'
 			'tezzomboiz description';
+		grid-template-columns: 1fr 1fr;
 	}
 }
 </style>

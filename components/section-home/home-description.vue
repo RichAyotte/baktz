@@ -40,35 +40,30 @@ const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 </script>
 
 <style lang="scss" scoped>
-// @use 'sass:color';
 @import '~/assets/styles/variables';
 #home-description {
-	// max-width: 30vh;
 	text-align: center;
 	p {
 		font-size: larger;
 	}
-	button {
-		margin: 30px 0;
-	}
-}
-#delegate-address-container {
-	max-width: calc(100% - 10px);
-	background-color: $background-color;
-	display: inline-flex;
-	flex-wrap: wrap;
-	img {
-		padding: 11px;
-		background: $primary-accent-color;
-	}
 }
 
-#delegate-address {
-	width: 50%;
-	border: 1px solid $primary-accent-color;
-	flex: 1 1;
-	font-family: 'JetBrains Mono', monospace;
-	overflow-wrap: break-word;
-	padding: 10px;
+#delegate-address-container {
+	background-color: $background-color;
+	display: inline-grid;
+	grid-template-columns: minmax(0, auto) minmax(0, auto);
+
+	#delegate-address {
+		border: 1px solid $primary-accent-color;
+		font-family: 'JetBrains Mono', monospace;
+		overflow-wrap: break-word;
+		padding: 15px;
+	}
+
+	img {
+		background: $primary-accent-color;
+		height: calc(100% - 30px);
+		padding: 15px;
+	}
 }
 </style>
