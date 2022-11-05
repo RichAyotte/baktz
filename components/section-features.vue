@@ -153,9 +153,10 @@ const features = [
 	#feature-boxes {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 2rem;
+		column-gap: calc(2% + 30px);
+		row-gap: 50px;
 		& > * {
-			flex: 1 1 25%;
+			flex: 1 1 23%;
 		}
 	}
 	#feature-boxes-carousel {
