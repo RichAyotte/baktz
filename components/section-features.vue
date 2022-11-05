@@ -1,8 +1,8 @@
 <template>
 	<section class="section-features">
 		<h2>Features</h2>
-		<div id="feature-boxes-container">
-			<!-- 			<feature-box
+		<div id="feature-boxes">
+			<feature-box
 				v-for="(feature, index) in features"
 				:key="index"
 				class="feature-box"
@@ -10,27 +10,26 @@
 				:description="feature.description"
 				:icon-url="feature.iconUrl"
 			/>
- -->
-			<carousel
-				class=""
-				:items-to-show="1"
-			>
-				<slide
-					v-for="(feature, index) in features"
-					:key="index"
-					><feature-box
-						class="feature-box"
-						:title="feature.title"
-						:description="feature.description"
-						:icon-url="feature.iconUrl"
-					/>
-				</slide>
-				<template #addons>
-					<navigation />
-					<pagination />
-				</template>
-			</carousel>
 		</div>
+		<carousel
+			id="feature-boxes-carousel"
+			:items-to-show="1"
+		>
+			<slide
+				v-for="(feature, index) in features"
+				:key="index"
+				><feature-box
+					class="feature-box"
+					:title="feature.title"
+					:description="feature.description"
+					:icon-url="feature.iconUrl"
+				/>
+			</slide>
+			<template #addons>
+				<navigation />
+				<pagination />
+			</template>
+		</carousel>
 	</section>
 </template>
 
@@ -132,65 +131,37 @@ const features = [
 .carousel__pagination {
 	padding: 0;
 }
-
-@include media('>tablet') {
-	.carousel__next,
-	.carousel__prev,
-	.carousel__pagination {
-		padding: none;
-		display: none;
-	}
-
-	.carousel__track {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-	}
-	.carousel__slide {
-		flex: 1 1 20vw;
-		min-width: 30%;
-	}
-}
 </style>
 
 <style lang="scss" scoped>
 @import 'assets/styles/variables';
 @import 'include-media';
 
-// #feature-boxes-container {
-// 	background-image: url(/assets/images/wave-line.svg);
-// 	background-position: center;
-// 	background-repeat: no-repeat;
-// 	background-size: cover;
-// 	box-sizing: border-box;
-// 	display: flex;
-// 	flex-wrap: wrap;
-// 	gap: 2rem;
-// 	padding: 2rem;
-// 	width: 100%;
-// 	& > * {
-// 		background-color: $background-color;
-// 		border-image: linear-gradient(
-// 				to bottom,
-// 				#665c82 10.41669%,
-// 				#867379 21.875%,
-// 				#755d4b 30.7292%,
-// 				#7d553f 41.6667%,
-// 				#707a56 53.6458%,
-// 				#729270 63.5417%,
-// 				#89b6a4 72.3958%,
-// 				#9ca3ac 84.375%,
-// 				rgba(189, 164, 174, 0.25) 92.7083%,
-// 				rgba(221, 182, 183, 0) 100%
-// 			)
-// 			1 1;
-// 		border-color: #665c82;
-// 		border-style: solid;
-// 		border-width: 1px;
-// 		flex: 1 1 20vw;
-// 		padding: 2rem;
-// 	}
-// }
+@include media('<600px') {
+	#feature-boxes {
+		display: none;
+	}
+	#feature-boxes-carousel {
+		display: block;
+	}
+	.feature-box {
+		width: 100%;
+	}
+}
+
+@include media('>=600px') {
+	#feature-boxes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		& > * {
+			flex: 1 1 25%;
+		}
+	}
+	#feature-boxes-carousel {
+		display: none;
+	}
+}
 
 .section-features {
 	background-image: url(/assets/images/wave-line.svg);
