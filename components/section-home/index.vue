@@ -17,7 +17,7 @@ import homeDescription from './home-description'
 .section-home {
 	align-items: center;
 	display: grid;
-	gap: 20px;
+	gap: 50px 10px;
 	grid-template-areas:
 		'tezzomboiz'
 		'title'

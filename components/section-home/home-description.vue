@@ -42,6 +42,7 @@ const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 <style lang="scss" scoped>
 @import '~/assets/styles/variables';
 #home-description {
+	align-self: start;
 	text-align: center;
 	p {
 		font-size: larger;

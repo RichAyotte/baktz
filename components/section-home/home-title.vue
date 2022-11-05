@@ -9,13 +9,11 @@
 </template>
 <style lang="scss" scoped>
 #home-title {
-	// align-items: center;
-	// display: flex;
-	// flex-wrap: wrap;
-	// justify-content: center;
-	// margin: 60px 15px;
+	align-self: end;
 	h1 {
+		color: white;
 		font-size: clamp(2rem, 10vw, 4rem);
+		font-weight: lighter;
 		img {
 			display: inline-block;
 			vertical-align: text-bottom;
@@ -23,14 +21,5 @@
 			vertical-align: middle;
 		}
 	}
-	& > * {
-		// flex: 1 1 30vw;
-	}
-}
-
-h1 {
-	color: white;
-	font-size: 20pt;
-	font-weight: lighter;
 }
 </style>
