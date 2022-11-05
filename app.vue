@@ -19,7 +19,6 @@
 	<main>
 		<section-home />
 		<section-features />
-		<section-fees />
 		<section-about />
 	</main>
 </template>
