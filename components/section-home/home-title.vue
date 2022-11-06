@@ -13,7 +13,6 @@
 	h1 {
 		color: white;
 		font-size: clamp(2rem, 10vw, 4rem);
-		font-weight: lighter;
 		img {
 			display: inline-block;
 			vertical-align: text-bottom;
