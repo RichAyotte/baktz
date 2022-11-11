@@ -28,6 +28,11 @@ header {
 	text-align: center;
 	font-weight: bold;
 	text-transform: uppercase;
+	font-size: larger;
+}
+
+p {
+	font-size: larger;
 }
 
 .icon {

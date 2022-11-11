@@ -1,6 +1,5 @@
 <template>
 	<section class="section-features">
-		<h2>Features</h2>
 		<div id="feature-boxes">
 			<feature-box
 				v-for="(feature, index) in features"
@@ -151,12 +150,13 @@ const features = [
 
 @include media('>=600px') {
 	#feature-boxes {
+		margin: 4%;
 		display: flex;
 		flex-wrap: wrap;
-		column-gap: calc(2% + 30px);
+		column-gap: calc(4% + 30px);
 		row-gap: 50px;
 		& > * {
-			flex: 1 1 23%;
+			flex: 1 1 21%;
 		}
 	}
 	#feature-boxes-carousel {
@@ -165,6 +165,7 @@ const features = [
 }
 
 .section-features {
+	margin-top: 50px;
 	background-image: url(/assets/images/wave-line.svg);
 	background-position: center;
 	background-repeat: no-repeat;

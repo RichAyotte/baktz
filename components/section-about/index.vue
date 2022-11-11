@@ -33,11 +33,15 @@ import aboutContactLinks from './about-contact-links'
 
 <style lang="scss" scoped>
 @import 'include-media';
+.section-about {
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+
 #section-about-content {
 	align-items: center;
 	display: grid;
 	gap: 30px;
-	max-width: 300px;
 	margin: 0 auto;
 	grid-template-areas:
 		'headshot'
@@ -45,14 +49,19 @@ import aboutContactLinks from './about-contact-links'
 		'links';
 	grid-template-columns: minmax(0, auto);
 	@include media('>=500px') {
-		max-width: 600px;
+		column-gap: 15px;
+		row-gap: 0px;
+		max-width: 700px;
 		grid-template-areas:
 			'headshot description'
 			'headshot links';
 		grid-template-columns: 1fr 1fr;
 	}
 }
+
 h2 {
+	margin-bottom: 60px;
+	font-size: 2.5rem;
 	.text-logo {
 		height: 1em;
 	}
