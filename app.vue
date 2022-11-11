@@ -44,7 +44,13 @@ main {
 
 img {
 	height: 30px;
-	margin: 15px;
+	margin: clamp(15px, 2vw, 200px);
+}
+
+#header-baktz-img {
+	@include media('>=tablet') {
+		height: clamp(15px, 5vw, 100px);
+	}
 }
 
 #header-twitter-img {
