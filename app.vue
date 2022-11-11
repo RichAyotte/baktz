@@ -43,17 +43,18 @@ main {
 }
 
 img {
-	height: 30px;
 	margin: clamp(15px, 2vw, 200px);
 }
 
 #header-baktz-img {
+	height: 35px;
 	@include media('>=tablet') {
-		height: clamp(15px, 5vw, 100px);
+		height: clamp(30px, 5vw, 100px);
 	}
 }
 
 #header-twitter-img {
+	height: 30px;
 	float: right;
 }
 </style>

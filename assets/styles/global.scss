@@ -3,26 +3,12 @@
 @import 'include-media';
 
 body {
+	overflow-x: hidden;
 	color: $text-color;
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
-	background: url('~/assets/images/background-blocks.svg') no-repeat top right,
-		radial-gradient(
-				circle closest-side at center 10%,
-					// #826861, transparent
-					rgba(104, 110, 12, 1), transparent
-			)
-			no-repeat, $background-color
-		;
-	@include media('>=tablet') {
-		background: url('~/assets/images/background-blocks.svg') no-repeat top right,
-			radial-gradient(
-					calc(600px - 10vh) at calc(40% - 400px) 20%,
-					rgba(104, 110, 12, 1), transparent
-				)
-				no-repeat,
-			$background-color;
-	}
+	background: url('~/assets/images/background-blocks.svg') no-repeat top right
+		, $background-color;
 }
 
 a, a:visited {
