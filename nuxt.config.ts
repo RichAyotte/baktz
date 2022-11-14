@@ -3,7 +3,7 @@ import pkg from './package.json'
 
 export default defineNuxtConfig({
 	css: ['@/assets/styles/global.scss'],
-	meta: {
+	head: {
 		title: pkg.name,
 		meta: [
 			{
@@ -13,6 +13,11 @@ export default defineNuxtConfig({
 			},
 		],
 		link: [
+			{
+				rel: 'icon',
+				type: 'image/png',
+				href: 'btz.png'
+			},
 			{
 				href: `https://fonts.googleapis.com`,
 				rel: `preconnect`,
@@ -27,6 +32,9 @@ export default defineNuxtConfig({
 				rel: `stylesheet`,
 			},
 		],
+		
 	},
+	
+	
 	ssr: false,
 })

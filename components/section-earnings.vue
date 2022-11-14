@@ -1,6 +1,6 @@
 <template>
 	<section class="section-earnings">
-		<h2>Earnings</h2>
+		<h2><strong>What You can Earn</strong></h2>
 		<div class="gradient-box-border">
 			<form>
 				<label for="delegated-xtz-amount">Enter your XTZ Amount</label>
