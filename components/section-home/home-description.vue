@@ -53,12 +53,14 @@ const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 	background-color: $background-color;
 	display: inline-grid;
 	grid-template-columns: minmax(0, auto) minmax(0, auto);
+	cursor: pointer;
 
 	#delegate-address {
 		border: 1px solid $primary-accent-color;
 		font-family: 'JetBrains Mono', monospace;
 		overflow-wrap: break-word;
 		padding: 15px;
+		cursor: pointer;
 	}
 
 	img {

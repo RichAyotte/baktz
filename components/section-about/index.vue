@@ -24,8 +24,10 @@
 				public during the fall of 2022.
 			</p>
 			<about-contact-links style="grid-area: links" />
+
 		</div>
 	</section>
+	<section class="section-tos"><div><a href="#"></a>Terms of Service</div></section>
 </template>
 <script setup lang="ts">
 import aboutContactLinks from './about-contact-links'
@@ -36,6 +38,15 @@ import aboutContactLinks from './about-contact-links'
 .section-about {
 	margin-top: 20px;
 	margin-bottom: 60px;
+}
+
+.section-tos {
+	margin-top: 20px;
+	margin-bottom: 60px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	cursor: pointer;
 }
 
 #section-about-content {
