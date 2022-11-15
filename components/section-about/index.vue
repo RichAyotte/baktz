@@ -11,7 +11,7 @@
 			<img
 				style="grid-area: headshot"
 				id="headshot"
-				src="~/assets/images/headshot.jpg"
+				src="~/assets/images/headshot.webp"
 				alt="Photo of Richard Ayotte"
 			/>
 			<p style="grid-area: description">
