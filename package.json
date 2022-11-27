@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "@kyvg/vue3-notification": "^2.6.1",
-    "vue3-carousel": "^0.2.5"
+    "vue3-carousel": "^0.2.6"
   }
 }
