@@ -1,8 +1,8 @@
-import { resolve } from 'path'
-import { defineNuxtConfig } from 'nuxt/config'
-import pkg from './package.json'
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 import inject from '@rollup/plugin-inject'
+import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill'
+import pkg from './package.json'
+import { defineNuxtConfig } from 'nuxt/config'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
 	app: {
