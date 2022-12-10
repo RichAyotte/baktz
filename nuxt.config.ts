@@ -1,8 +1,10 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import inject from '@rollup/plugin-inject'
+import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill'
 import pkg from './package.json'
+import { defineNuxtConfig } from 'nuxt/config'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
-	css: ['@/assets/styles/global.scss'],
 	app: {
 		head: {
 			title: pkg.name,
@@ -30,5 +32,38 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+	css: ['@/assets/styles/global.scss'],
 	ssr: false,
+	vite: {
+		optimizeDeps: {
+			esbuildOptions: {
+				define: {
+					global: 'globalThis',
+				},
+				plugins: [
+					NodeGlobalsPolyfillPlugin({
+						buffer: true,
+					}),
+				],
+			},
+		},
+		build: {
+			target: 'esnext',
+			commonjsOptions: {
+				transformMixedEsModules: true,
+			},
+			rollupOptions: {
+				plugins: [inject({ Buffer: ['buffer', 'Buffer'] })],
+			},
+		},
+		resolve: {
+			alias: {
+				'@airgap/beacon-sdk': resolve(
+					`node_modules/@airgap/beacon-sdk/dist/esm/index.js`
+				),
+				'readable-stream': 'vite-compatible-readable-stream',
+				stream: 'vite-compatible-readable-stream',
+			},
+		},
+	},
 })

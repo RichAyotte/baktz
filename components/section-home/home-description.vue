@@ -19,12 +19,46 @@
 
 			<img src="~/assets/images/clipboard.svg" />
 		</div>
+		<br />
+		<button
+			id="delegate-button"
+			@click="delegate"
+		>
+			Delegate now
+		</button>
 	</div>
 </template>
 <script setup lang="ts">
 import { notify } from '@kyvg/vue3-notification'
+import { DAppClient, TezosOperationType } from '@airgap/beacon-dapp'
+const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
+const dAppClient = new DAppClient({ name: `baktz` })
 
-const copyToClipboard = async (text: string): Promise<void> => {
+async function delegate() {
+	try {
+		let account = await dAppClient.getActiveAccount()
+		if (!account) {
+			await dAppClient.requestPermissions()
+			account = await dAppClient.getActiveAccount()
+		}
+
+		if (account) {
+			console.log(account)
+			await dAppClient.requestOperation({
+				operationDetails: [
+					{
+						kind: TezosOperationType.DELEGATION,
+						delegate: delegateAddress,
+					},
+				],
+			})
+		}
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+async function copyToClipboard(text: string): Promise<void> {
 	try {
 		await navigator.clipboard.writeText(text)
 		notify({
@@ -36,7 +70,6 @@ const copyToClipboard = async (text: string): Promise<void> => {
 		// Fail silently since we already know why.
 	}
 }
-const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 </script>
 
 <style lang="scss" scoped>
