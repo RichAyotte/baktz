@@ -4,35 +4,58 @@
 			<img
 				class="img-text"
 				src="~/assets/images/baktz-logo.svg"
-				style="height: 21px"
 			/>
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
 		<p>Copy the address below and paste it into your wallet's baking feature.</p>
 		<div
 			id="delegate-address-container"
-			@click="copyToClipboard(delegateAddress)"
+			@click="copyToClipboard(baktzDelegateAddress)"
 		>
 			<div id="delegate-address">
-				{{ delegateAddress }}
+				{{ baktzDelegateAddress }}
 			</div>
 
 			<img src="~/assets/images/clipboard.svg" />
 		</div>
 		<br />
-		<button
-			id="delegate-button"
-			@click="delegate"
-		>
-			Delegate now
-		</button>
+		<div id="button-or-address">
+			<span v-if="activeAccount != null"
+				><strong>{{ activeAccount.address.substring(0, 8) }}&#8230;</strong> is
+				currently delegating to
+				<img
+					class="img-text"
+					src="~/assets/images/baktz-logo.svg"
+				/> Thank you!<button @click="switchWallet">Switch wallet</button></span
+			>
+			<button
+				v-else
+				id="delegate-button"
+				@click="delegate"
+			>
+				Delegate now
+			</button>
+		</div>
 	</div>
 </template>
 <script setup lang="ts">
 import { notify } from '@kyvg/vue3-notification'
 import { DAppClient, TezosOperationType } from '@airgap/beacon-dapp'
-const delegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
+import { RpcClient } from '@taquito/rpc'
+const tezosNode = new RpcClient('https://mainnet.api.tez.ie', 'NetXdQprcVkpaWU')
+const baktzDelegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
 const dAppClient = new DAppClient({ name: `baktz` })
+const activeAccount = await dAppClient.getActiveAccount()
+if (activeAccount?.address) {
+	const delegateAddress = await tezosNode.getDelegate(activeAccount?.address)
+	if (delegateAddress === baktzDelegateAddress) {
+		// do something
+	}
+}
+
+function switchWallet() {
+	console.log('not implemented yet')
+}
 
 async function delegate() {
 	try {
@@ -43,12 +66,11 @@ async function delegate() {
 		}
 
 		if (account) {
-			console.log(account)
 			await dAppClient.requestOperation({
 				operationDetails: [
 					{
 						kind: TezosOperationType.DELEGATION,
-						delegate: delegateAddress,
+						delegate: baktzDelegateAddress,
 					},
 				],
 			})
@@ -99,5 +121,8 @@ async function copyToClipboard(text: string): Promise<void> {
 		height: calc(100% - 30px);
 		padding: 15px;
 	}
+}
+#button-or-address {
+	padding: 1rem;
 }
 </style>

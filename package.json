@@ -36,6 +36,7 @@
   "dependencies": {
     "@airgap/beacon-dapp": "^3.3.0",
     "@kyvg/vue3-notification": "^2.7.0",
+    "@taquito/rpc": "^15.0.0",
     "vue3-carousel": "^0.2.8"
   }
 }
