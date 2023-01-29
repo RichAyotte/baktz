@@ -1,5 +1,5 @@
 import inject from '@rollup/plugin-inject'
-import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 import pkg from './package.json'
 import { defineNuxtConfig } from 'nuxt/config'
 import { resolve } from 'path'
@@ -33,6 +33,9 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
+	nitro: {
+		preset: 'cloudflare_pages',
+	},
 	ssr: false,
 	vite: {
 		optimizeDeps: {
