@@ -1,6 +1,6 @@
 {
-  "name": "bākꜩ",
-  "description": "Tezos baking service",
+  "name": "baktz-website",
+  "description": "bākꜩ - Tezos baking service",
   "private": true,
   "scripts": {
     "build": "nuxt build",
