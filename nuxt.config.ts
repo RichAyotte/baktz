@@ -33,9 +33,6 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
-	nitro: {
-		preset: 'cloudflare_pages',
-	},
 	ssr: false,
 	vite: {
 		optimizeDeps: {
