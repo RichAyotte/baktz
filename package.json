@@ -12,18 +12,18 @@
     "ship-production": "shipit production deploy"
   },
   "devDependencies": {
-    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "@typescript-eslint/parser": "^5.48.2",
-    "eslint": "^8.32.0",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
     "eslint-config-ayotte": "^1.5.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier-vue": "^4.2.0",
     "eslint-plugin-vue": "^9.9.0",
     "fs-extra": "^11.1.0",
-    "include-media": "^1.4.10",
-    "nuxt": "^3.0.0",
+    "include-media": "^2.0.0",
+    "nuxt": "^3.1.1",
     "prettier": "^2.8.3",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@airgap/beacon-dapp": "^3.3.2",
     "@kyvg/vue3-notification": "^2.8.0",
-    "@taquito/rpc": "^15.0.1",
+    "@taquito/rpc": "^15.1.0",
     "vue3-carousel": "^0.2.9"
   }
 }
