@@ -4,40 +4,40 @@
 			target="_blank"
 			href="https://www.linkedin.com/in/richayotte/"
 		>
-			<img
+			<nuxt-img
 				alt="LinkedIn logo"
 				id="header-twitter-img"
-				src="~/assets/images/linkedin.svg"
+				src="/linkedin.svg"
 			/>
 		</a>
 		<a
 			target="_blank"
 			href="https://twitter.com/RichAyotte"
 		>
-			<img
+			<nuxt-img
 				alt="Twitter logo"
 				id="header-twitter-img"
-				src="~/assets/images/twitter-brands.svg"
+				src="/twitter-brands.svg"
 			/>
 		</a>
 		<a
 			target="_blank"
 			href="https://github.com/RichAyotte"
 		>
-			<img
+			<nuxt-img
 				alt="GitHub logo"
 				id="header-twitter-img"
-				src="~/assets/images/github.svg"
+				src="/github.svg"
 			/>
 		</a>
 		<a
 			target="_blank"
 			href="https://ayottesoftware.com"
 		>
-			<img
+			<nuxt-img
 				alt="icon for home"
 				id="header-twitter-img"
-				src="~/assets/images/house-solid.svg"
+				src="/house-solid.svg"
 			/>
 		</a>
 	</div>

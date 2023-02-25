@@ -5,14 +5,14 @@
 		:pause-on-hover="true"
 	/>
 	<header>
-		<img
+		<nuxt-img
 			id="header-baktz-img"
-			src="~/assets/images/baktz-logo.svg"
+			src="/baktz-logo.svg"
 		/>
 		<a href="https://twitter.com/realbaktz">
-			<img
+			<nuxt-img
 				id="header-twitter-img"
-				src="~/assets/images/twitter-brands.svg"
+				src="/twitter-brands.svg"
 			/>
 		</a>
 	</header>

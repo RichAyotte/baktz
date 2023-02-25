@@ -1,9 +1,9 @@
 <template>
 	<div id="home-description">
 		<p>
-			<img
+			<nuxt-img
 				class="img-text"
-				src="~/assets/images/baktz-logo.svg"
+				src="/baktz-logo.svg"
 			/>
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
@@ -16,17 +16,18 @@
 				{{ baktzDelegateAddress }}
 			</div>
 
-			<img src="~/assets/images/clipboard.svg" />
+			<nuxt-img src="/clipboard.svg" />
 		</div>
 		<br />
 		<div id="button-or-address">
 			<span v-if="activeAccount != null"
 				><strong>{{ activeAccount.address.substring(0, 8) }}&#8230;</strong> is
 				currently delegating to
-				<img
+				<nuxt-img
 					class="img-text"
-					src="~/assets/images/baktz-logo.svg"
-				/> Thank you!<button @click="switchWallet">Switch wallet</button></span
+					src="/baktz-logo.svg"
+				/>
+				Thank you!<button @click="switchWallet">Switch wallet</button></span
 			>
 			<button
 				v-else

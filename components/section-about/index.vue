@@ -2,22 +2,22 @@
 	<section class="section-about">
 		<h2>
 			About
-			<img
+			<nuxt-img
 				class="text-logo"
-				src="~/assets/images/baktz-logo.svg"
+				src="/baktz-logo.svg"
 			/>
 		</h2>
 		<div id="section-about-content">
-			<img
+			<nuxt-img
 				style="grid-area: headshot"
 				id="headshot"
-				src="~/assets/images/headshot.webp"
+				src="/headshot.webp"
 				alt="Photo of Richard Ayotte"
 			/>
 			<p style="grid-area: description">
-				<img
+				<nuxt-img
 					class="text-logo"
-					src="~/assets/images/baktz-logo.svg"
+					src="/baktz-logo.svg"
 				/>
 				is a <em><strong>Tezos only</strong></em> delegation service started by Rich
 				Ayotte. Rich has been baking since July of 2018 and opened his bakery to the

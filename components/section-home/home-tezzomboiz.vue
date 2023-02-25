@@ -1,9 +1,9 @@
 <template>
 	<figure id="home-tezzomboiz">
-		<img
+		<nuxt-img
 			alt="Baked Tezzomboi smoking weed"
 			id="baktz-tezzomboi"
-			src="~/assets/images/batkz-tezzomboiz-transparent.webp"
+			src="/batkz-tezzomboiz-transparent.webp"
 			style="width: 100%"
 		/>
 		<figcaption>

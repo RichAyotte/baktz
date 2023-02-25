@@ -2,7 +2,7 @@
 	<div id="home-title">
 		<h1>
 			Reliable
-			<img src="~/assets/images/tezos-logo-horizontal-white.svg" />
+			<nuxt-img src="/tezos-logo-horizontal-white.svg" />
 			Delegation Service
 		</h1>
 	</div>
