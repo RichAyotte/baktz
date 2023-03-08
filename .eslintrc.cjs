@@ -23,6 +23,12 @@ module.exports = {
 	},
 	plugins: ['vue', '@typescript-eslint'],
 	rules: {
+		'vue/multi-word-component-names': [
+			'error',
+			{
+				ignores: ['index'],
+			},
+		],
 		'prettier-vue/prettier': [
 			'error',
 			{

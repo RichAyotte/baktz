@@ -10,8 +10,8 @@
 				/>
 			</form>
 			<table class="expected-earnings">
-				<thead></thead>
-				<tfoot></tfoot>
+				<thead />
+				<tfoot />
 				<tbody>
 					<tr>
 						<th>Per Cycle</th>

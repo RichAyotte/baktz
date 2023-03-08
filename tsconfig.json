@@ -1,8 +1,12 @@
 {
-  // https://v3.nuxtjs.org/concepts/typescript
-  "exclude": ["node_modules", "build", "dist", "**/*.js", "**/*.cjs"],
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "resolveJsonModule": true,
-  }
+	"compilerOptions": {
+		"resolveJsonModule": true
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"dist",
+		".nuxt"
+	],
+	"extends": "./.nuxt/tsconfig.json"
 }

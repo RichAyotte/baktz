@@ -6,7 +6,7 @@
 			:style="{
 				maskImage: `url(${iconUrl})`,
 			}"
-		></div>
+		/>
 		<p v-html="description" />
 	</div>
 </template>

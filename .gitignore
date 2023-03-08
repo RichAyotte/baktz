@@ -8,6 +8,5 @@ nuxt.d.ts
 .env
 dist
 
-# Shipit
-shipitfile.js
-shipitfile.cjs
+# rollup stats
+stats.html

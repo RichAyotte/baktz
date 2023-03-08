@@ -17,7 +17,8 @@
 			<slide
 				v-for="(feature, index) in features"
 				:key="index"
-				><feature-box
+			>
+				<feature-box
 					class="feature-box"
 					:title="feature.title"
 					:description="feature.description"

@@ -1,8 +1,9 @@
+import { resolve } from 'path'
 import inject from '@rollup/plugin-inject'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-import pkg from './package.json'
 import { defineNuxtConfig } from 'nuxt/config'
-import { resolve } from 'path'
+import { visualizer } from 'rollup-plugin-visualizer'
+import pkg from './package.json'
 
 export default defineNuxtConfig({
 	app: {
@@ -33,31 +34,26 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
-	image: {
-		dir: 'assets/images',
-	},
+	image: { dir: 'assets/images' },
 	modules: ['@nuxt/image-edge'],
 	ssr: false,
 	vite: {
+		plugins: [visualizer()],
 		optimizeDeps: {
 			esbuildOptions: {
-				define: {
-					global: 'globalThis',
-				},
-				plugins: [
-					NodeGlobalsPolyfillPlugin({
-						buffer: true,
-					}),
-				],
+				define: { global: 'globalThis' },
+				plugins: [NodeGlobalsPolyfillPlugin({ buffer: true })],
 			},
 		},
 		build: {
 			target: 'esnext',
-			commonjsOptions: {
-				transformMixedEsModules: true,
-			},
+			commonjsOptions: { transformMixedEsModules: true },
 			rollupOptions: {
-				plugins: [inject({ Buffer: ['buffer', 'Buffer'] })],
+				plugins: [
+					inject({
+						Buffer: ['buffer', 'Buffer'],
+					}),
+				],
 			},
 		},
 		resolve: {
