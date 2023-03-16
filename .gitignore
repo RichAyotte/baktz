@@ -4,12 +4,9 @@ node_modules
 nuxt.d.ts
 
 #Build
-.env
 .output
+.env
 dist
 
 # rollup stats
 stats.html
-
-# Cloudflare pages doesn't like nvm anymore.
-.nvmrc
