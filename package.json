@@ -8,7 +8,7 @@
 	"description": "bākꜩ - Tezos baking service",
 	"devDependencies": {
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-		"@nuxt/image-edge": "^1.0.0-27991759.1a5eea1",
+		"@nuxt/image-edge": "1.0.0-27913696.5d122a3",
 		"@typescript-eslint/eslint-plugin": "^5.56.0",
 		"@typescript-eslint/parser": "^5.56.0",
 		"eslint": "^8.36.0",
