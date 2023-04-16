@@ -1,28 +1,28 @@
 {
 	"dependencies": {
-		"@airgap/beacon-dapp": "^3.3.5-beta.14",
+		"@airgap/beacon-dapp": "^4.0.0",
 		"@kyvg/vue3-notification": "^2.9.0",
-		"@taquito/rpc": "^16.0.1",
-		"vue3-carousel": "^0.2.14"
+		"@taquito/rpc": "^16.1.1",
+		"vue3-carousel": "^0.3.0"
 	},
 	"description": "bākꜩ - Tezos baking service",
 	"devDependencies": {
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-		"@nuxt/image-edge": "1.0.0-28004510.a0dc8e8",
-		"@typescript-eslint/eslint-plugin": "^5.57.0",
-		"@typescript-eslint/parser": "^5.57.0",
-		"eslint": "^8.37.0",
+		"@nuxt/image-edge": "1.0.0-28020728.5df24eb",
+		"@typescript-eslint/eslint-plugin": "^5.58.0",
+		"@typescript-eslint/parser": "^5.58.0",
+		"eslint": "^8.38.0",
 		"eslint-config-ayotte": "^2.2.5",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-nuxt": "^4.0.0",
 		"eslint-plugin-prettier-vue": "^4.2.0",
-		"eslint-plugin-vue": "^9.10.0",
+		"eslint-plugin-vue": "^9.11.0",
 		"fs-extra": "^11.1.1",
 		"include-media": "^2.0.0",
-		"nuxt": "^3.3.2",
+		"nuxt": "^3.4.1",
 		"prettier": "^2.8.7",
 		"rollup-plugin-visualizer": "^5.9.0",
-		"sass": "^1.60.0",
+		"sass": "^1.62.0",
 		"sass-loader": "^13.2.2",
 		"vite-compatible-readable-stream": "^3.6.1",
 		"vue-eslint-parser": "^9.1.1",
@@ -40,7 +40,6 @@
 		"generate": "nuxt generate",
 		"lint": "eslint --fix **/*.{js,cjs,ts,vue}",
 		"precommit": "npm run lint",
-		"preview": "nuxt preview",
-		"ship-production": "shipit production deploy"
+		"preview": "nuxt preview"
 	}
 }
