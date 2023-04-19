@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 		domains: ['baktz.com', 'master.baktz.pages.dev', 'baktz.pages.dev'],
 	},
 	modules: ['@nuxt/image-edge'],
-	ssr: false,
+	ssr: true,
 	vite: {
 		plugins: [visualizer()],
 		optimizeDeps: {
