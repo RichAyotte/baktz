@@ -1,5 +1,6 @@
-import Notifications from '@kyvg/vue3-notification'
+import { defineNuxtPlugin } from 'nuxt/app'
+import Notification from '@kyvg/vue3-notification'
 
 export default defineNuxtPlugin(nuxtApp => {
-	nuxtApp.vueApp.use(Notifications)
+	nuxtApp.vueApp.use(Notification)
 })
