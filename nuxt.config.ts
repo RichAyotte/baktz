@@ -34,7 +34,10 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
-	image: { dir: 'assets/images', domains: ['baktz.com', 'baktz.pages.dev'] },
+	image: {
+		dir: 'assets/images',
+		domains: ['baktz.com', 'master.baktz.pages.dev', 'baktz.pages.dev'],
+	},
 	modules: ['@nuxt/image-edge'],
 	ssr: false,
 	vite: {
