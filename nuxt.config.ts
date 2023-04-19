@@ -61,9 +61,6 @@ export default defineNuxtConfig({
 		},
 		resolve: {
 			alias: {
-				'@airgap/beacon-sdk': resolve(
-					`node_modules/@airgap/beacon-sdk/dist/esm/index.js`
-				),
 				'readable-stream': 'vite-compatible-readable-stream',
 				stream: 'vite-compatible-readable-stream',
 			},
