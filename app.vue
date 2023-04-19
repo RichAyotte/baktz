@@ -1,9 +1,11 @@
 <template>
-	<notifications
-		position="top center"
-		:ignore-duplicates="true"
-		:pause-on-hover="true"
-	/>
+	<client-only>
+		<notifications
+			position="top center"
+			:ignore-duplicates="true"
+			:pause-on-hover="true"
+		/>
+	</client-only>
 	<header>
 		<nuxt-img
 			id="header-baktz-img"
