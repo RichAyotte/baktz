@@ -4,7 +4,7 @@
 		<div
 			class="icon"
 			:style="{
-				maskImage: `url(${iconUrl})`,
+				'-webkitMaskImage': `url(${iconUrl})`,
 			}"
 		/>
 		<p v-html="description" />
