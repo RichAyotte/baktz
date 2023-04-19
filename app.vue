@@ -7,12 +7,12 @@
 	<header>
 		<nuxt-img
 			id="header-baktz-img"
-			src="/baktz-logo.svg"
+			src="baktz-logo.svg"
 		/>
 		<a href="https://twitter.com/realbaktz">
 			<nuxt-img
 				id="header-twitter-img"
-				src="/twitter-brands.svg"
+				src="twitter-brands.svg"
 			/>
 		</a>
 	</header>

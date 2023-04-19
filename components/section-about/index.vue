@@ -4,20 +4,20 @@
 			About
 			<nuxt-img
 				class="text-logo"
-				src="/baktz-logo.svg"
+				src="baktz-logo.svg"
 			/>
 		</h2>
 		<div id="section-about-content">
 			<nuxt-img
 				style="grid-area: headshot"
 				id="headshot"
-				src="/headshot.webp"
+				src="headshot.webp"
 				alt="Photo of Richard Ayotte"
 			/>
 			<p style="grid-area: description">
 				<nuxt-img
 					class="text-logo"
-					src="/baktz-logo.svg"
+					src="baktz-logo.svg"
 				/>
 				is a <em><strong>Tezos only</strong></em> delegation service started by Rich
 				Ayotte. Rich has been baking since July of 2018 and opened his bakery to the

@@ -7,7 +7,7 @@
 			<nuxt-img
 				alt="LinkedIn logo"
 				id="header-twitter-img"
-				src="/linkedin.svg"
+				src="linkedin.svg"
 			/>
 		</a>
 		<a
@@ -17,7 +17,7 @@
 			<nuxt-img
 				alt="Twitter logo"
 				id="header-twitter-img"
-				src="/twitter-brands.svg"
+				src="twitter-brands.svg"
 			/>
 		</a>
 		<a
@@ -27,7 +27,7 @@
 			<nuxt-img
 				alt="GitHub logo"
 				id="header-twitter-img"
-				src="/github.svg"
+				src="github.svg"
 			/>
 		</a>
 		<a
@@ -37,7 +37,7 @@
 			<nuxt-img
 				alt="icon for home"
 				id="header-twitter-img"
-				src="/house-solid.svg"
+				src="house-solid.svg"
 			/>
 		</a>
 	</div>

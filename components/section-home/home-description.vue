@@ -3,7 +3,7 @@
 		<p>
 			<nuxt-img
 				class="img-text"
-				src="/baktz-logo.svg"
+				src="baktz-logo.svg"
 			/>
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
@@ -16,7 +16,7 @@
 				{{ baktzDelegateAddress }}
 			</div>
 
-			<nuxt-img src="/clipboard.svg" />
+			<nuxt-img src="clipboard.svg" />
 		</div>
 		<br />
 		<div id="button-or-address">
@@ -25,7 +25,7 @@
 				currently delegating to
 				<nuxt-img
 					class="img-text"
-					src="/baktz-logo.svg"
+					src="baktz-logo.svg"
 				/>
 				Thank you!<button @click="switchWallet">Switch wallet</button></span
 			>
