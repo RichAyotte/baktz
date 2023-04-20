@@ -8,77 +8,46 @@
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
 		<p>Copy the address below and paste it into your wallet's baking feature.</p>
-		<div
-			id="delegate-address-container"
-			@click="copyToClipboard(baktzDelegateAddress)"
-		>
-			<div id="delegate-address">
-				{{ baktzDelegateAddress }}
-			</div>
+		<client-only>
+			<div
+				id="delegate-address-container"
+				@click="copyToClipboard($baktzDelegateAddress)"
+			>
+				<div id="delegate-address">
+					{{ $baktzDelegateAddress }}
+				</div>
 
-			<nuxt-img src="clipboard.svg" />
-		</div>
-		<br />
-		<div id="button-or-address">
-			<span v-if="activeAccount != null"
-				><strong>{{ activeAccount.address.substring(0, 8) }}&#8230;</strong> is
-				currently delegating to
-				<nuxt-img
-					class="img-text"
-					src="baktz-logo.svg"
-				/>
-				Thank you!<button @click="switchWallet">Switch wallet</button></span
-			>
-			<button
-				v-else
-				id="delegate-button"
-				@click="delegate"
-			>
-				Delegate now
-			</button>
-		</div>
+				<nuxt-img src="clipboard.svg" />
+			</div>
+			<br />
+			<div id="button-or-address">
+				<span v-if="$activeAccount != null"
+					><strong>{{ $activeAccount.address.substring(0, 8) }}&#8230;</strong> is
+					currently delegating to
+					<nuxt-img
+						class="img-text"
+						src="baktz-logo.svg"
+					/>
+					Thank you!<button @click="switchWallet">Switch wallet</button></span
+				>
+				<button
+					v-else
+					id="delegate-button"
+					@click="$delegate"
+				>
+					Delegate now
+				</button>
+			</div>
+		</client-only>
 	</div>
 </template>
 <script setup lang="ts">
 import { notify } from '@kyvg/vue3-notification'
-import { DAppClient, TezosOperationType } from '@airgap/beacon-dapp'
-import { RpcClient } from '@taquito/rpc'
-const tezosNode = new RpcClient('https://mainnet.api.tez.ie', 'NetXdQprcVkpaWU')
-const baktzDelegateAddress = `tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC`
-const dAppClient = new DAppClient({ name: `baktz` })
-const activeAccount = await dAppClient.getActiveAccount()
-if (activeAccount?.address) {
-	const delegateAddress = await tezosNode.getDelegate(activeAccount?.address)
-	if (delegateAddress === baktzDelegateAddress) {
-		// do something
-	}
-}
+import { useNuxtApp } from 'nuxt/app'
+const { $delegate, $baktzDelegateAddress, $activeAccount } = useNuxtApp()
 
 function switchWallet() {
 	console.log('not implemented yet')
-}
-
-async function delegate() {
-	try {
-		let account = await dAppClient.getActiveAccount()
-		if (!account) {
-			await dAppClient.requestPermissions()
-			account = await dAppClient.getActiveAccount()
-		}
-
-		if (account) {
-			await dAppClient.requestOperation({
-				operationDetails: [
-					{
-						kind: TezosOperationType.DELEGATION,
-						delegate: baktzDelegateAddress,
-					},
-				],
-			})
-		}
-	} catch (error) {
-		console.log(error)
-	}
 }
 
 async function copyToClipboard(text: string): Promise<void> {
