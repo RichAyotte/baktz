@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import inject from '@rollup/plugin-inject'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 import { defineNuxtConfig } from 'nuxt/config'
@@ -34,13 +33,18 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
+	devtools: true,
 	image: {
 		dir: 'assets/images',
 	},
 	modules: ['@nuxt/image-edge'],
 	ssr: true,
 	vite: {
-		plugins: [visualizer()],
+		plugins: [
+			visualizer({
+				emitFile: true,
+			}),
+		],
 		optimizeDeps: {
 			esbuildOptions: {
 				define: { global: 'globalThis' },
