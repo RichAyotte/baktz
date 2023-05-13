@@ -1,7 +1,6 @@
 import inject from '@rollup/plugin-inject'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 import { defineNuxtConfig } from 'nuxt/config'
-import { visualizer } from 'rollup-plugin-visualizer'
 import pkg from './package.json'
 
 export default defineNuxtConfig({
@@ -32,6 +31,9 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+	build: {
+		analyze: true,
+	},
 	css: ['@/assets/styles/global.scss'],
 	devtools: true,
 	image: {
@@ -40,11 +42,6 @@ export default defineNuxtConfig({
 	modules: ['@nuxt/image-edge'],
 	ssr: true,
 	vite: {
-		plugins: [
-			visualizer({
-				emitFile: true,
-			}),
-		],
 		optimizeDeps: {
 			esbuildOptions: {
 				define: { global: 'globalThis' },
