@@ -33,9 +33,6 @@ export default defineNuxtConfig({
 			],
 		},
 	},
-	build: {
-		analyze: true,
-	},
 	css: ['@/assets/styles/global.scss'],
 	devtools: true,
 	image: {
