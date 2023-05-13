@@ -3,19 +3,21 @@
 		<h2>
 			About
 			<nuxt-img
+				alt="Baktz logo"
 				class="text-logo"
 				src="baktz-logo.svg"
 			/>
 		</h2>
 		<div id="section-about-content">
 			<nuxt-img
-				style="grid-area: headshot"
+				alt="Photo of Richard Ayotte"
 				id="headshot"
 				src="headshot.webp"
-				alt="Photo of Richard Ayotte"
+				style="grid-area: headshot"
 			/>
 			<p style="grid-area: description">
 				<nuxt-img
+					alt="Baktz logo"
 					class="text-logo"
 					src="baktz-logo.svg"
 				/>

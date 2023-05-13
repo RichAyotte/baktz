@@ -8,11 +8,13 @@
 	</client-only>
 	<header>
 		<nuxt-img
+			alt="Baktz logo"
 			id="header-baktz-img"
 			src="baktz-logo.svg"
 		/>
 		<a href="https://twitter.com/realbaktz">
 			<nuxt-img
+				alt="Twitter logo"
 				id="header-twitter-img"
 				src="twitter-brands.svg"
 			/>

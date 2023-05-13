@@ -2,6 +2,7 @@
 	<div id="home-description">
 		<p>
 			<nuxt-img
+				alt="Baktz logo"
 				class="img-text"
 				src="baktz-logo.svg"
 			/>
@@ -16,7 +17,10 @@
 				{{ baktzDelegateAddress }}
 			</div>
 
-			<nuxt-img src="clipboard.svg" />
+			<nuxt-img
+				alt="Clipboard"
+				src="clipboard.svg"
+			/>
 		</div>
 		<br />
 		<div id="button-or-address">
@@ -24,6 +28,7 @@
 				><strong>{{ $activeAccount.address.substring(0, 8) }}&#8230;</strong> is
 				currently delegating to
 				<nuxt-img
+					alt="Baktz logo"
 					class="img-text"
 					src="baktz-logo.svg"
 				/>
