@@ -6,14 +6,10 @@ import pkg from './package.json'
 export default defineNuxtConfig({
 	app: {
 		head: {
-			title: pkg.name,
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: pkg.description,
-				},
-			],
+			charset: 'utf-8',
+			htmlAttrs: {
+				lang: 'en',
+			},
 			link: [
 				{
 					href: `https://fonts.googleapis.com`,
@@ -31,6 +27,14 @@ export default defineNuxtConfig({
 					onload: `this.rel='stylesheet'`,
 				},
 			],
+			meta: [
+				{
+					hid: 'description',
+					name: 'description',
+					content: pkg.description,
+				},
+			],
+			title: pkg.name,
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
