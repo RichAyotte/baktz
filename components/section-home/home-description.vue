@@ -8,43 +8,43 @@
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
 		<p>Copy the address below and paste it into your wallet's baking feature.</p>
-		<client-only>
-			<div
-				id="delegate-address-container"
-				@click="copyToClipboard($baktzDelegateAddress)"
-			>
-				<div id="delegate-address">
-					{{ $baktzDelegateAddress }}
-				</div>
+		<div
+			id="delegate-address-container"
+			@click="copyToClipboard(baktzDelegateAddress)"
+		>
+			<div id="delegate-address">
+				{{ baktzDelegateAddress }}
+			</div>
 
-				<nuxt-img src="clipboard.svg" />
-			</div>
-			<br />
-			<div id="button-or-address">
-				<span v-if="$activeAccount != null"
-					><strong>{{ $activeAccount.address.substring(0, 8) }}&#8230;</strong> is
-					currently delegating to
-					<nuxt-img
-						class="img-text"
-						src="baktz-logo.svg"
-					/>
-					Thank you!<button @click="switchWallet">Switch wallet</button></span
-				>
-				<button
-					v-else
-					id="delegate-button"
-					@click="$delegate"
-				>
-					Delegate now
-				</button>
-			</div>
-		</client-only>
+			<nuxt-img src="clipboard.svg" />
+		</div>
+		<br />
+		<div id="button-or-address">
+			<span v-if="$activeAccount != null"
+				><strong>{{ $activeAccount.address.substring(0, 8) }}&#8230;</strong> is
+				currently delegating to
+				<nuxt-img
+					class="img-text"
+					src="baktz-logo.svg"
+				/>
+				Thank you!<button @click="switchWallet">Switch wallet</button></span
+			>
+			<button
+				v-else
+				id="delegate-button"
+				@click="$delegate"
+			>
+				Delegate now
+			</button>
+		</div>
 	</div>
 </template>
 <script setup lang="ts">
 import { notify } from '@kyvg/vue3-notification'
 import { useNuxtApp } from 'nuxt/app'
-const { $delegate, $baktzDelegateAddress, $activeAccount } = useNuxtApp()
+import { baktzDelegateAddress } from '/constants'
+
+const { $delegate, $activeAccount } = useNuxtApp()
 
 function switchWallet() {
 	console.log('not implemented yet')
