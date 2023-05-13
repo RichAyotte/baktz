@@ -1,9 +1,10 @@
 import { defineNuxtPlugin } from 'nuxt/app'
-import { DAppClient, TezosOperationType } from '@airgap/beacon-dapp'
-import { RpcClient } from '@taquito/rpc'
 import { baktzDelegateAddress } from '/constants'
 
+const { RpcClient } = await import('@taquito/rpc')
 const tezosNode = new RpcClient('https://mainnet.api.tez.ie', 'NetXdQprcVkpaWU')
+
+const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
 const dAppClient = new DAppClient({ name: `baktz` })
 const activeAccount = await dAppClient.getActiveAccount()
 
