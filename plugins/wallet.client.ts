@@ -1,21 +1,25 @@
 import { defineNuxtPlugin } from 'nuxt/app'
 import { baktzDelegateAddress } from '/constants'
 
-const { RpcClient } = await import('@taquito/rpc')
-const tezosNode = new RpcClient('https://mainnet.api.tez.ie', 'NetXdQprcVkpaWU')
+export default defineNuxtPlugin(async () => {
+	const { RpcClient } = await import('@taquito/rpc')
 
-const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
-const dAppClient = new DAppClient({ name: `baktz` })
-const activeAccount = await dAppClient.getActiveAccount()
+	const tezosNode = new RpcClient(
+		'https://mainnet.api.tez.ie',
+		'NetXdQprcVkpaWU'
+	)
 
-if (activeAccount?.address) {
-	const delegateAddress = await tezosNode.getDelegate(activeAccount?.address)
-	if (delegateAddress === baktzDelegateAddress) {
-		// do something
+	const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
+	const dAppClient = new DAppClient({ name: `baktz` })
+	const activeAccount = await dAppClient.getActiveAccount()
+
+	if (activeAccount?.address) {
+		const delegateAddress = await tezosNode.getDelegate(activeAccount?.address)
+		if (delegateAddress === baktzDelegateAddress) {
+			// do something
+		}
 	}
-}
 
-export default defineNuxtPlugin(() => {
 	return {
 		provide: {
 			activeAccount,
