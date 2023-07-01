@@ -5,6 +5,7 @@
 			class="icon"
 			:style="{
 				'-webkitMaskImage': `url(${iconUrl})`,
+				aspectRatio,
 			}"
 		/>
 		<p v-html="description" />
@@ -16,6 +17,7 @@ defineProps<{
 	title: string
 	description: string
 	iconUrl: string
+	aspectRatio: string
 }>()
 </script>
 

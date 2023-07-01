@@ -19,8 +19,8 @@
 			</div>
 			<nuxt-img
 				alt="Clipboard"
-				loading="lazy"
 				src="clipboard.svg"
+				style="aspect-ratio: 1/1"
 			/>
 		</div>
 		<br />
@@ -31,7 +31,6 @@
 				<nuxt-img
 					alt="Baktz logo"
 					class="img-text"
-					loading="lazy"
 					src="baktz-logo.svg"
 				/>
 				Thank you!<button @click="switchWallet">Switch wallet</button></span

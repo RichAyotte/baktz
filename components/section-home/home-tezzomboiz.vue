@@ -3,10 +3,9 @@
 		<nuxt-img
 			alt="Baked Tezzomboi smoking weed"
 			id="baktz-tezzomboi"
-			loading="lazy"
+			sizes="xs:100vw sm:100vw md:100vw lg:50vw xl:50vw xxl:50vw"
 			src="batkz-tezzomboiz-transparent.webp"
-			sizes="xs:100vw sm:100vw md:100vw xl:605px xxl:765px"
-			style="width: 100%"
+			style="width: 100%; aspect-ratio: 1/1"
 		/>
 		<figcaption>
 			<a

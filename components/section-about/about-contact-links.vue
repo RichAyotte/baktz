@@ -6,9 +6,9 @@
 		>
 			<nuxt-img
 				alt="LinkedIn logo"
-				id="header-twitter-img"
 				loading="lazy"
 				src="linkedin.svg"
+				style="aspect-ratio: 7/8"
 			/>
 		</a>
 		<a
@@ -17,9 +17,9 @@
 		>
 			<nuxt-img
 				alt="Twitter logo"
-				id="header-twitter-img"
 				loading="lazy"
 				src="twitter-brands.svg"
+				style="aspect-ratio: 16/13"
 			/>
 		</a>
 		<a
@@ -28,9 +28,9 @@
 		>
 			<nuxt-img
 				alt="GitHub logo"
-				id="header-twitter-img"
 				loading="lazy"
 				src="github.svg"
+				style="aspect-ratio: 31/32"
 			/>
 		</a>
 		<a
@@ -39,9 +39,9 @@
 		>
 			<nuxt-img
 				alt="icon for home"
-				id="header-twitter-img"
 				loading="lazy"
 				src="house-solid.svg"
+				style="aspect-ratio: 9/8"
 			/>
 		</a>
 	</div>

@@ -7,6 +7,7 @@
 				class="feature-box"
 				:title="feature.title"
 				:description="feature.description"
+				:aspect-ratio="feature.aspectRatio"
 				:icon-url="feature.iconUrl"
 			/>
 		</div>
@@ -23,6 +24,7 @@
 					:title="feature.title"
 					:description="feature.description"
 					:icon-url="feature.iconUrl"
+					:aspect-ratio="feature.aspectRatio"
 				/>
 			</slide>
 			<template #addons>
@@ -49,32 +51,38 @@ const features = [
 		title: `Customer Support`,
 		description: `Customer support through <a target="_blank" href="https://twitter.com/realbaktz">Twitter</a> and <a target="_blank" href="mailto:support@baktz.com">email</a>`,
 		iconUrl: bellConciergeSolid,
+		aspectRatio: '1/1',
 	},
 	{
 		title: 'Low Fee',
 		description:
 			'A low commission fee of 10% is automatically deducted at each cycle',
 		iconUrl: moneyBillImg,
+		aspectRatio: '9/8',
 	},
 	{
 		title: `Automated Payouts`,
 		description: `Payouts to delegates are automated at the end of each cycle`,
 		iconUrl: envelopeSolid,
+		aspectRatio: '1/1',
 	},
 	{
 		title: `10 XTZ Minimum`,
 		description: `Delegators must delegate at least 10 XTZ to receive a payout`,
 		iconUrl: cashCoinsImg,
+		aspectRatio: '79/50',
 	},
 	{
 		title: `Active Voter`,
 		description: `We actively seek community feedback and vote on all phases of the voting process`,
 		iconUrl: buildingColumns,
+		aspectRatio: '1/1',
 	},
 	{
 		title: `Community Engaged`,
 		description: `Active Tezonian since 2017 focused on driving Tezos forward`,
 		iconUrl: peopleGroupSolid,
+		aspectRatio: '5/4',
 	},
 ]
 </script>

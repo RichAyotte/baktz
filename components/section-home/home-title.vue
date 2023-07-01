@@ -6,6 +6,7 @@
 				alt="Tezos logo"
 				loading="lazy"
 				src="tezos-logo-horizontal-white.svg"
+				style="aspect-ratio: 320/111"
 			/>
 			Delegation Service
 		</h1>
