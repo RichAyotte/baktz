@@ -49,9 +49,9 @@
 					<div id="delegate-address">
 						{{ baktzDelegateAddress }}
 					</div>
-					<nuxt-img
+					<img
 						alt="Clipboard"
-						src="clipboard.svg"
+						src="~/assets/images/clipboard.svg"
 						style="aspect-ratio: 1/1"
 					/>
 				</div>
