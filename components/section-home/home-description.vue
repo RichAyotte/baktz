@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import { notify } from '@kyvg/vue3-notification'
 import { useNuxtApp } from 'nuxt/app'
-import { baktzDelegateAddress } from '/constants'
+import { baktzDelegateAddress } from '~/constants'
 
 const { $delegate, $activeAccount } = useNuxtApp()
 

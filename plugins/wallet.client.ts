@@ -1,5 +1,5 @@
 import { defineNuxtPlugin } from 'nuxt/app'
-import { baktzDelegateAddress } from '/constants'
+import { baktzDelegateAddress } from '~/constants'
 
 export default defineNuxtPlugin(async () => {
 	const { RpcClient } = await import('@taquito/rpc')
