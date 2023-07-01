@@ -5,6 +5,7 @@
 			id="baktz-tezzomboi"
 			loading="lazy"
 			src="batkz-tezzomboiz-transparent.webp"
+			sizes="xs:100vw sm:100vw md:100vw xl:605px xxl:765px"
 			style="width: 100%"
 		/>
 		<figcaption>
