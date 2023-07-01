@@ -4,6 +4,7 @@
 			<nuxt-img
 				alt="Baktz logo"
 				class="img-text"
+				loading="lazy"
 				src="baktz-logo.svg"
 			/>
 			is a secure, reliable, and community involved Tezos baking service.
@@ -16,9 +17,9 @@
 			<div id="delegate-address">
 				{{ baktzDelegateAddress }}
 			</div>
-
 			<nuxt-img
 				alt="Clipboard"
+				loading="lazy"
 				src="clipboard.svg"
 			/>
 		</div>
@@ -30,6 +31,7 @@
 				<nuxt-img
 					alt="Baktz logo"
 					class="img-text"
+					loading="lazy"
 					src="baktz-logo.svg"
 				/>
 				Thank you!<button @click="switchWallet">Switch wallet</button></span

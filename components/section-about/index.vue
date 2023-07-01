@@ -5,6 +5,7 @@
 			<nuxt-img
 				alt="Baktz logo"
 				class="text-logo"
+				loading="lazy"
 				src="baktz-logo.svg"
 			/>
 		</h2>
@@ -12,6 +13,7 @@
 			<nuxt-img
 				alt="Photo of Richard Ayotte"
 				id="headshot"
+				loading="lazy"
 				src="headshot.webp"
 				style="grid-area: headshot"
 			/>
@@ -19,6 +21,7 @@
 				<nuxt-img
 					alt="Baktz logo"
 					class="text-logo"
+					loading="lazy"
 					src="baktz-logo.svg"
 				/>
 				is a <em><strong>Tezos only</strong></em> delegation service started by Rich

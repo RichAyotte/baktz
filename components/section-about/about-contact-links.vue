@@ -7,6 +7,7 @@
 			<nuxt-img
 				alt="LinkedIn logo"
 				id="header-twitter-img"
+				loading="lazy"
 				src="linkedin.svg"
 			/>
 		</a>
@@ -17,6 +18,7 @@
 			<nuxt-img
 				alt="Twitter logo"
 				id="header-twitter-img"
+				loading="lazy"
 				src="twitter-brands.svg"
 			/>
 		</a>
@@ -27,6 +29,7 @@
 			<nuxt-img
 				alt="GitHub logo"
 				id="header-twitter-img"
+				loading="lazy"
 				src="github.svg"
 			/>
 		</a>
@@ -37,6 +40,7 @@
 			<nuxt-img
 				alt="icon for home"
 				id="header-twitter-img"
+				loading="lazy"
 				src="house-solid.svg"
 			/>
 		</a>

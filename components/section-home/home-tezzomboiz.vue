@@ -3,6 +3,7 @@
 		<nuxt-img
 			alt="Baked Tezzomboi smoking weed"
 			id="baktz-tezzomboi"
+			loading="lazy"
 			src="batkz-tezzomboiz-transparent.webp"
 			style="width: 100%"
 		/>

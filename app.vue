@@ -10,12 +10,14 @@
 		<nuxt-img
 			alt="Baktz logo"
 			id="header-baktz-img"
+			loading="lazy"
 			src="baktz-logo.svg"
 		/>
 		<a href="https://twitter.com/realbaktz">
 			<nuxt-img
 				alt="Twitter logo"
 				id="header-twitter-img"
+				loading="lazy"
 				src="twitter-brands.svg"
 			/>
 		</a>

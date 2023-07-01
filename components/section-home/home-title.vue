@@ -4,6 +4,7 @@
 			Reliable
 			<nuxt-img
 				alt="Tezos logo"
+				loading="lazy"
 				src="tezos-logo-horizontal-white.svg"
 			/>
 			Delegation Service
