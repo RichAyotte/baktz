@@ -47,7 +47,7 @@
 			height: 200vw;
 			left: -100vw;
 			top: -65vw;
-			width: 200vw;
+			width: 200%;
 		}
 
 		@include media('>1600px') {
