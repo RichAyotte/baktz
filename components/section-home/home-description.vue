@@ -6,6 +6,7 @@
 				class="img-text"
 				loading="lazy"
 				src="baktz-logo.svg"
+				style="aspect-ratio: 361/127"
 			/>
 			is a secure, reliable, and community involved Tezos baking service.
 		</p>
@@ -32,6 +33,7 @@
 					alt="Baktz logo"
 					class="img-text"
 					src="baktz-logo.svg"
+					style="aspect-ratio: 361/127"
 				/>
 				Thank you!<button @click="switchWallet">Switch wallet</button></span
 			>

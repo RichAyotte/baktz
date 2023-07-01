@@ -7,6 +7,7 @@
 				class="text-logo"
 				loading="lazy"
 				src="baktz-logo.svg"
+				style="aspect-ratio: 361/127"
 			/>
 		</h2>
 		<div id="section-about-content">
@@ -15,7 +16,7 @@
 				id="headshot"
 				loading="lazy"
 				src="headshot.webp"
-				style="grid-area: headshot"
+				style="grid-area: headshot; aspect-ratio: 1/1"
 			/>
 			<p style="grid-area: description">
 				<nuxt-img
@@ -23,6 +24,7 @@
 					class="text-logo"
 					loading="lazy"
 					src="baktz-logo.svg"
+					style="aspect-ratio: 361/127"
 				/>
 				is a <em><strong>Tezos only</strong></em> delegation service started by Rich
 				Ayotte. Rich has been baking since July of 2018 and opened his bakery to the
