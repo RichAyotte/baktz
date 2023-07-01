@@ -8,11 +8,11 @@
 	"description": "bākꜩ - Tezos baking service",
 	"devDependencies": {
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-		"@nuxt/devtools": "^0.6.3",
-		"@nuxt/image-edge": "1.0.0-rc.1-28126030.07836ae",
-		"@typescript-eslint/eslint-plugin": "^5.60.0",
-		"@typescript-eslint/parser": "^5.60.0",
-		"eslint": "^8.43.0",
+		"@nuxt/devtools": "^0.6.6",
+		"@nuxt/image-edge": "1.0.0-rc.1-28135297.08462d1",
+		"@typescript-eslint/eslint-plugin": "^5.60.1",
+		"@typescript-eslint/parser": "^5.60.1",
+		"eslint": "^8.44.0",
 		"eslint-config-ayotte": "^2.2.5",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-nuxt": "^4.0.0",
@@ -20,13 +20,13 @@
 		"eslint-plugin-vue": "^9.15.1",
 		"fs-extra": "^11.1.1",
 		"include-media": "^2.0.0",
-		"nuxt": "^3.6.0",
+		"nuxt": "^3.6.1",
 		"prettier": "^2.8.8",
 		"sass": "^1.63.6",
 		"sass-loader": "^13.3.2",
 		"vite-compatible-readable-stream": "^3.6.1",
 		"vue-eslint-parser": "^9.3.1",
-		"vue-tsc": "^1.8.1"
+		"vue-tsc": "^1.8.3"
 	},
 	"engines": {
 		"node": ">=18",
