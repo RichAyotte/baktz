@@ -1,18 +1,18 @@
 {
 	"dependencies": {
-		"@airgap/beacon-dapp": "^4.0.4",
+		"@airgap/beacon-dapp": "^4.0.6",
 		"@kyvg/vue3-notification": "^2.9.1",
-		"@taquito/rpc": "^17.0.0",
+		"@taquito/rpc": "^17.1.0",
 		"vue3-carousel": "^0.3.1"
 	},
 	"description": "bākꜩ - Tezos baking service",
 	"devDependencies": {
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-		"@nuxt/devtools": "^0.6.6",
-		"@nuxt/image-edge": "1.0.0-rc.1-28135297.08462d1",
-		"@typescript-eslint/eslint-plugin": "^5.60.1",
-		"@typescript-eslint/parser": "^5.60.1",
-		"eslint": "^8.44.0",
+		"@nuxt/devtools": "^0.7.1",
+		"@nuxt/image-edge": "^1.0.0-rc.1-28164352.ad7c010",
+		"@typescript-eslint/eslint-plugin": "^5.62.0",
+		"@typescript-eslint/parser": "^5.62.0",
+		"eslint": "^8.45.0",
 		"eslint-config-ayotte": "^2.2.5",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-nuxt": "^4.0.0",
@@ -20,13 +20,13 @@
 		"eslint-plugin-vue": "^9.15.1",
 		"fs-extra": "^11.1.1",
 		"include-media": "^2.0.0",
-		"nuxt": "^3.6.1",
+		"nuxt": "^3.6.5",
 		"prettier": "^2.8.8",
-		"sass": "^1.63.6",
+		"sass": "^1.64.1",
 		"sass-loader": "^13.3.2",
 		"vite-compatible-readable-stream": "^3.6.1",
 		"vue-eslint-parser": "^9.3.1",
-		"vue-tsc": "^1.8.3"
+		"vue-tsc": "^1.8.6"
 	},
 	"engines": {
 		"node": ">=18",
