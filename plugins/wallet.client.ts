@@ -24,7 +24,10 @@ export default defineNuxtPlugin(async () => {
 	)
 
 	const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
-	const dAppClient = new DAppClient({ name: `baktz` })
+	const dAppClient = new DAppClient({
+		name: `baktz`,
+		featuredWallets: ['exodus', 'kukai', 'plenty', 'temple'],
+	})
 	const activeAccount = ref(await dAppClient.getActiveAccount())
 
 	if (activeAccount?.value?.address) {
@@ -61,7 +64,6 @@ export default defineNuxtPlugin(async () => {
 							})
 						}
 						activeAccount.value = account
-
 					}
 				} catch (error) {
 					console.log(error)
