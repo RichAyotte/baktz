@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 	image: {
 		dir: 'assets/images',
 	},
-	modules: ['@nuxt/image-edge'],
+	modules: ['@nuxt/image'],
 	ssr: true,
 	vite: {
 		optimizeDeps: {
