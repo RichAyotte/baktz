@@ -60,7 +60,7 @@
 			height: 3200px;
 			left: calc(-1600px + 50%);
 			top: -1040px;
-			width: 3200px;
+			width: 100%;
 		}
 	}
 }
