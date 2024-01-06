@@ -73,6 +73,7 @@ export default defineNuxtConfig({
 			},
 		},
 		build: {
+			assetsInlineLimit: 0,
 			target: 'esnext',
 			commonjsOptions: { transformMixedEsModules: true },
 			rollupOptions: {
