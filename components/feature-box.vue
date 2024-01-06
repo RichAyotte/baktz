@@ -4,7 +4,7 @@
 		<div
 			class="icon"
 			:style="{
-				'-webkitMaskImage': `url(${iconUrl})`,
+				maskImage: `url(${iconUrl})`,
 				aspectRatio,
 			}"
 		/>
