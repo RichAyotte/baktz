@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ['@/assets/styles/global.scss'],
-	devtools: {enabled: true},
+	devtools: { enabled: false },
 	image: {
 		dir: 'assets/images',
 	},
