@@ -29,8 +29,7 @@
     "vue-tsc": "^1.8.27"
   },
   "engines": {
-    "node": ">=20",
-    "npm": ">=9.5.0"
+    "bun": ">=1.0.1"
   },
   "name": "baktz-website",
   "private": true,
