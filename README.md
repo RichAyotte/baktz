@@ -1,7 +1,6 @@
-<img src="assets/images/baktz-logo.svg" alt="Baktz - Tezos Baking Service" style="float: right; margin-left: 20px; margin-bottom: 20px;" width="200">
-
 # Baktz
 Tezos baking service.
+<img src="public/baktz-logo-500x500.png" alt="Baktz - Tezos Baking Service" style="float: right; margin-left: 20px; margin-bottom: 20px;" width="200">
 
 ## Setup
 
