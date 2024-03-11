@@ -1,4 +1,4 @@
-# bākꜩ
+# Baktz
 Tezos baking service.
 
 ## Setup
@@ -6,7 +6,7 @@ Tezos baking service.
 Make sure to install the dependencies
 
 ```bash
-npm i
+bun i
 ```
 
 ## Development
@@ -14,7 +14,7 @@ npm i
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+bun dev
 ```
 
 ## Production
@@ -22,7 +22,7 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+bun build
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
