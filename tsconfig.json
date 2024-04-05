@@ -1,12 +1,3 @@
 {
-	"compilerOptions": {
-		"resolveJsonModule": true
-	},
-	"exclude": [
-		"node_modules",
-		"build",
-		"dist",
-		".nuxt"
-	],
 	"extends": "./.nuxt/tsconfig.json"
 }
