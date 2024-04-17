@@ -30,7 +30,7 @@
   },
   "type": "module",
   "engines": {
-    "bun": ">=1.0.21"
+    "bun": ">=1.1.4"
   },
   "name": "baktz-website",
   "private": true,
