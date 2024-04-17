@@ -20,7 +20,7 @@ export default defineNuxtPlugin(async () => {
 
 	const tezosNode = new RpcClient(
 		'https://mainnet.api.tez.ie',
-		'NetXdQprcVkpaWU'
+		'NetXdQprcVkpaWU',
 	)
 
 	const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
@@ -32,7 +32,7 @@ export default defineNuxtPlugin(async () => {
 
 	if (activeAccount?.value?.address) {
 		const delegateAddress = await tezosNode.getDelegate(
-			activeAccount?.value?.address
+			activeAccount?.value?.address,
 		)
 		if (delegateAddress === baktzDelegateAddress) {
 			// do something

@@ -1,5 +1,18 @@
-/* eslint-env node */
-module.exports = {
+import { FlatCompat } from '@eslint/eslintrc'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import js from '@eslint/js'
+
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const compat = new FlatCompat({
+	allConfig: js.configs.all,
+	baseDirectory: dirname,
+	recommendedConfig: js.configs.recommended,
+	resolvePluginsRelativeTo: dirname,
+})
+
+const config = {
 	env: {
 		browser: true,
 		es2021: true,
@@ -11,7 +24,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier-vue/recommended',
 	],
-	ignorePatterns: ['package.json', 'package-lock.json', 'tsconfig.json'],
+	ignorePatterns: ['.nuxt'],
 	parser: 'vue-eslint-parser',
 	parserOptions: {
 		ecmaVersion: 'latest',
@@ -52,3 +65,5 @@ module.exports = {
 		],
 	},
 }
+
+export default compat.config(config)

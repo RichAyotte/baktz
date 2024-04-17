@@ -37,7 +37,12 @@
 
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel/dist/carousel.es.js'
+import {
+	Carousel,
+	Slide,
+	Pagination,
+	Navigation,
+} from 'vue3-carousel/dist/carousel.es.js'
 
 import bellConciergeSolid from '~/assets/images/bell-concierge-solid.svg'
 import buildingColumns from '~/assets/images/building-columns-solid.svg'

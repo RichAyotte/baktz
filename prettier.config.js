@@ -1,5 +1,4 @@
-/* eslint-env node */
-module.exports = {
+export default {
 	printWidth: 80,
 	tabWidth: 1,
 	useTabs: true,
