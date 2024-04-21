@@ -29,10 +29,6 @@
 @import '~/assets/styles/variables';
 @import 'include-media';
 
-.section-fees {
-	// background-color: color.adjust($background-color, $lightness: 10%);
-}
-
 #baking-rules {
 	background-color: color.adjust(
 		$background-color,
