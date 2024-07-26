@@ -1,5 +1,5 @@
-import inject from '@rollup/plugin-inject'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import inject from '@rollup/plugin-inject'
 import { defineNuxtConfig } from 'nuxt/config'
 import pkg from './package.json'
 
@@ -91,4 +91,5 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	compatibilityDate: '2024-07-26',
 })
