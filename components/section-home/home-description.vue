@@ -74,8 +74,12 @@ async function copyToClipboard(text: string): Promise<void> {
 			title: text,
 		})
 	} catch (error) {
-		// Some browsers don't allow writing to the clipboard.
-		// Fail silently since we already know why.
+		if (error instanceof Error) {
+			notify({
+				text: error.message,
+				title: error.name,
+			})
+		}
 	}
 }
 </script>
