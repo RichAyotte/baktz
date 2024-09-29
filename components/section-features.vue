@@ -37,12 +37,7 @@
 
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
-import {
-	Carousel,
-	Slide,
-	Pagination,
-	Navigation,
-} from 'vue3-carousel/dist/carousel.es.js'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 import bellConciergeSolid from '~/assets/images/bell-concierge-solid.svg'
 import buildingColumns from '~/assets/images/building-columns-solid.svg'
@@ -95,6 +90,7 @@ const features = [
 <style lang="scss">
 @import '~/assets/styles/variables';
 @import 'include-media';
+
 .carousel__slide {
 	box-sizing: border-box;
 	padding: 0 20px;
@@ -106,6 +102,7 @@ const features = [
 		box-shadow: none;
 		color: var(--vc-nav-color);
 	}
+
 	&::after {
 		background-color: $primary-accent-color;
 		border-radius: 3px;
@@ -126,6 +123,7 @@ const features = [
 	background-color: $primary-accent-color;
 	border-radius: 3px;
 	top: 40%;
+
 	&:hover,
 	&:active {
 		box-shadow: none;
@@ -154,9 +152,11 @@ const features = [
 	#feature-boxes {
 		display: none;
 	}
+
 	#feature-boxes-carousel {
 		display: block;
 	}
+
 	.feature-box {
 		width: 100%;
 	}
@@ -169,10 +169,12 @@ const features = [
 		flex-wrap: wrap;
 		column-gap: calc(4% + 30px);
 		row-gap: 50px;
+
 		& > * {
 			flex: 1 1 21%;
 		}
 	}
+
 	#feature-boxes-carousel {
 		display: none;
 	}
