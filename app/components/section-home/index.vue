@@ -7,13 +7,12 @@
 </template>
 
 <script setup lang="ts">
-import homeTezzomboiz from './home-tezzomboiz'
-import homeTitle from './home-title'
-import homeDescription from './home-description'
+import HomeDescription from './home-description.vue'
+import HomeTezzomboiz from './home-tezzomboiz.vue'
+import HomeTitle from './home-title.vue'
 </script>
 
-<style lang="scss" scoped>
-@import 'include-media';
+<style scoped>
 .section-home {
 	align-items: center;
 	display: grid;
@@ -24,13 +23,14 @@ import homeDescription from './home-description'
 		'description';
 	grid-template-columns: minmax(0, auto);
 
-	@include media('>=tablet') {
+	@media (width >= 768px) {
 		grid-template-areas:
 			'tezzomboiz title'
 			'description description';
 		grid-template-columns: 1fr 1fr;
 	}
-	@include media('>=desktop') {
+
+	@media (width >= 1024px) {
 		grid-template-areas:
 			'tezzomboiz title'
 			'tezzomboiz description';

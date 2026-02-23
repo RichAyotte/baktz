@@ -1,6 +1,5 @@
-import { defineNuxtPlugin } from 'nuxt/app'
-import { baktzDelegateAddress } from '~/constants'
 import { ref } from 'vue'
+import { baktzDelegateAddress } from '~/constants'
 
 type Delegate = {
 	alias: string
@@ -23,9 +22,11 @@ export default defineNuxtPlugin(async () => {
 		'NetXdQprcVkpaWU',
 	)
 
-	const { DAppClient, TezosOperationType } = await import('@airgap/beacon-dapp')
+	const { DAppClient, TezosOperationType } = await import(
+		'@tezos-x/octez.connect-sdk'
+	)
 	const dAppClient = new DAppClient({
-		name: `baktz`,
+		name: 'baktz',
 		featuredWallets: ['exodus', 'kukai', 'plenty', 'temple'],
 	})
 	const activeAccount = ref(await dAppClient.getActiveAccount())

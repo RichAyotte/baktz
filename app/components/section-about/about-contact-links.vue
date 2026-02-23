@@ -47,26 +47,27 @@
 	</div>
 </template>
 
-<style lang="scss" scoped>
-@import 'assets/styles/variables';
-@import 'include-media';
-
+<style scoped>
 div {
 	align-self: start;
 	justify-self: center;
-	@include media('>=500px') {
+
+	@media (width >= 500px) {
 		justify-self: left;
 	}
 }
+
 a {
 	border-bottom: 3px solid transparent;
 	display: inline-block;
 	margin: 0 20px 0 0;
 	text-decoration: none;
+
 	&:hover {
-		border-color: $primary-accent-color;
+		border-color: var(--color-primary);
 	}
 }
+
 img {
 	height: 20px;
 }

@@ -12,12 +12,15 @@
 		</h1>
 	</div>
 </template>
-<style lang="scss" scoped>
+
+<style scoped>
 #home-title {
 	align-self: end;
+
 	h1 {
 		color: white;
 		font-size: clamp(2rem, 10vw, 4rem);
+
 		img {
 			display: inline-block;
 			vertical-align: text-bottom;

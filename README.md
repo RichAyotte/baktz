@@ -24,7 +24,7 @@ bun dev
 Build the application for production:
 
 ```bash
-bun build
+bun run build
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment).

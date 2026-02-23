@@ -1,10 +1,6 @@
 <template>
 	<client-only>
-		<notifications
-			position="top center"
-			:ignore-duplicates="true"
-			:pause-on-hover="true"
-		/>
+		<AppToast />
 	</client-only>
 	<header>
 		<nuxt-img
@@ -25,24 +21,22 @@
 	<main>
 		<section-home />
 		<section-features />
+		<section-fees />
+		<section-earnings />
 		<section-about />
 	</main>
 </template>
 
-<script lang="ts" setup></script>
-
-<style lang="scss" scoped>
-@import 'assets/styles/variables';
-@import 'include-media';
-
+<style scoped>
 header {
-	max-width: $max-content-width;
+	max-width: var(--max-content-width);
 	margin: 0 auto;
 }
 
 main {
-	max-width: $max-content-width;
+	max-width: var(--max-content-width);
 	margin: 0 auto;
+
 	& > * {
 		padding: 30px;
 	}
@@ -54,7 +48,8 @@ img {
 
 #header-baktz-img {
 	height: 35px;
-	@include media('>=tablet') {
+
+	@media (width >= 768px) {
 		height: clamp(30px, 5vw, 100px);
 	}
 }

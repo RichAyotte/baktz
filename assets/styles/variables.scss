@@ -1,7 +1,0 @@
-@use "sass:color";
-
-$primary-accent-color: #9eafff;
-$secondary-accent-color: #3FF266;
-$background-color: #1d2444;
-$text-color: color.adjust($background-color, $lightness: 75%);
-$max-content-width: 1600px;

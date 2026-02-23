@@ -21,7 +21,7 @@ defineProps<{
 }>()
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .feature-box {
 	text-align: center;
 }

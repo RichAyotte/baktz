@@ -26,20 +26,20 @@
 					src="baktz-logo.svg"
 					style="aspect-ratio: 361/127"
 				/>
-				is a <em><strong>Tezos only</strong></em> delegation service started by Rich
-				Ayotte. Rich has been baking since July of 2018 and opened his bakery to the
-				public during the fall of 2022.
+				is a <em><strong>Tezos only</strong></em> delegation service
+				started by Rich Ayotte. Rich has been baking since July of 2018
+				and opened his bakery to the public during the fall of 2022.
 			</p>
 			<about-contact-links style="grid-area: links" />
 		</div>
 	</section>
 </template>
+
 <script setup lang="ts">
-import aboutContactLinks from './about-contact-links'
+import AboutContactLinks from './about-contact-links.vue'
 </script>
 
-<style lang="scss" scoped>
-@import 'include-media';
+<style scoped>
 .section-about {
 	margin-top: 20px;
 	margin-bottom: 60px;
@@ -55,7 +55,8 @@ import aboutContactLinks from './about-contact-links'
 		'description'
 		'links';
 	grid-template-columns: minmax(0, auto);
-	@include media('>=500px') {
+
+	@media (width >= 500px) {
 		column-gap: 15px;
 		row-gap: 0px;
 		max-width: 700px;
@@ -69,6 +70,7 @@ import aboutContactLinks from './about-contact-links'
 h2 {
 	margin-bottom: 60px;
 	font-size: 2.5rem;
+
 	.text-logo {
 		height: 1em;
 	}

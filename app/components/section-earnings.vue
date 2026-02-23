@@ -50,9 +50,7 @@ const monthlyEarning = 100
 const yearlyEarning = 100
 </script>
 
-<style lang="scss" scoped>
-@import 'assets/styles/variables';
-@import 'assets/styles/global';
+<style scoped>
 .section-earnings {
 	& > * {
 		flex: 1 1 20vw;
@@ -62,12 +60,14 @@ const yearlyEarning = 100
 
 .expected-earnings {
 	width: 100%;
+
 	tr {
 		text-align: left;
 	}
+
 	td {
 		strong {
-			color: $secondary-accent-color;
+			color: var(--color-secondary);
 		}
 	}
 }

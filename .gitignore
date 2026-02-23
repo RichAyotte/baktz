@@ -1,12 +1,10 @@
 node_modules
 *.log
 .nuxt
-nuxt.d.ts
 
 #Build
+.data
+.nitro
 .output
 .env
 dist
-
-# rollup stats
-stats.html
