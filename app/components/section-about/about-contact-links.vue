@@ -70,8 +70,8 @@ a {
 		transform: translateY(-2px);
 
 		.icon {
-			background-color: var(--color-primary);
-			filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent));
+			background-color: var(--color-primary-light);
+			filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-primary-light) 40%, transparent));
 		}
 	}
 }

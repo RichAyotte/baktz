@@ -43,7 +43,6 @@ p {
 }
 
 :deep(a) {
-	color: var(--color-primary);
 	font-weight: 600;
 }
 

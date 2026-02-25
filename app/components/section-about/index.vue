@@ -78,15 +78,6 @@ p {
 	color: var(--color-text-muted);
 	margin: 0 0 30px 0;
 
-	a {
-		color: var(--color-primary);
-		text-decoration: none;
-		transition: color 0.2s ease;
-
-		&:hover {
-			color: var(--color-primary-light);
-		}
-	}
 }
 
 .contact-links {
