@@ -26,41 +26,41 @@ const features = [
 	{
 		title: 'Customer Support',
 		description:
-			'Customer support through <a target="_blank" href="https://x.com/realbaktz">X</a> and <a target="_blank" href="mailto:support@baktz.com">email</a>',
+			'Reach us anytime on <a target="_blank" href="https://x.com/realbaktz">X</a> or by <a target="_blank" href="mailto:support@baktz.com">email</a> — we\'re here to help',
 		iconUrl: bellConciergeSolid,
 		aspectRatio: '1/1',
 	},
 	{
-		title: 'Low Fee',
-		description:
-			'A low commission fee of 10% is automatically deducted at each cycle',
+		title: 'Low Fees',
+		description: 'Just 5% for stakers and 10% for delegators',
 		iconUrl: moneyBillImg,
 		aspectRatio: '9/8',
 	},
 	{
 		title: 'Automated Payouts',
 		description:
-			'Payouts to stakers are automated at the end of each cycle',
+			'Staking rewards are built into the protocol. Delegation payouts are sent automatically each cycle',
 		iconUrl: envelopeSolid,
 		aspectRatio: '1/1',
 	},
 	{
-		title: '10 XTZ Minimum',
-		description: 'Stakers must stake at least 10 XTZ to receive a payout',
+		title: 'No Minimum to Stake',
+		description:
+			'Stake any amount with no minimum. Delegators need just 10 XTZ to get started',
 		iconUrl: cashCoinsImg,
 		aspectRatio: '79/50',
 	},
 	{
 		title: 'Active Voter',
 		description:
-			'We actively seek community feedback and vote on all phases of the voting process',
+			"Voted on every protocol upgrade since Tezos' first proposal — your voice matters to us",
 		iconUrl: buildingColumns,
 		aspectRatio: '1/1',
 	},
 	{
 		title: 'Community Engaged',
 		description:
-			'Active Tezonian since 2017 focused on driving Tezos forward',
+			'Part of the Tezos community since 2017, committed to its long-term success',
 		iconUrl: peopleGroupSolid,
 		aspectRatio: '5/4',
 	},

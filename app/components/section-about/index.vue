@@ -11,8 +11,8 @@
 			<div class="about-text-container" style="grid-area: content">
 				<h2>About <baktz-logo size="inherit" /></h2>
 				<p>
-					<baktz-logo size="1.2rem" /> is a secure, high-performance, and community-driven <a href="https://tezos.com" target="_blank">Tezos</a> baking service.
-					Started by Richard Ayotte, Rich has been baking since July of 2018
+					<baktz-logo size="1.2rem" /> is a secure, high-performance <a href="https://tezos.com" target="_blank">Tezos</a> baking service.
+					Started by <a href="https://richayotte.com" target="_blank">Richard Ayotte</a>, Rich has been baking since July of 2018
 					and opened his bakery to the public during the fall of 2022.
 				</p>
 				<about-contact-links class="contact-links" />
