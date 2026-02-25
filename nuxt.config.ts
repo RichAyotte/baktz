@@ -25,27 +25,14 @@ export default defineNuxtConfig({
 					onload: "this.rel='stylesheet'",
 				},
 				{
+					rel: 'icon',
+					type: 'image/svg+xml',
+					href: '/baktz-icon.svg',
+				},
+				{
 					rel: 'apple-touch-icon',
 					sizes: '180x180',
 					href: '/apple-touch-icon.png',
-				},
-				{
-					rel: 'icon',
-					type: 'image/png',
-					sizes: '32x32',
-					href: '/favicon-32x32.png',
-				},
-				{
-					rel: 'icon',
-					type: 'image/png',
-					sizes: '16x16',
-					href: '/favicon-16x16.png',
-				},
-				{ rel: 'manifest', href: '/site.webmanifest' },
-				{
-					rel: 'mask-icon',
-					href: '/safari-pinned-tab.svg',
-					color: '#5bbad5',
 				},
 			],
 			meta: [
@@ -53,8 +40,7 @@ export default defineNuxtConfig({
 					name: 'description',
 					content: 'bākꜩ - Tezos baking, staking, and delegation service',
 				},
-				{ name: 'msapplication-TileColor', content: '#da532c' },
-				{ name: 'theme-color', content: '#ffffff' },
+				{ name: 'theme-color', content: '#0f172a' },
 				{ property: 'og:title', content: 'bākꜩ — Tezos Baking Service' },
 				{ property: 'og:description', content: 'bākꜩ - Tezos baking service' },
 				{ property: 'og:type', content: 'website' },
