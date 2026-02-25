@@ -190,7 +190,7 @@ const draw = () => {
 	if (!canvas.value || !ctx) return
 
 	ctx.clearRect(0, 0, canvas.value.width, canvas.value.height)
-	ctx.strokeStyle = '#9eafff'
+	ctx.strokeStyle = '#818cf8'
 	ctx.lineWidth = 1.2
 	ctx.lineJoin = 'round'
 
@@ -252,10 +252,10 @@ const draw = () => {
 				ctx!.lineTo(v1[0], v1[1])
 				ctx!.lineTo(v2[0], v2[1])
 				ctx!.closePath()
-				ctx!.fillStyle = 'rgba(158, 175, 255, 0.05)'
+				ctx!.fillStyle = 'rgba(129, 140, 248, 0.05)'
 				ctx!.fill()
 				ctx!.shadowBlur = 8
-				ctx!.shadowColor = '#9eafff'
+				ctx!.shadowColor = '#818cf8'
 				ctx!.stroke()
 				ctx!.shadowBlur = 0
 			}

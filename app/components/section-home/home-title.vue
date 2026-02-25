@@ -26,11 +26,11 @@
 	}
 
 	.diamond-text {
-		background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 25%, #818cf8 100%);
+		background: linear-gradient(135deg, var(--color-accent-cyan-light) 0%, var(--color-accent-cyan) 25%, var(--color-primary) 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-		filter: drop-shadow(0 4px 20px rgba(56, 189, 248, 0.3));
+		filter: drop-shadow(0 4px 20px color-mix(in srgb, var(--color-accent-cyan) 30%, transparent));
 	}
 
 	.tagline {

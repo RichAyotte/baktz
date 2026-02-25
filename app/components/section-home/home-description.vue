@@ -95,7 +95,7 @@ async function copyToClipboard(text: string): Promise<void> {
 .primary-cta {
 	font-size: 1.1rem;
 	padding: 16px 40px;
-	box-shadow: 0 10px 25px rgba(158, 175, 255, 0.3);
+	box-shadow: 0 10px 25px color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
 
 .divider {
@@ -116,7 +116,7 @@ async function copyToClipboard(text: string): Promise<void> {
 .divider::after {
 	content: '';
 	flex: 1;
-	border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+	border-bottom: 1px solid color-mix(in srgb, var(--color-text-muted) 20%, transparent);
 }
 
 .divider span {
@@ -125,7 +125,7 @@ async function copyToClipboard(text: string): Promise<void> {
 
 #delegate-address-container {
 	position: relative;
-	background: rgba(30, 41, 59, 0.6);
+	background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
 	backdrop-filter: blur(10px);
 	border: 1px solid var(--color-table-border);
 	border-radius: 12px;
@@ -139,7 +139,7 @@ async function copyToClipboard(text: string): Promise<void> {
 	
 	&:hover {
 		border-color: var(--color-primary);
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(158, 175, 255, 0.2);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
 		transform: translateY(-2px);
 	}
 
@@ -159,7 +159,7 @@ async function copyToClipboard(text: string): Promise<void> {
 	}
 
 	img {
-		background: rgba(158, 175, 255, 0.1);
+		background: color-mix(in srgb, var(--color-primary) 10%, transparent);
 		height: 24px;
 		width: 24px;
 		padding: 18px 24px;
@@ -168,7 +168,7 @@ async function copyToClipboard(text: string): Promise<void> {
 	}
 	
 	&:hover img {
-		background: rgba(158, 175, 255, 0.25);
+		background: color-mix(in srgb, var(--color-primary) 25%, transparent);
 	}
 }
 

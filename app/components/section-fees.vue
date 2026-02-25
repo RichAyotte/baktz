@@ -28,7 +28,7 @@
 
 <style scoped>
 #baking-rules {
-	background: rgba(30, 41, 59, 0.5);
+	background: color-mix(in srgb, var(--color-bg-surface) 50%, transparent);
 	backdrop-filter: blur(10px);
 	border: 1px solid var(--color-table-border);
 	border-radius: 12px;

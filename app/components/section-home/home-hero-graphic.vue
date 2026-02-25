@@ -66,7 +66,7 @@
 .floating-logo {
 	width: 60%;
 	height: auto;
-	filter: drop-shadow(0 0 15px rgba(158, 175, 255, 0.6));
+	filter: drop-shadow(0 0 15px color-mix(in srgb, var(--color-primary) 60%, transparent));
 }
 
 @keyframes pulse-orb {

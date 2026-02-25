@@ -1,13 +1,17 @@
 :root {
-	--color-primary: #9eafff;
-	--color-secondary: #3ff266;
+	--color-primary: #818cf8;
+	--color-secondary: #34d399;
 	--color-bg: #0f172a; /* Slightly darker slate for better depth */
-	--color-bg-card: rgba(30, 41, 59, 0.7); /* More opaque slate for cards */
+	--color-bg-surface: #1e293b;
+	--color-bg-card: color-mix(in srgb, var(--color-bg-surface) 70%, transparent);
 	--color-text: #f8fafc; /* Near-white for high contrast */
 	--color-text-muted: #94a3b8;
-	--color-primary-light: #c5d0ff;
-	--color-table-bg: rgba(30, 41, 59, 0.5);
-	--color-table-border: rgba(148, 163, 184, 0.2);
+	--color-primary-light: #b4bcfc;
+	--color-accent-cyan: #38bdf8;
+	--color-accent-cyan-light: #7dd3fc;
+	--color-accent-indigo: #6366f1;
+	--color-table-bg: color-mix(in srgb, var(--color-bg-surface) 50%, transparent);
+	--color-table-border: color-mix(in srgb, var(--color-text-muted) 20%, transparent);
 	--color-scrollbar-thumb: #334155;
 	--color-scrollbar-thumb-hover: #475569;
 	--max-content-width: 1200px;

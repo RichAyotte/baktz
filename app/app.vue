@@ -31,7 +31,7 @@
 	left: 0;
 	right: 0;
 	z-index: 1000;
-	background: rgba(30, 41, 59, 0.7);
+	background: color-mix(in srgb, var(--color-bg-surface) 70%, transparent);
 	backdrop-filter: blur(12px);
 	border-bottom: 1px solid var(--color-table-border);
 	padding: 15px 0;
@@ -70,7 +70,7 @@
 
 .desktop-nav a:hover {
 	color: var(--color-primary);
-	text-shadow: 0 0 10px rgba(158, 175, 255, 0.4);
+	text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 main {
@@ -107,7 +107,7 @@ main {
 		background: linear-gradient(
 			90deg, 
 			transparent 0%, 
-			rgba(158, 175, 255, 0.15) 50%, 
+			color-mix(in srgb, var(--color-primary) 15%, transparent) 50%,
 			transparent 100%
 		);
 	}

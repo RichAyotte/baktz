@@ -42,8 +42,8 @@ import HomeTitle from './home-title.vue'
 	max-height: 600px;
 	background: radial-gradient(
 		circle,
-		rgba(158, 175, 255, 0.15) 0%,
-		rgba(63, 242, 102, 0.05) 50%,
+		color-mix(in srgb, var(--color-primary) 15%, transparent) 0%,
+		color-mix(in srgb, var(--color-secondary) 5%, transparent) 50%,
 		transparent 70%
 	);
 	filter: blur(60px);

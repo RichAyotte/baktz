@@ -65,13 +65,13 @@ a {
 	width: 40px;
 
 	&:hover {
-		background: rgba(158, 175, 255, 0.08);
-		border-color: rgba(158, 175, 255, 0.2);
+		background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+		border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
 		transform: translateY(-2px);
 
 		.icon {
 			background-color: var(--color-primary);
-			filter: drop-shadow(0 0 8px rgba(158, 175, 255, 0.4));
+			filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent));
 		}
 	}
 }

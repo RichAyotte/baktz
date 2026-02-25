@@ -62,15 +62,15 @@ defineProps<{
 	/* 'Sapphire Crystal' - smooth cyan-to-indigo gem depth */
 	background: linear-gradient(
 		135deg,
-		#38bdf8 0%,   /* Diamond Cyan */
-		#6366f1 100%  /* Indigo Base */
+		var(--color-accent-cyan) 0%,   /* Diamond Cyan */
+		var(--color-accent-indigo) 100%  /* Indigo Base */
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	
 	/* Rich glow that matches the 'Diamond Hands' theme */
-	filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.35))
+	filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent-cyan) 35%, transparent))
 	        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 	
 	position: relative;
@@ -87,14 +87,14 @@ defineProps<{
 }
 
 .is-link:hover .tz {
-	filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.6))
+	filter: drop-shadow(0 0 30px color-mix(in srgb, var(--color-accent-cyan) 60%, transparent))
 	        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }
 
 /* Add a subtle animation to the glow */
 @keyframes pulse-glow {
-	0%, 100% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.35)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); }
-	50% { filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.55)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)); }
+	0%, 100% { filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent-cyan) 35%, transparent)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); }
+	50% { filter: drop-shadow(0 0 35px color-mix(in srgb, var(--color-accent-cyan) 55%, transparent)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)); }
 }
 
 .tz {
