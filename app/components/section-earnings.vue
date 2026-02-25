@@ -52,22 +52,67 @@ const yearlyEarning = 100
 
 <style scoped>
 .section-earnings {
-	& > * {
-		flex: 1 1 20vw;
-		padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	.gradient-box-border {
+		width: 100%;
+		max-width: 600px;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	
+	label {
+		color: var(--color-text-muted);
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+	
+	input {
+		font-size: 1.2rem;
+		font-family: 'JetBrains Mono', monospace;
 	}
 }
 
 .expected-earnings {
 	width: 100%;
+	border-collapse: collapse;
 
 	tr {
 		text-align: left;
+		border-bottom: 1px solid var(--color-table-border);
+		
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+	
+	th, td {
+		padding: 16px 0;
+	}
+
+	th {
+		color: var(--color-text-muted);
+		font-weight: 500;
 	}
 
 	td {
+		text-align: right;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 1.1rem;
+		
 		strong {
 			color: var(--color-secondary);
+			font-size: 1.2rem;
 		}
 	}
 }

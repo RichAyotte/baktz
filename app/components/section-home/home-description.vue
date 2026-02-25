@@ -1,15 +1,5 @@
 <template>
 	<div id="home-description">
-		<p>
-			<nuxt-img
-				alt="Baktz logo"
-				class="img-text"
-				loading="lazy"
-				src="baktz-logo.svg"
-				style="aspect-ratio: 361/127"
-			/>
-			is a secure, reliable, and community involved Tezos baking service.
-		</p>
 		<client-only>
 			<span v-if="$activeAccount != null">
 				<strong>
@@ -18,32 +8,26 @@
 						:href="`https://tzkt.io/${$activeAccount.address}/operations/`"
 					>{{ $activeAccount.address }}</a>
 				</strong>
-				is currently delegated to
-				<nuxt-img
-					alt="Baktz logo"
-					class="img-text"
-					src="baktz-logo.svg"
-					style="aspect-ratio: 361/127"
-				/>
+				is currently baking with <baktz-logo size="1.2rem" />
 				<br /><br />
 				<button @click="$disconnect">Disconnect</button>
 			</span>
-			<span v-else>
+			<span v-else class="action-container">
 				<button
 					id="delegate-button"
 					@click="$delegate"
+					class="primary-cta"
 				>
-					Delegate to Baktz
+					Connect Wallet to Bake
 				</button>
-				<br /><br />
-				<strong style="color: white; font-size: 150%"><em>or</em></strong>
-				<br />
-				<p>
-					Copy the address below and paste it into your wallet's baking
-					feature.
-				</p>
+				
+				<div class="divider">
+					<span>or bake manually</span>
+				</div>
+				
 				<div
 					id="delegate-address-container"
+					:class="{ 'is-copied': isCopied }"
 					@click="copyToClipboard(baktzDelegateAddress)"
 				>
 					<div id="delegate-address">
@@ -54,6 +38,9 @@
 						src="~/assets/images/clipboard.svg"
 						style="aspect-ratio: 1/1"
 					/>
+					<div class="copied-overlay" v-if="isCopied">
+						<span>Address Copied! 💎</span>
+					</div>
 				</div>
 			</span>
 		</client-only>
@@ -61,25 +48,21 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from '~/composables/useToast'
 import { baktzDelegateAddress } from '~/constants'
 
 const { $delegate, $activeAccount, $disconnect } = useNuxtApp()
-const { showToast } = useToast()
+const isCopied = ref(false)
 
 async function copyToClipboard(text: string): Promise<void> {
 	try {
 		await navigator.clipboard.writeText(text)
-		showToast({
-			title: text,
-			text: 'copied to clipboard',
-		})
+		isCopied.value = true
+		setTimeout(() => {
+			isCopied.value = false
+		}, 2000)
 	} catch (error) {
 		if (error instanceof Error) {
-			showToast({
-				title: error.name,
-				text: error.message,
-			})
+			console.error(error.message)
 		}
 	}
 }
@@ -87,31 +70,124 @@ async function copyToClipboard(text: string): Promise<void> {
 
 <style scoped>
 #home-description {
-	align-self: start;
 	text-align: center;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	p {
-		font-size: larger;
+		font-size: clamp(1.1rem, 2vw, 1.5rem);
+		line-height: 1.6;
+		margin-bottom: 2.5rem;
+		color: var(--color-text-muted);
+		max-width: 650px;
 	}
 }
 
+.action-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.primary-cta {
+	font-size: 1.1rem;
+	padding: 16px 40px;
+	box-shadow: 0 10px 25px rgba(158, 175, 255, 0.3);
+}
+
+.divider {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	max-width: 400px;
+	margin: 2rem 0;
+	color: var(--color-text-muted);
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-weight: 600;
+}
+
+.divider::before,
+.divider::after {
+	content: '';
+	flex: 1;
+	border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.divider span {
+	padding: 0 1rem;
+}
+
 #delegate-address-container {
-	background-color: var(--color-bg);
-	display: inline-grid;
-	grid-template-columns: minmax(0, auto) minmax(0, auto);
+	position: relative;
+	background: rgba(30, 41, 59, 0.6);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--color-table-border);
+	border-radius: 12px;
+	display: inline-flex;
+	align-items: center;
+	overflow: hidden;
+	width: 100%;
+	max-width: 500px;
+	cursor: pointer;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+	
+	&:hover {
+		border-color: var(--color-primary);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(158, 175, 255, 0.2);
+		transform: translateY(-2px);
+	}
+
+	&.is-copied {
+		border-color: var(--color-secondary);
+	}
 
 	#delegate-address {
-		border: 1px solid var(--color-primary);
 		font-family: 'JetBrains Mono', monospace;
-		overflow-wrap: break-word;
-		padding: 15px;
+		padding: 16px 20px;
+		color: var(--color-text);
+		flex-grow: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-size: 1rem;
 	}
 
 	img {
-		background: var(--color-primary);
-		height: calc(100% - 30px);
-		padding: 15px;
+		background: rgba(158, 175, 255, 0.1);
+		height: 24px;
+		width: 24px;
+		padding: 18px 24px;
+		box-sizing: content-box;
+		transition: background 0.3s ease;
 	}
+	
+	&:hover img {
+		background: rgba(158, 175, 255, 0.25);
+	}
+}
+
+.copied-overlay {
+	position: absolute;
+	inset: 0;
+	background: var(--color-secondary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-bg);
+	font-weight: 700;
+	font-size: 1.1rem;
+	animation: slide-in 0.3s ease-out forwards;
+}
+
+@keyframes slide-in {
+	from { transform: translateY(100%); }
+	to { transform: translateY(0); }
 }
 
 #button-or-address {

@@ -28,28 +28,37 @@ defineProps<{
 
 header {
 	text-align: center;
-	font-weight: bold;
+	font-weight: 700;
 	text-transform: uppercase;
-	font-size: larger;
+	font-size: 1.1rem;
+	letter-spacing: 0.05em;
+	margin-bottom: 1.5rem;
+	color: var(--color-text);
 }
 
 p {
-	font-size: larger;
+	font-size: 1rem;
+	color: var(--color-text-muted);
+	line-height: 1.5;
+}
+
+:deep(a) {
+	color: var(--color-primary);
+	font-weight: 600;
 }
 
 .icon {
 	background-image: linear-gradient(
-		#7c9874 21.875%,
-		#82ad95 45.3125%,
-		#8eafa4 65.1042%,
-		#bda4ae 85.4167%,
-		#deacad 100%
+		135deg,
+		var(--color-primary) 0%,
+		var(--color-secondary) 100%
 	);
 	display: inline-block;
-	height: 5rem;
-	margin: 1rem;
+	height: 4rem;
+	margin: 0 auto 1.5rem auto;
 	mask-position: center;
 	mask-repeat: no-repeat;
-	width: 5rem;
+	mask-size: contain;
+	width: 4rem;
 }
 </style>

@@ -4,22 +4,11 @@
 			<feature-box
 				v-for="(feature, index) in features"
 				:key="index"
-				class="feature-box"
+				class="feature-box gradient-box-border"
 				:title="feature.title"
 				:description="feature.description"
 				:aspect-ratio="feature.aspectRatio"
 				:icon-url="feature.iconUrl"
-			/>
-		</div>
-		<div id="feature-boxes-carousel">
-			<feature-box
-				v-for="(feature, index) in features"
-				:key="index"
-				class="feature-box"
-				:title="feature.title"
-				:description="feature.description"
-				:icon-url="feature.iconUrl"
-				:aspect-ratio="feature.aspectRatio"
 			/>
 		</div>
 	</section>
@@ -37,7 +26,7 @@ const features = [
 	{
 		title: 'Customer Support',
 		description:
-			'Customer support through <a target="_blank" href="https://twitter.com/realbaktz">Twitter</a> and <a target="_blank" href="mailto:support@baktz.com">email</a>',
+			'Customer support through <a target="_blank" href="https://x.com/realbaktz">X</a> and <a target="_blank" href="mailto:support@baktz.com">email</a>',
 		iconUrl: bellConciergeSolid,
 		aspectRatio: '1/1',
 	},
@@ -50,13 +39,14 @@ const features = [
 	},
 	{
 		title: 'Automated Payouts',
-		description: 'Payouts to delegates are automated at the end of each cycle',
+		description:
+			'Payouts to stakers are automated at the end of each cycle',
 		iconUrl: envelopeSolid,
 		aspectRatio: '1/1',
 	},
 	{
 		title: '10 XTZ Minimum',
-		description: 'Delegators must delegate at least 10 XTZ to receive a payout',
+		description: 'Stakers must stake at least 10 XTZ to receive a payout',
 		iconUrl: cashCoinsImg,
 		aspectRatio: '79/50',
 	},
@@ -69,7 +59,8 @@ const features = [
 	},
 	{
 		title: 'Community Engaged',
-		description: 'Active Tezonian since 2017 focused on driving Tezos forward',
+		description:
+			'Active Tezonian since 2017 focused on driving Tezos forward',
 		iconUrl: peopleGroupSolid,
 		aspectRatio: '5/4',
 	},
@@ -77,72 +68,65 @@ const features = [
 </script>
 
 <style scoped>
-@media (width < 600px) {
-	#feature-boxes {
-		display: none;
-	}
-
-	#feature-boxes-carousel {
-		display: flex;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		-webkit-overflow-scrolling: touch;
-		gap: 0;
-	}
-
-	.feature-box {
-		scroll-snap-align: center;
-		flex: 0 0 100%;
-		width: 100%;
-	}
-}
-
-@media (width >= 600px) {
-	#feature-boxes {
-		margin: 4%;
-		display: flex;
-		flex-wrap: wrap;
-		column-gap: calc(4% + 30px);
-		row-gap: 50px;
-
-		& > * {
-			flex: 1 1 21%;
-		}
-	}
-
-	#feature-boxes-carousel {
-		display: none;
-	}
-}
-
 .section-features {
-	margin-top: 50px;
-	background-image: url('~/assets/images/wave-line.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+	position: relative;
+	width: 100%;
+}
+
+#feature-boxes {
+	/* Mobile Carousel Layout */
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	gap: 20px;
+	
+	/* Full bleed scrolling on mobile */
+	margin: 0 -20px;
+	padding: 0 20px 20px 20px;
+	width: calc(100% + 40px);
+	
+	/* Hide scrollbar for cleaner look on mobile, but keep functionality */
+	scrollbar-width: none; /* Firefox */
+	&::-webkit-scrollbar {
+		display: none; /* Chrome/Safari */
+	}
+
+	/* Desktop Grid Layout */
+	@media (width >= 768px) {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 40px;
+		margin: 0 auto;
+		padding: 0;
+		width: 100%;
+		overflow-x: visible;
+	}
 }
 
 .feature-box {
-	background-color: var(--color-bg);
-	border-image: linear-gradient(
-			to bottom,
-			#665c82 10.41669%,
-			#867379 21.875%,
-			#755d4b 30.7292%,
-			#7d553f 41.6667%,
-			#707a56 53.6458%,
-			#729270 63.5417%,
-			#89b6a4 72.3958%,
-			#9ca3ac 84.375%,
-			rgba(189, 164, 174, 0.25) 92.7083%,
-			rgba(221, 182, 183, 0) 100%
-		)
-		1 1;
-	border-color: #665c82;
-	border-style: solid;
-	border-width: 1px;
-	padding: 2rem;
-	height: 100%;
+	padding: 2.5rem 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	height: auto;
+	
+	/* Mobile Carousel Item Sizing */
+	scroll-snap-align: center;
+	flex: 0 0 85%;
+	max-width: 85%;
+	
+	/* Reset sizing for desktop grid */
+	@media (width >= 768px) {
+		flex: none;
+		max-width: none;
+	}
+}
+
+.feature-box:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 </style>

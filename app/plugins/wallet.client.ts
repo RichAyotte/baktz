@@ -54,7 +54,10 @@ export default defineNuxtPlugin(async () => {
 
 					if (account) {
 						const delegate = await getDelegate(account.address)
-						if (delegate == null || delegate.address !== baktzDelegateAddress) {
+						if (
+							delegate == null ||
+							delegate.address !== baktzDelegateAddress
+						) {
 							await dAppClient.requestOperation({
 								operationDetails: [
 									{

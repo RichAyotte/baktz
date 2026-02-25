@@ -1,17 +1,40 @@
 @import './variables.css';
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	color: var(--color-text);
 	margin: 0;
-	font-family: 'Roboto', sans-serif;
-	background:
-		url('~/assets/images/background-blocks.svg') no-repeat top right,
-		var(--color-bg);
+	position: relative;
+	min-height: 100vh;
+	font-family: 'Inter', sans-serif;
+	background: radial-gradient(
+		circle at top center,
+		#1e293b 0%,
+		var(--color-bg) 100%
+	);
+	background-attachment: fixed;
+	line-height: 1.6;
 }
 
 a,
 a:visited {
 	color: var(--color-primary);
+	text-decoration: none;
+	transition: color 0.3s ease;
 
 	&:hover,
 	&:active {
@@ -21,6 +44,9 @@ a:visited {
 
 pre {
 	font-family: 'JetBrains Mono', monospace;
+	background-color: var(--color-bg-card);
+	padding: 1rem;
+	border-radius: 8px;
 }
 
 strong {
@@ -28,71 +54,77 @@ strong {
 }
 
 button {
-	background-color: var(--color-primary);
-	border-radius: 20px;
+	background: linear-gradient(135deg, var(--color-primary), #7a8df0);
+	border-radius: 8px;
 	border: none;
 	color: var(--color-bg);
-	font-weight: bold;
+	font-weight: 700;
 	margin: 10px;
-	padding: 10px 30px;
+	padding: 12px 32px;
 	text-transform: uppercase;
-	transition: all 0.3s;
+	letter-spacing: 0.05em;
+	transition: all 0.3s ease;
 
 	&:hover,
 	&:active {
-		box-shadow: 0 0 30px 0px var(--color-primary);
-		color: var(--color-text);
+		box-shadow: 0 4px 15px rgba(158, 175, 255, 0.4);
+		transform: translateY(-2px);
 		cursor: pointer;
+		color: var(--color-bg);
 	}
 }
 
 input {
-	background: transparent;
-	border: none;
-	padding: 10px;
-	border-bottom: 1px solid var(--color-primary);
+	background: rgba(30, 41, 59, 0.5);
+	border: 1px solid var(--color-table-border);
+	border-radius: 8px;
+	padding: 12px 16px;
 	text-align: right;
-	color: white;
+	color: var(--color-text);
+	transition:
+		border-color 0.3s ease,
+		box-shadow 0.3s ease;
 
 	&:hover,
 	&:active,
 	&:focus {
-		outline-width: 0;
-		border-bottom: 1px solid white;
+		outline: none;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 2px rgba(158, 175, 255, 0.2);
 	}
 }
 
 h1,
 h2 {
 	text-align: center;
-	font-weight: 300;
-	margin: 30px 0 30px 0;
+	font-weight: 600;
+	margin: 40px 0 20px 0;
+	letter-spacing: -0.02em;
 }
 
 ::selection {
-	color: white;
+	color: var(--color-bg);
 	background-color: var(--color-primary);
 }
 
 .gradient-box-border {
-	background-color: var(--color-bg);
-	border-image: linear-gradient(
+	position: relative;
+	border: 1px solid transparent;
+	border-radius: 16px;
+	/* Use two backgrounds: the top one is the card color, the bottom one is the gradient */
+	/* background-clip: padding-box ensures the top bg stays inside the border */
+	background:
+		linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+		linear-gradient(
 			to bottom,
-			#665c82 10.41669%,
-			#867379 21.875%,
-			#755d4b 30.7292%,
-			#7d553f 41.6667%,
-			#707a56 53.6458%,
-			#729270 63.5417%,
-			#89b6a4 72.3958%,
-			#9ca3ac 84.375%,
-			rgba(189, 164, 174, 0.25) 92.7083%,
-			rgba(221, 182, 183, 0) 100%
+			rgba(158, 175, 255, 0.5),
+			rgba(63, 242, 102, 0.2)
 		)
-		1 1;
-	border-color: #665c82;
-	border-style: solid;
-	border-width: 1px;
+		border-box;
+	backdrop-filter: blur(12px);
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 .img-text {

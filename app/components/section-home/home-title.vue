@@ -1,32 +1,45 @@
 <template>
 	<div id="home-title">
 		<h1>
-			Reliable
-			<nuxt-img
-				alt="Tezos logo"
-				loading="lazy"
-				src="tezos-logo-horizontal-white.svg"
-				style="aspect-ratio: 320/111"
-			/>
-			Delegation Service
+			Bake with
+			<br/>
+			<span class="diamond-text">Diamond Hands</span>
 		</h1>
+		<p class="tagline">A Tezos Baking Service</p>
 	</div>
 </template>
 
 <style scoped>
 #home-title {
-	align-self: end;
+	width: 100%;
+	margin-bottom: 3.5rem;
 
 	h1 {
 		color: white;
-		font-size: clamp(2rem, 10vw, 4rem);
+		font-size: clamp(3rem, 8vw, 6.5rem);
+		font-weight: 800;
+		text-align: center;
+		margin: 0;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	}
 
-		img {
-			display: inline-block;
-			vertical-align: text-bottom;
-			height: clamp(3rem, 15vw, 5rem);
-			vertical-align: middle;
-		}
+	.diamond-text {
+		background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 25%, #818cf8 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		filter: drop-shadow(0 4px 20px rgba(56, 189, 248, 0.3));
+	}
+
+	.tagline {
+		color: var(--color-text-muted);
+		font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		margin: 1rem 0 0;
+		text-align: center;
 	}
 }
 </style>

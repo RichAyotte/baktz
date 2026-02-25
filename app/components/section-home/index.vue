@@ -1,40 +1,64 @@
 <template>
 	<section class="section-home">
-		<home-tezzomboiz style="grid-area: tezzomboiz" />
-		<home-title style="grid-area: title" />
-		<home-description style="grid-area: description" />
+		<div class="hero-glow"></div>
+		<home-title class="hero-content" />
+		<home-description class="hero-content" />
 	</section>
 </template>
 
 <script setup lang="ts">
 import HomeDescription from './home-description.vue'
-import HomeTezzomboiz from './home-tezzomboiz.vue'
 import HomeTitle from './home-title.vue'
 </script>
 
 <style scoped>
 .section-home {
+	position: relative;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	display: grid;
-	gap: 50px 10px;
-	grid-template-areas:
-		'tezzomboiz'
-		'title'
-		'description';
-	grid-template-columns: minmax(0, auto);
+	justify-content: center;
+	text-align: center;
+}
 
-	@media (width >= 768px) {
-		grid-template-areas:
-			'tezzomboiz title'
-			'description description';
-		grid-template-columns: 1fr 1fr;
+.hero-content {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.hero-glow {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 60vw;
+	height: 60vw;
+	max-width: 600px;
+	max-height: 600px;
+	background: radial-gradient(
+		circle,
+		rgba(158, 175, 255, 0.15) 0%,
+		rgba(63, 242, 102, 0.05) 50%,
+		transparent 70%
+	);
+	filter: blur(60px);
+	z-index: 0;
+	animation: pulse-glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 0.8;
 	}
-
-	@media (width >= 1024px) {
-		grid-template-areas:
-			'tezzomboiz title'
-			'tezzomboiz description';
-		grid-template-columns: 1fr 1fr;
+	100% {
+		transform: translate(-50%, -50%) scale(1.2);
+		opacity: 1;
 	}
 }
 </style>

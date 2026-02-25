@@ -28,25 +28,39 @@
 
 <style scoped>
 #baking-rules {
-	background-color: var(--color-table-bg);
-	border-collapse: collapse;
+	background: rgba(30, 41, 59, 0.5);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--color-table-border);
+	border-radius: 12px;
+	border-collapse: separate;
+	border-spacing: 0;
 	margin: 0px auto;
+	width: 100%;
+	max-width: 600px;
+	overflow: hidden;
 
 	td,
 	th {
-		padding: 10px 25px;
-		border: 1px solid var(--color-table-border);
-		box-shadow: #000;
+		padding: 20px 30px;
+		border-bottom: 1px solid var(--color-table-border);
+	}
+	
+	tr:last-child td,
+	tr:last-child th {
+		border-bottom: none;
 	}
 
 	th {
 		text-align: left;
+		font-weight: 600;
+		color: var(--color-text-muted);
 	}
 
 	td {
-		color: white;
-		font-style: italic;
+		color: var(--color-text);
+		font-family: 'JetBrains Mono', monospace;
 		text-align: right;
+		font-size: 1.1rem;
 	}
 }
 </style>

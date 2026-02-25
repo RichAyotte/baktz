@@ -1,12 +1,14 @@
 :root {
 	--color-primary: #9eafff;
 	--color-secondary: #3ff266;
-	--color-bg: #1d2444;
-	--color-text: #d2d5e9;
+	--color-bg: #0f172a; /* Slightly darker slate for better depth */
+	--color-bg-card: rgba(30, 41, 59, 0.7); /* More opaque slate for cards */
+	--color-text: #f8fafc; /* Near-white for high contrast */
+	--color-text-muted: #94a3b8;
 	--color-primary-light: #c5d0ff;
-	--color-table-bg: rgba(39, 48, 83, 0.5);
-	--color-table-border: #4a5488;
-	--color-scrollbar-thumb: #37406d;
-	--color-scrollbar-thumb-hover: #4c5790;
-	--max-content-width: 1600px;
+	--color-table-bg: rgba(30, 41, 59, 0.5);
+	--color-table-border: rgba(148, 163, 184, 0.2);
+	--color-scrollbar-thumb: #334155;
+	--color-scrollbar-thumb-hover: #475569;
+	--max-content-width: 1200px;
 }
