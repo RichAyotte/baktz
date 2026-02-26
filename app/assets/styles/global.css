@@ -144,19 +144,19 @@ h2 {
 	height: 1.2rem;
 }
 
-::-webkit-scrollbar {
+html::-webkit-scrollbar {
 	width: 10pt;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
 	background: var(--color-bg);
 }
 
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb {
 	background: var(--color-scrollbar-thumb);
 	border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover {
 	background: var(--color-scrollbar-thumb-hover);
 }
