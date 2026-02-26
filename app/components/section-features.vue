@@ -150,7 +150,6 @@ const features = [
 	display: flex;
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
-	-webkit-overflow-scrolling: touch;
 	gap: 20px;
 	
 	/* Padding for first/last card spacing */
