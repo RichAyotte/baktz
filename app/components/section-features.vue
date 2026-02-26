@@ -184,6 +184,7 @@ const features = [
 	
 	/* Mobile Carousel Item Sizing */
 	scroll-snap-align: center;
+	scroll-snap-stop: always;
 	flex: 0 0 85%;
 	max-width: 85%;
 	
