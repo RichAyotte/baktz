@@ -1,14 +1,27 @@
 <template>
 	<section class="section-features">
-		<div id="feature-boxes">
-			<feature-box
-				v-for="(feature, index) in features"
-				:key="index"
-				class="feature-box gradient-box-border"
-				:title="feature.title"
-				:description="feature.description"
-				:aspect-ratio="feature.aspectRatio"
-				:icon-url="feature.iconUrl"
+		<div class="carousel-wrapper">
+			<div id="feature-boxes" ref="scrollContainer">
+				<feature-box
+					v-for="(feature, index) in features"
+					:key="index"
+					class="feature-box gradient-box-border"
+					:title="feature.title"
+					:description="feature.description"
+					:aspect-ratio="feature.aspectRatio"
+					:icon-url="feature.iconUrl"
+				/>
+			</div>
+			<div class="fade-left" :class="{ visible: showLeftFade }" />
+			<div class="fade-right" :class="{ visible: showRightFade }" />
+		</div>
+		<div class="pagination-dots">
+			<button
+				v-for="(feature, i) in features"
+				:key="i"
+				:class="{ active: activeIndex === i }"
+				:aria-label="`Go to ${feature.title}`"
+				@click="scrollToCard(i)"
 			/>
 		</div>
 	</section>
@@ -21,6 +34,55 @@ import cashCoinsImg from '~/assets/images/cash-coins.svg'
 import envelopeSolid from '~/assets/images/envelope-solid.svg'
 import moneyBillImg from '~/assets/images/money-bill-1-wave-solid.svg'
 import peopleGroupSolid from '~/assets/images/people-group-solid.svg'
+
+const scrollContainer = ref<HTMLElement | null>(null)
+const activeIndex = ref(0)
+const showLeftFade = ref(false)
+const showRightFade = ref(true)
+
+function onScroll() {
+	const el = scrollContainer.value
+	if (!el) return
+
+	const { scrollLeft, scrollWidth, clientWidth } = el
+	const viewportCenter = scrollLeft + clientWidth / 2
+
+	let closestIndex = 0
+	let closestDistance = Infinity
+	for (let i = 0; i < el.children.length; i++) {
+		const child = el.children[i] as HTMLElement
+		const cardCenter = child.offsetLeft + child.offsetWidth / 2
+		const distance = Math.abs(cardCenter - viewportCenter)
+		if (distance < closestDistance) {
+			closestDistance = distance
+			closestIndex = i
+		}
+	}
+	activeIndex.value = closestIndex
+
+	showLeftFade.value = scrollLeft > 5
+	showRightFade.value = scrollLeft + clientWidth < scrollWidth - 5
+}
+
+function scrollToCard(index: number) {
+	const el = scrollContainer.value
+	if (!el) return
+
+	const card = el.children[index] as HTMLElement
+	if (!card) return
+
+	const left = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2
+	el.scrollTo({ left, behavior: 'smooth' })
+}
+
+onMounted(() => {
+	scrollContainer.value?.addEventListener('scroll', onScroll, { passive: true })
+	onScroll()
+})
+
+onUnmounted(() => {
+	scrollContainer.value?.removeEventListener('scroll', onScroll)
+})
 
 const features = [
 	{
@@ -81,10 +143,8 @@ const features = [
 	-webkit-overflow-scrolling: touch;
 	gap: 20px;
 	
-	/* Full bleed scrolling on mobile */
-	margin: 0 -20px;
+	/* Padding for first/last card spacing */
 	padding: 0 20px 20px 20px;
-	width: calc(100% + 40px);
 	
 	/* Hide scrollbar for cleaner look on mobile, but keep functionality */
 	scrollbar-width: none; /* Firefox */
@@ -125,8 +185,78 @@ const features = [
 	}
 }
 
-.feature-box:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+@media (width >= 768px) {
+	.feature-box:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+
+.carousel-wrapper {
+	position: relative;
+	margin: 0 -20px;
+	width: calc(100% + 40px);
+
+	@media (width >= 768px) {
+		display: contents;
+	}
+}
+
+.fade-left,
+.fade-right {
+	position: absolute;
+	top: 0;
+	bottom: 20px;
+	width: 40px;
+	z-index: 2;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+
+	@media (width >= 768px) {
+		display: none;
+	}
+}
+
+.fade-left {
+	left: 0;
+	background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.fade-right {
+	right: 0;
+	background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.fade-left.visible,
+.fade-right.visible {
+	opacity: 1;
+}
+
+.pagination-dots {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	padding-top: 12px;
+
+	@media (width >= 768px) {
+		display: none;
+	}
+}
+
+.pagination-dots button {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-dots button.active {
+	background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+	transform: scale(1.3);
 }
 </style>
