@@ -1,4 +1,4 @@
-<img src="public/baktz-logo-500x500.png" alt="Baktz - Tezos Baking Service" width="100">
+<img src="public/baktz-logo-500x500.webp" alt="Baktz - Tezos Baking Service" width="100">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
