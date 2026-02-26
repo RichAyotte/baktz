@@ -20,6 +20,10 @@ async function ensureWalletLoaded() {
 	dAppClient = new sdk.DAppClient({
 		name: 'baktz',
 	})
+	await dAppClient.subscribeToEvent(
+		sdk.BeaconEvent.ACTIVE_ACCOUNT_SET,
+		() => {},
+	)
 }
 
 async function getDelegate(address: string): Promise<Delegate | null> {

@@ -1,5 +1,4 @@
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-import inject from '@rollup/plugin-inject'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 export default defineNuxtConfig({
 	app: {
@@ -93,36 +92,16 @@ export default defineNuxtConfig({
 	},
 	ssr: true,
 	vite: {
-		optimizeDeps: {
-			esbuildOptions: {
-				define: { global: 'globalThis' },
-				plugins: [NodeGlobalsPolyfillPlugin({ buffer: true })],
-			},
-		},
+		plugins: [
+			nodePolyfills({
+				include: ['buffer', 'util', 'stream', 'events', 'string_decoder', 'process'],
+				globals: { Buffer: true, global: true },
+			}),
+		],
 		build: {
 			assetsInlineLimit: 0,
 			target: 'esnext',
 			commonjsOptions: { transformMixedEsModules: true },
-			rollupOptions: {
-				plugins: [
-					inject({
-						Buffer: ['buffer', 'Buffer'],
-						include: [
-							'node_modules/@tezos-x/**',
-							'node_modules/buffer/**',
-							'node_modules/bs58check/**',
-							'node_modules/bs58/**',
-							'node_modules/safe-buffer/**',
-						],
-					}) as any,
-				],
-			},
-		},
-		resolve: {
-			alias: {
-				'readable-stream': 'vite-compatible-readable-stream',
-				stream: 'vite-compatible-readable-stream',
-			},
 		},
 	},
 	compatibilityDate: '2026-02-23',
