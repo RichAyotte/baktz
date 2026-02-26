@@ -83,16 +83,7 @@ main {
 		scroll-margin-top: 80px; /* Offset for sticky header */
 	}
 	
-	/* Pull the hero section and feature cards closer together */
-	#home {
-		padding-bottom: 40px;
-	}
-	
-	#features {
-		padding-top: 40px;
-	}
-	
-	/* Add a very subtle gradient divider line between sections */
+	/* Add a subtle gradient divider line between sections */
 	& > section:not(:first-child) {
 		position: relative;
 	}
@@ -103,11 +94,11 @@ main {
 		top: 0;
 		left: 10%;
 		width: 80%;
-		height: 1px;
+		height: 2px;
 		background: linear-gradient(
-			90deg, 
-			transparent 0%, 
-			color-mix(in srgb, var(--color-primary) 15%, transparent) 50%,
+			90deg,
+			transparent 0%,
+			color-mix(in srgb, var(--color-primary) 30%, transparent) 50%,
 			transparent 100%
 		);
 	}

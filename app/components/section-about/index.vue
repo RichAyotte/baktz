@@ -1,5 +1,6 @@
 <template>
 	<section class="section-about">
+		<h2 class="section-heading">About <BaktzLogo size="clamp(1.4rem, 3vw, 2rem)" /></h2>
 		<div id="section-about-content">
 			<nuxt-img
 				alt="Photo of Richard Ayotte"
@@ -9,7 +10,6 @@
 				style="grid-area: headshot; aspect-ratio: 1/1"
 			/>
 			<div class="about-text-container" style="grid-area: content">
-				<h2>About <baktz-logo size="inherit" /></h2>
 				<p>
 					<baktz-logo size="1.2rem" /> is a secure, high-performance <a href="https://tezos.com" target="_blank">Tezos</a> baking service.
 					Started by <a href="https://richayotte.com" target="_blank">Richard Ayotte</a>, Rich has been baking since July of 2018
@@ -27,11 +27,7 @@ import AboutContactLinks from './about-contact-links.vue'
 
 <style scoped>
 .section-about {
-	margin-top: 40px;
-	margin-bottom: 80px;
 	position: relative;
-	padding-top: 40px;
-	padding-bottom: 40px;
 }
 
 #section-about-content {
@@ -39,8 +35,6 @@ import AboutContactLinks from './about-contact-links.vue'
 	display: grid;
 	gap: 40px;
 	margin: 0 auto;
-	position: relative;
-	z-index: 1;
 	grid-template-areas:
 		'headshot'
 		'content';
@@ -64,12 +58,13 @@ import AboutContactLinks from './about-contact-links.vue'
 	}
 }
 
-h2 {
-	margin: 0 0 20px 0;
-	font-size: clamp(2.5rem, 5vw, 3.5rem);
+.section-heading {
+	text-align: center;
+	font-size: clamp(1.4rem, 3vw, 2rem);
 	font-weight: 700;
-	letter-spacing: -0.03em;
 	color: var(--color-text);
+	letter-spacing: 0.02em;
+	margin: 0 0 2.5rem;
 }
 
 p {

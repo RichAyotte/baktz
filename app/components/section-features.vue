@@ -1,5 +1,6 @@
 <template>
 	<section class="section-features">
+		<h2 class="section-heading">Why <BaktzLogo size="clamp(1.4rem, 3vw, 2rem)" />?</h2>
 		<div class="carousel-wrapper">
 			<div id="feature-boxes" ref="scrollContainer">
 				<feature-box
@@ -133,6 +134,15 @@ const features = [
 .section-features {
 	position: relative;
 	width: 100%;
+}
+
+.section-heading {
+	text-align: center;
+	font-size: clamp(1.4rem, 3vw, 2rem);
+	font-weight: 700;
+	color: var(--color-text);
+	letter-spacing: 0.02em;
+	margin: 0 0 2.5rem;
 }
 
 #feature-boxes {
