@@ -17,9 +17,8 @@ defineProps<{
 
 <style scoped>
 .baktz-logo {
-	/* Using Outfit for a more modern, geometric 'Web3' feel */
-	font-family: 'Outfit', sans-serif;
-	font-weight: 900;
+	font-family: 'Inter', sans-serif;
+	font-weight: 700;
 	letter-spacing: -0.05em;
 	display: inline-flex;
 	align-items: baseline;
@@ -32,7 +31,7 @@ defineProps<{
 
 .bak {
 	color: #ffffff;
-	font-weight: 800;
+	font-weight: 700;
 	/* Smooth 'Brushed Silver' with a soft top-light highlight */
 	background: linear-gradient(
 		135deg,
@@ -53,8 +52,8 @@ defineProps<{
 }
 
 .tz {
-	font-family: 'Inter', 'Outfit', sans-serif;
-	font-weight: 800;
+	font-family: 'Inter', sans-serif;
+	font-weight: 700;
 	margin-left: -0.02em;
 	display: inline-block;
 	transform: translateY(0.04em);

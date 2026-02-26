@@ -74,7 +74,7 @@ form {
 	label {
 		color: var(--color-text-muted);
 		font-size: 1.1rem;
-		font-weight: 500;
+		font-weight: 600;
 	}
 	
 	input {
@@ -102,7 +102,7 @@ form {
 
 	th {
 		color: var(--color-text-muted);
-		font-weight: 500;
+		font-weight: 600;
 	}
 
 	td {

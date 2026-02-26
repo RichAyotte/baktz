@@ -10,21 +10,6 @@ export default defineNuxtConfig({
 			},
 			link: [
 				{
-					href: 'https://fonts.googleapis.com',
-					rel: 'preconnect',
-				},
-				{
-					href: 'https://fonts.gstatic.com',
-					rel: 'preconnect',
-					crossorigin: 'anonymous',
-				},
-				{
-					href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@700;800;900&display=swap',
-					rel: 'preload',
-					as: 'style',
-					onload: "this.rel='stylesheet'",
-				},
-				{
 					rel: 'icon',
 					type: 'image/svg+xml',
 					href: '/baktz-icon.svg',
@@ -33,6 +18,10 @@ export default defineNuxtConfig({
 					rel: 'apple-touch-icon',
 					sizes: '180x180',
 					href: '/apple-touch-icon.png',
+				},
+				{
+					rel: 'canonical',
+					href: 'https://baktz.com',
 				},
 			],
 			meta: [
@@ -44,11 +33,12 @@ export default defineNuxtConfig({
 				{ property: 'og:title', content: 'bākꜩ — Tezos Baking Service' },
 				{ property: 'og:description', content: 'bākꜩ - Tezos baking service' },
 				{ property: 'og:type', content: 'website' },
-				{ property: 'og:image', content: '/baktz-logo-500x500.png' },
+				{ property: 'og:url', content: 'https://baktz.com' },
+				{ property: 'og:image', content: 'https://baktz.com/baktz-logo-500x500.webp' },
 				{ name: 'twitter:card', content: 'summary' },
 				{ name: 'twitter:title', content: 'bākꜩ — Tezos Baking Service' },
 				{ name: 'twitter:description', content: 'bākꜩ - Tezos baking service' },
-				{ name: 'twitter:image', content: '/baktz-logo-500x500.png' },
+				{ name: 'twitter:image', content: 'https://baktz.com/baktz-logo-500x500.webp' },
 			],
 			title: 'bākꜩ — Tezos Baking Service',
 		},
@@ -58,7 +48,49 @@ export default defineNuxtConfig({
 	image: {
 		dir: 'assets/images',
 	},
-	modules: ['@nuxt/image'],
+	fonts: {
+		defaults: {
+			styles: ['normal'],
+			subsets: ['latin', 'latin-ext'],
+			fallbacks: {
+				'sans-serif': ['Arial'],
+				'monospace': ['Courier New'],
+				'serif': [],
+				'cursive': [],
+				'fantasy': [],
+				'system-ui': [],
+				'ui-serif': [],
+				'ui-sans-serif': [],
+				'ui-monospace': [],
+				'ui-rounded': [],
+				'emoji': [],
+				'math': [],
+				'fangsong': [],
+			},
+		},
+		families: [
+			{
+				name: 'Inter',
+				weights: [400, 600, 700],
+				preload: true,
+			},
+			{
+				name: 'JetBrains Mono',
+				weights: [400],
+				fallbacks: [],
+			},
+		],
+	},
+	features: {
+		inlineStyles: true,
+	},
+	modules: ['@nuxt/fonts', '@nuxt/image'],
+	nitro: {
+		compressPublicAssets: true,
+		externals: {
+			inline: [],
+		},
+	},
 	ssr: true,
 	vite: {
 		optimizeDeps: {
@@ -75,6 +107,13 @@ export default defineNuxtConfig({
 				plugins: [
 					inject({
 						Buffer: ['buffer', 'Buffer'],
+						include: [
+							'node_modules/@tezos-x/**',
+							'node_modules/buffer/**',
+							'node_modules/bs58check/**',
+							'node_modules/bs58/**',
+							'node_modules/safe-buffer/**',
+						],
 					}) as any,
 				],
 			},

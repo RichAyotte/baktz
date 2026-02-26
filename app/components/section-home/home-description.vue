@@ -1,57 +1,61 @@
 <template>
 	<div id="home-description">
-		<client-only>
-			<span v-if="$activeAccount != null">
-				<strong>
-					<a
-						target="_blank"
-						:href="`https://tzkt.io/${$activeAccount.address}/operations/`"
-					>{{ $activeAccount.address }}</a>
-				</strong>
-				is currently baking with <baktz-logo size="1.2rem" />
-				<br /><br />
-				<button @click="$disconnect">Disconnect</button>
-			</span>
-			<span v-else class="action-container">
-				<button
-					id="delegate-button"
-					@click="$delegate"
-					class="primary-cta"
-				>
-					Connect Wallet to Bake
-				</button>
-				
-				<div class="divider">
-					<span>or bake manually</span>
+		<span v-if="activeAccount != null">
+			<strong>
+				<a
+					target="_blank"
+					:href="`https://tzkt.io/${activeAccount.address}/operations/`"
+				>{{ activeAccount.address }}</a>
+			</strong>
+			is currently baking with <baktz-logo size="1.2rem" />
+			<br /><br />
+			<button @click="disconnect">Disconnect</button>
+		</span>
+		<span v-else class="action-container">
+			<button
+				id="delegate-button"
+				@click="delegate"
+				class="primary-cta"
+			>
+				Connect Wallet to Bake
+			</button>
+
+			<div class="divider">
+				<span>or bake manually</span>
+			</div>
+
+			<div
+				id="delegate-address-container"
+				:class="{ 'is-copied': isCopied }"
+				@click="copyToClipboard(baktzDelegateAddress)"
+			>
+				<div id="delegate-address">
+					{{ baktzDelegateAddress }}
 				</div>
-				
-				<div
-					id="delegate-address-container"
-					:class="{ 'is-copied': isCopied }"
-					@click="copyToClipboard(baktzDelegateAddress)"
-				>
-					<div id="delegate-address">
-						{{ baktzDelegateAddress }}
-					</div>
-					<img
-						alt="Clipboard"
-						src="~/assets/images/clipboard.svg"
-						style="aspect-ratio: 1/1"
-					/>
-					<div class="copied-overlay" v-if="isCopied">
-						<span>Address Copied! 💎</span>
-					</div>
+				<img
+					alt="Clipboard"
+					src="~/assets/images/clipboard.svg"
+					width="24"
+					height="24"
+				/>
+				<div class="copied-overlay" v-if="isCopied">
+					<span>Address Copied! 💎</span>
 				</div>
-			</span>
-		</client-only>
+			</div>
+		</span>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { baktzDelegateAddress } from '~/constants'
 
-const { $delegate, $activeAccount, $disconnect } = useNuxtApp()
+const { activeAccount, delegate, disconnect, checkExistingSession } =
+	useWallet()
 const isCopied = ref(false)
+
+onMounted(() => {
+	checkExistingSession()
+})
 
 async function copyToClipboard(text: string): Promise<void> {
 	try {
@@ -190,7 +194,4 @@ async function copyToClipboard(text: string): Promise<void> {
 	to { transform: translateY(0); }
 }
 
-#button-or-address {
-	padding: 1rem;
-}
 </style>

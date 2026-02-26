@@ -67,7 +67,7 @@ import AboutContactLinks from './about-contact-links.vue'
 h2 {
 	margin: 0 0 20px 0;
 	font-size: clamp(2.5rem, 5vw, 3.5rem);
-	font-weight: 800; /* Increased to match logo weight better */
+	font-weight: 700;
 	letter-spacing: -0.03em;
 	color: var(--color-text);
 }

@@ -17,7 +17,7 @@
 	h1 {
 		color: white;
 		font-size: clamp(3rem, 8vw, 6.5rem);
-		font-weight: 800;
+		font-weight: 700;
 		text-align: center;
 		margin: 0;
 		line-height: 1.1;
@@ -36,7 +36,7 @@
 	.tagline {
 		color: var(--color-text-muted);
 		font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-		font-weight: 500;
+		font-weight: 600;
 		letter-spacing: 0.05em;
 		margin: 1rem 0 0;
 		text-align: center;

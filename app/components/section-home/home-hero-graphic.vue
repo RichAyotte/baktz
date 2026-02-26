@@ -4,7 +4,7 @@
 		<div class="glass-card">
 			<img
 				alt="Baktz logo icon"
-				src="/baktz-logo-500x500.png"
+				src="/baktz-logo-500x500.webp"
 				class="floating-logo"
 			/>
 		</div>

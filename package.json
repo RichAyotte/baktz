@@ -16,7 +16,6 @@
 		"format": "biome format --write ."
 	},
 	"dependencies": {
-		"@taquito/rpc": "^24.0.2",
 		"@tezos-x/octez.connect-sdk": "^1.0.0",
 		"nuxt": "^4.3.1",
 		"vue": "^3.5.28",
@@ -25,6 +24,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.4",
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+		"@nuxt/fonts": "^0.14.0",
 		"@nuxt/image": "^2.0.0",
 		"@rollup/plugin-inject": "^5.0.5",
 		"vite-compatible-readable-stream": "^3.6.1"
