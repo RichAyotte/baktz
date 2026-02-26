@@ -1,4 +1,8 @@
-<img src="public/baktz-logo-500x500.webp" alt="Baktz - Tezos Baking Service" width="100">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="app/assets/images/baktz-logo-dark-1200.webp">
+  <source media="(prefers-color-scheme: light)" srcset="app/assets/images/baktz-logo-light-1200.webp">
+  <img src="app/assets/images/baktz-logo-dark-1200.webp" alt="Baktz - Tezos Baking Service" width="300">
+</picture>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
