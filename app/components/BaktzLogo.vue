@@ -90,13 +90,4 @@ defineProps<{
 	        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }
 
-/* Add a subtle animation to the glow */
-@keyframes pulse-glow {
-	0%, 100% { filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent-cyan) 35%, transparent)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); }
-	50% { filter: drop-shadow(0 0 35px color-mix(in srgb, var(--color-accent-cyan) 55%, transparent)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)); }
-}
-
-.tz {
-	animation: pulse-glow 4s ease-in-out infinite;
-}
 </style>

@@ -1,6 +1,8 @@
 <template>
 	<section class="section-home">
-		<div class="hero-glow"></div>
+		<div class="hero-glow-wrapper">
+			<div class="hero-glow"></div>
+		</div>
 		<home-title class="hero-content" />
 		<home-description class="hero-content" />
 	</section>
@@ -31,7 +33,7 @@ import HomeTitle from './home-title.vue'
 	align-items: center;
 }
 
-.hero-glow {
+.hero-glow-wrapper {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -40,24 +42,29 @@ import HomeTitle from './home-title.vue'
 	height: 60vw;
 	max-width: 600px;
 	max-height: 600px;
+	filter: blur(60px);
+	z-index: 0;
+}
+
+.hero-glow {
+	width: 100%;
+	height: 100%;
 	background: radial-gradient(
 		circle,
 		color-mix(in srgb, var(--color-primary) 15%, transparent) 0%,
 		color-mix(in srgb, var(--color-secondary) 5%, transparent) 50%,
 		transparent 70%
 	);
-	filter: blur(60px);
-	z-index: 0;
 	animation: pulse-glow 8s ease-in-out infinite alternate;
 }
 
 @keyframes pulse-glow {
 	0% {
-		transform: translate(-50%, -50%) scale(1);
+		scale: 1;
 		opacity: 0.8;
 	}
 	100% {
-		transform: translate(-50%, -50%) scale(1.2);
+		scale: 1.2;
 		opacity: 1;
 	}
 }

@@ -185,13 +185,29 @@ const diamonds: Diamond[] = [
 
 let animationFrame: number
 let ctx: CanvasRenderingContext2D | null = null
+let lastFrameTime = 0
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+const frameInterval = isMobile ? 1000 / 30 : 0
 
-const draw = () => {
+const draw = (now: number = 0) => {
 	if (!canvas.value || !ctx) return
 
-	ctx.clearRect(0, 0, canvas.value.width, canvas.value.height)
-	ctx.strokeStyle = '#818cf8'
-	ctx.lineWidth = 1.2
+	// Throttle to 30fps on mobile
+	if (isMobile && now - lastFrameTime < frameInterval) {
+		animationFrame = requestAnimationFrame(draw)
+		return
+	}
+	lastFrameTime = now
+
+	const canvasW = canvas.value.width
+	const canvasH = canvas.value.height
+
+	// Visible viewport range for culling
+	const scrollY = window.scrollY
+	const viewTop = scrollY
+	const viewBottom = scrollY + window.innerHeight
+
+	ctx.clearRect(0, 0, canvasW, canvasH)
 	ctx.lineJoin = 'round'
 
 	diamonds.forEach((d) => {
@@ -201,9 +217,12 @@ const draw = () => {
 
 		// Bounce logic
 		if (d.x < -d.size) d.vx = Math.abs(d.vx)
-		if (d.x > canvas.value!.width + d.size) d.vx = -Math.abs(d.vx)
+		if (d.x > canvasW + d.size) d.vx = -Math.abs(d.vx)
 		if (d.y < 0) d.vy = Math.abs(d.vy)
-		if (d.y > canvas.value!.height) d.vy = -Math.abs(d.vy)
+		if (d.y > canvasH) d.vy = -Math.abs(d.vy)
+
+		// Skip off-screen diamonds
+		if (d.y + d.size * 1.5 < viewTop || d.y - d.size * 1.5 > viewBottom) return
 
 		// Ultra-slow rotation
 		d.rotX += d.speedRotX
@@ -254,10 +273,13 @@ const draw = () => {
 				ctx!.closePath()
 				ctx!.fillStyle = 'rgba(129, 140, 248, 0.05)'
 				ctx!.fill()
-				ctx!.shadowBlur = 8
-				ctx!.shadowColor = '#818cf8'
+				// Wider translucent stroke for glow, then crisp thin stroke
+				ctx!.lineWidth = 3
+				ctx!.strokeStyle = 'rgba(129, 140, 248, 0.15)'
 				ctx!.stroke()
-				ctx!.shadowBlur = 0
+				ctx!.lineWidth = 1.2
+				ctx!.strokeStyle = '#818cf8'
+				ctx!.stroke()
 			}
 		})
 	})
@@ -285,7 +307,7 @@ onMounted(() => {
 	const ro = new ResizeObserver(() => updateSize())
 	ro.observe(document.body)
 	updateSize()
-	draw()
+	animationFrame = requestAnimationFrame(draw)
 })
 
 onUnmounted(() => {
