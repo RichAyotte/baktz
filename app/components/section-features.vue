@@ -46,7 +46,7 @@ const features = [
 	{
 		title: 'No Minimum to Stake',
 		description:
-			'Stake any amount with no minimum. Delegators need just 10 XTZ to get started',
+			'Stake any amount with no minimum. Delegators need just 10 ꜩ to get started',
 		iconUrl: cashCoinsImg,
 		aspectRatio: '79/50',
 	},

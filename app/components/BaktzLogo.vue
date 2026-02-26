@@ -17,7 +17,7 @@ defineProps<{
 
 <style scoped>
 .baktz-logo {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Noto Sans', sans-serif;
 	font-weight: 700;
 	letter-spacing: -0.05em;
 	display: inline-flex;
@@ -43,21 +43,20 @@ defineProps<{
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	
+
 	/* Multi-layered shadow for a floating effect */
 	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))
 	        drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
-	
+
 	padding-right: 0.02em;
 }
 
 .tz {
-	font-family: 'Inter', sans-serif;
 	font-weight: 700;
 	margin-left: -0.02em;
 	display: inline-block;
 	transform: translateY(0.04em);
-	
+
 	/* 'Sapphire Crystal' - smooth cyan-to-indigo gem depth */
 	background: linear-gradient(
 		135deg,
@@ -67,11 +66,11 @@ defineProps<{
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	
+
 	/* Rich glow that matches the 'Diamond Hands' theme */
 	filter: drop-shadow(0 0 20px color-mix(in srgb, var(--color-accent-cyan) 35%, transparent))
 	        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-	
+
 	position: relative;
 }
 

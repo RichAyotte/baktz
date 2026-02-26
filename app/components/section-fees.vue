@@ -11,7 +11,7 @@
 				</tr>
 				<tr>
 					<th>Minimum</th>
-					<td>10 XTZ</td>
+					<td>10 ꜩ</td>
 				</tr>
 				<tr>
 					<th>Capacity</th>

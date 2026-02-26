@@ -70,7 +70,7 @@ export default defineNuxtConfig({
 		},
 		families: [
 			{
-				name: 'Inter',
+				name: 'Noto Sans',
 				weights: [400, 600, 700],
 				preload: true,
 			},

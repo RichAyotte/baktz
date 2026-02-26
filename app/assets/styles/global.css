@@ -20,7 +20,7 @@ body {
 	margin: 0;
 	position: relative;
 	min-height: 100vh;
-	font-family: 'Inter', sans-serif;
+	font-family: 'Noto Sans', sans-serif;
 	background: var(--color-bg);
 	line-height: 1.6;
 }

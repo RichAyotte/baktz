@@ -3,7 +3,7 @@
 		<h2>Earnings</h2>
 		<div class="gradient-box-border">
 			<form>
-				<label for="delegated-xtz-amount">Enter your XTZ Amount</label>
+				<label for="delegated-xtz-amount">Enter your ꜩ Amount</label>
 				<input
 					type="text"
 					name="delegated-xtz-amount"
@@ -16,25 +16,25 @@
 					<tr>
 						<th>Per Cycle</th>
 						<td>
-							<strong>{{ cycleEarning }}</strong> XTZ
+							<strong>{{ cycleEarning }}</strong> ꜩ
 						</td>
 					</tr>
 					<tr>
 						<th>Per Week</th>
 						<td>
-							<strong>{{ weeklyEarning }}</strong> XTZ
+							<strong>{{ weeklyEarning }}</strong> ꜩ
 						</td>
 					</tr>
 					<tr>
 						<th>Per Month</th>
 						<td>
-							<strong>{{ monthlyEarning }}</strong> XTZ
+							<strong>{{ monthlyEarning }}</strong> ꜩ
 						</td>
 					</tr>
 					<tr>
 						<th>Per Year</th>
 						<td>
-							<strong>{{ yearlyEarning }}</strong> XTZ
+							<strong>{{ yearlyEarning }}</strong> ꜩ
 						</td>
 					</tr>
 				</tbody>
