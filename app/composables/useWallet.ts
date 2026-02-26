@@ -19,7 +19,6 @@ async function ensureWalletLoaded() {
 	TezosOperationType = sdk.TezosOperationType
 	dAppClient = new sdk.DAppClient({
 		name: 'baktz',
-		featuredWallets: ['exodus', 'kukai', 'plenty', 'temple'],
 	})
 }
 
