@@ -12,6 +12,7 @@ const canvas = ref<HTMLCanvasElement | null>(null)
 
 // Cached constants
 const TWO_PI = Math.PI * 2
+const TILT_MAX = 1.2
 const VERTEX_COUNT = 22
 const FACE_COUNT = 40
 const FILL_STYLE = 'rgba(129, 140, 248, 0.05)'
@@ -116,12 +117,12 @@ const diamonds: Diamond[] = Array.from({ length: DIAMOND_COUNT }, (_, i) => ({
 	vx: rand(0.04, 0.15) * (i % 2 === 0 ? 1 : -1),
 	vy: rand(0.04, 0.12) * (Math.random() < 0.25 ? -1 : 1),
 	vz: rand(0.02, 0.08) * (Math.random() < 0.5 ? -1 : 1),
-	speedRotX: rand(0.00005, 0.0001),
+	speedRotX: rand(0.0003, 0.0008),
 	speedRotY: rand(0.002, 0.004),
-	speedRotZ: rand(0.00005, 0.0001),
-	rotX: Math.random() * Math.PI,
-	rotY: Math.random() * Math.PI,
-	rotZ: Math.random() * Math.PI,
+	speedRotZ: rand(0.0003, 0.0008),
+	rotX: rand(-TILT_MAX, TILT_MAX),
+	rotY: Math.random() * TWO_PI,
+	rotZ: rand(-TILT_MAX, TILT_MAX),
 }))
 
 let animationFrame: number
@@ -170,10 +171,14 @@ const draw = (now: number = 0) => {
 		if (d.y + d.size * 1.5 < viewTop || d.y - d.size * 1.5 > viewBottom)
 			continue
 
-		// Ultra-slow rotation with wrapping to prevent unbounded float growth
-		d.rotX = (d.rotX + d.speedRotX) % TWO_PI
+		// Rotation: Y spins freely, X/Z bounce within tilt limits to stay recognizable
 		d.rotY = (d.rotY + d.speedRotY) % TWO_PI
-		d.rotZ = (d.rotZ + d.speedRotZ) % TWO_PI
+		d.rotX += d.speedRotX
+		if (d.rotX < -TILT_MAX) d.speedRotX = Math.abs(d.speedRotX)
+		if (d.rotX > TILT_MAX) d.speedRotX = -Math.abs(d.speedRotX)
+		d.rotZ += d.speedRotZ
+		if (d.rotZ < -TILT_MAX) d.speedRotZ = Math.abs(d.speedRotZ)
+		if (d.rotZ > TILT_MAX) d.speedRotZ = -Math.abs(d.speedRotZ)
 
 		const cx = Math.cos(d.rotX),
 			sx = Math.sin(d.rotX)
