@@ -1,64 +1,98 @@
 <template>
-  <canvas ref="canvas" class="diamond-canvas"></canvas>
+	<canvas ref="canvas" class="diamond-canvas"></canvas>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 
+type Vec3 = [number, number, number]
+type Face = [number, number, number]
+
 const canvas = ref<HTMLCanvasElement | null>(null)
+
+// Cached constants
+const TWO_PI = Math.PI * 2
+const VERTEX_COUNT = 22
+const FACE_COUNT = 40
+const FILL_STYLE = 'rgba(129, 140, 248, 0.05)'
+const STROKE_GLOW = 'rgba(129, 140, 248, 0.25)'
+const STROKE_CRISP = '#a5b4fc'
 
 // Symmetrical Brilliant-cut diamond geometry
 const segments = 10
-const vertices: number[][] = []
-const faces: number[][] = []
+
+// Build vertices into flat Float64Array
+const tmpVerts: Vec3[] = []
 
 // 1. Table Center (Anchor for the top face)
 const tableY = -0.6
-vertices.push([0, tableY, 0]) // Vertex 0
+tmpVerts.push([0, tableY, 0]) // Vertex 0
 
 // 2. Table Ring
 const tableR = 0.55
 for (let i = 0; i < segments; i++) {
-	const angle = (i / segments) * Math.PI * 2
-	vertices.push([Math.cos(angle) * tableR, tableY, Math.sin(angle) * tableR])
-} // Vertices 1 to 16
+	const angle = (i / segments) * TWO_PI
+	tmpVerts.push([Math.cos(angle) * tableR, tableY, Math.sin(angle) * tableR])
+} // Vertices 1 to 10
 
 // 3. Girdle Ring
 const girdleY = -0.2
 const girdleR = 1.0
 for (let i = 0; i < segments; i++) {
-	const angle = (i / segments) * Math.PI * 2
-	vertices.push([
+	const angle = (i / segments) * TWO_PI
+	tmpVerts.push([
 		Math.cos(angle) * girdleR,
 		girdleY,
 		Math.sin(angle) * girdleR,
 	])
-} // Vertices 17 to 32
+} // Vertices 11 to 20
 
 // 4. Culet (Bottom Point)
-vertices.push([0, 1.2, 0])
-const culetIndex = vertices.length - 1
+tmpVerts.push([0, 1.2, 0])
+const culetIndex = tmpVerts.length - 1
 
-// Build Faces
+const vertData = new Float64Array(tmpVerts.flat())
+
+// Build faces into flat Uint8Array
+const tmpFaces: Face[] = []
 for (let i = 0; i < segments; i++) {
 	const currentTable = i + 1
 	const nextTable = ((i + 1) % segments) + 1
 	const currentGirdle = i + 1 + segments
 	const nextGirdle = ((i + 1) % segments) + 1 + segments
 
-	faces.push([0, currentTable, nextTable])
-	faces.push([currentTable, currentGirdle, nextGirdle])
-	faces.push([currentTable, nextGirdle, nextTable])
-	faces.push([culetIndex, nextGirdle, currentGirdle])
+	tmpFaces.push([0, currentTable, nextTable])
+	tmpFaces.push([currentTable, currentGirdle, nextGirdle])
+	tmpFaces.push([currentTable, nextGirdle, nextTable])
+	tmpFaces.push([culetIndex, nextGirdle, currentGirdle])
 }
+
+const faceData = new Uint8Array(tmpFaces.flat())
+
+// Pre-multiplied face indices → projected buffer offsets (avoid ×3 per face per frame)
+const faceOffsets = new Uint8Array(FACE_COUNT * 3)
+for (let i = 0; i < faceOffsets.length; i++) {
+	const idx = faceData[i]
+	if (idx === undefined) continue
+	faceOffsets[i] = idx * 3
+}
+
+// Pre-allocated projection buffer — reused every frame, zero allocations
+const projected = new Float64Array(VERTEX_COUNT * 3)
+
+const FOCAL_LENGTH = 800
+const Z_MIN = -300
+const Z_MAX = 300
 
 interface Diamond {
 	x: number
 	y: number
+	z: number
 	size: number
 	opacity: number
 	vx: number
 	vy: number
+	vz: number
 	speedRotX: number
 	speedRotY: number
 	speedRotZ: number
@@ -67,125 +101,33 @@ interface Diamond {
 	rotZ: number
 }
 
-// Define 8 diamonds with varied properties, drifting movement and ultra-slow rotation
-const diamonds: Diamond[] = [
-	{
-		x: Math.random() * 1000,
-		y: 200,
-		size: 180,
-		opacity: 0.07,
-		vx: 0.1,
-		vy: 0.05,
-		speedRotX: 0.0004,
-		speedRotY: 0.0006,
-		speedRotZ: 0.0002,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 800,
-		size: 80,
-		opacity: 0.05,
-		vx: -0.12,
-		vy: 0.08,
-		speedRotX: 0.0008,
-		speedRotY: 0.0004,
-		speedRotZ: 0.0004,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 1400,
-		size: 140,
-		opacity: 0.06,
-		vx: 0.08,
-		vy: -0.06,
-		speedRotX: 0.0002,
-		speedRotY: 0.0004,
-		speedRotZ: 0.0006,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 2000,
-		size: 280,
-		opacity: 0.04,
-		vx: -0.04,
-		vy: 0.04,
-		speedRotX: 0.0002,
-		speedRotY: 0.0002,
-		speedRotZ: 0.0002,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 2600,
-		size: 120,
-		opacity: 0.05,
-		vx: 0.15,
-		vy: 0.1,
-		speedRotX: 0.0006,
-		speedRotY: 0.0003,
-		speedRotZ: 0.0005,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 3200,
-		size: 220,
-		opacity: 0.07,
-		vx: -0.08,
-		vy: -0.05,
-		speedRotX: 0.0004,
-		speedRotY: 0.0006,
-		speedRotZ: 0.0004,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 3800,
-		size: 100,
-		opacity: 0.06,
-		vx: 0.05,
-		vy: 0.12,
-		speedRotX: 0.0003,
-		speedRotY: 0.0007,
-		speedRotZ: 0.0002,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-	{
-		x: Math.random() * 1000,
-		y: 4400,
-		size: 190,
-		opacity: 0.05,
-		vx: -0.1,
-		vy: 0.06,
-		speedRotX: 0.0005,
-		speedRotY: 0.0002,
-		speedRotZ: 0.0008,
-		rotX: Math.random() * Math.PI,
-		rotY: Math.random() * Math.PI,
-		rotZ: Math.random() * Math.PI,
-	},
-]
+const DIAMOND_COUNT = 8
+
+function rand(min: number, max: number): number {
+	return min + Math.random() * (max - min)
+}
+
+const diamonds: Diamond[] = Array.from({ length: DIAMOND_COUNT }, (_, i) => ({
+	x: Math.random() * 1000,
+	y: 200 + i * 600,
+	z: rand(Z_MIN, Z_MAX),
+	size: rand(80, 280),
+	opacity: rand(0.04, 0.07),
+	vx: rand(0.04, 0.15) * (i % 2 === 0 ? 1 : -1),
+	vy: rand(0.04, 0.12) * (Math.random() < 0.25 ? -1 : 1),
+	vz: rand(0.02, 0.08) * (Math.random() < 0.5 ? -1 : 1),
+	speedRotX: rand(0.00005, 0.0001),
+	speedRotY: rand(0.002, 0.004),
+	speedRotZ: rand(0.00005, 0.0001),
+	rotX: Math.random() * Math.PI,
+	rotY: Math.random() * Math.PI,
+	rotZ: Math.random() * Math.PI,
+}))
 
 let animationFrame: number
 let ctx: CanvasRenderingContext2D | null = null
 let lastFrameTime = 0
+let resizeObserver: ResizeObserver | null = null
 const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
 const frameInterval = isMobile ? 1000 / 30 : 0
 
@@ -209,27 +151,29 @@ const draw = (now: number = 0) => {
 	const viewBottom = scrollY + window.innerHeight
 
 	c.clearRect(0, 0, canvasW, canvasH)
-	c.lineJoin = 'round'
 
-	diamonds.forEach((d) => {
+	for (const d of diamonds) {
 		// Drift movement
 		d.x += d.vx
 		d.y += d.vy
+		d.z += d.vz
 
 		// Bounce logic
 		if (d.x < -d.size) d.vx = Math.abs(d.vx)
 		if (d.x > canvasW + d.size) d.vx = -Math.abs(d.vx)
 		if (d.y < 0) d.vy = Math.abs(d.vy)
 		if (d.y > canvasH) d.vy = -Math.abs(d.vy)
+		if (d.z < Z_MIN) d.vz = Math.abs(d.vz)
+		if (d.z > Z_MAX) d.vz = -Math.abs(d.vz)
 
 		// Skip off-screen diamonds
 		if (d.y + d.size * 1.5 < viewTop || d.y - d.size * 1.5 > viewBottom)
-			return
+			continue
 
-		// Ultra-slow rotation
-		d.rotX += d.speedRotX
-		d.rotY += d.speedRotY
-		d.rotZ += d.speedRotZ
+		// Ultra-slow rotation with wrapping to prevent unbounded float growth
+		d.rotX = (d.rotX + d.speedRotX) % TWO_PI
+		d.rotY = (d.rotY + d.speedRotY) % TWO_PI
+		d.rotZ = (d.rotZ + d.speedRotZ) % TWO_PI
 
 		const cx = Math.cos(d.rotX),
 			sx = Math.sin(d.rotX)
@@ -238,53 +182,83 @@ const draw = (now: number = 0) => {
 		const cz = Math.cos(d.rotZ),
 			sz = Math.sin(d.rotZ)
 
-		const projected = vertices.map((v) => {
-			let x = v[0],
-				y = v[1],
-				z = v[2]
-			let ny = y * cx - z * sx
-			let nz = y * sx + z * cx
-			y = ny
-			z = nz
-			let nx = x * cy + z * sy
-			nz = -x * sy + z * cy
-			x = nx
-			z = nz
-			nx = x * cz - y * sz
-			ny = x * sz + y * cz
-			x = nx
-			y = ny
-			return [x * d.size + d.x, y * d.size + d.y, z]
-		})
+		// Combined rotation matrix R = Rx·Rz·Ry
+		// Y spin applied first (local space, around the point axis), then X/Z tilt
+		const r00 = cz * cy
+		const r01 = -sz
+		const r02 = cz * sy
+		const r10 = cx * sz * cy + sx * sy
+		const r11 = cx * cz
+		const r12 = cx * sz * sy - sx * cy
+		const r20 = sx * sz * cy - cx * sy
+		const r21 = sx * cz
+		const r22 = sx * sz * sy + cx * cy
 
-		c.globalAlpha = d.opacity
+		const scale = FOCAL_LENGTH / (FOCAL_LENGTH + d.z)
+		const size = d.size * scale
+		const dx = d.x
+		const dy = d.y
 
-		faces.forEach((f) => {
-			const v0 = projected[f[0]]
-			const v1 = projected[f[1]]
-			const v2 = projected[f[2]]
-			const cpz =
-				(v1[0] - v0[0]) * (v2[1] - v0[1]) -
-				(v1[1] - v0[1]) * (v2[0] - v0[0])
+		// Project all vertices into pre-allocated buffer — zero allocations
+		for (let vi = 0; vi < VERTEX_COUNT; vi++) {
+			const off = vi * 3
+			const vx = vertData[off]
+			const vy = vertData[off + 1]
+			const vz = vertData[off + 2]
+			if (vx === undefined || vy === undefined || vz === undefined)
+				continue
+			projected[off] = (r00 * vx + r01 * vy + r02 * vz) * size + dx
+			projected[off + 1] = (r10 * vx + r11 * vy + r12 * vz) * size + dy
+			projected[off + 2] = r20 * vx + r21 * vy + r22 * vz
+		}
+
+		c.globalAlpha = d.opacity * scale
+
+		// Batch all front-facing triangles into one compound path per diamond
+		// 3 draw calls per diamond instead of 3 × N per face (~20x fewer draw calls)
+		c.beginPath()
+		for (let fi = 0; fi < FACE_COUNT; fi++) {
+			const foff = fi * 3
+			const i0 = faceOffsets[foff]
+			const i1 = faceOffsets[foff + 1]
+			const i2 = faceOffsets[foff + 2]
+			if (i0 === undefined || i1 === undefined || i2 === undefined)
+				continue
+
+			const v0x = projected[i0]
+			const v0y = projected[i0 + 1]
+			const v1x = projected[i1]
+			const v1y = projected[i1 + 1]
+			const v2x = projected[i2]
+			const v2y = projected[i2 + 1]
+			if (
+				v0x === undefined ||
+				v0y === undefined ||
+				v1x === undefined ||
+				v1y === undefined ||
+				v2x === undefined ||
+				v2y === undefined
+			)
+				continue
+
+			const cpz = (v1x - v0x) * (v2y - v0y) - (v1y - v0y) * (v2x - v0x)
 
 			if (cpz > 0) {
-				c.beginPath()
-				c.moveTo(v0[0], v0[1])
-				c.lineTo(v1[0], v1[1])
-				c.lineTo(v2[0], v2[1])
+				c.moveTo(v0x, v0y)
+				c.lineTo(v1x, v1y)
+				c.lineTo(v2x, v2y)
 				c.closePath()
-				c.fillStyle = 'rgba(129, 140, 248, 0.05)'
-				c.fill()
-				// Wider translucent stroke for glow, then crisp thin stroke
-				c.lineWidth = 3
-				c.strokeStyle = 'rgba(129, 140, 248, 0.15)'
-				c.stroke()
-				c.lineWidth = 1.2
-				c.strokeStyle = '#818cf8'
-				c.stroke()
 			}
-		})
-	})
+		}
+		c.fillStyle = FILL_STYLE
+		c.fill()
+		c.lineWidth = 3
+		c.strokeStyle = STROKE_GLOW
+		c.stroke()
+		c.lineWidth = 1.2
+		c.strokeStyle = STROKE_CRISP
+		c.stroke()
+	}
 
 	animationFrame = requestAnimationFrame(draw)
 }
@@ -305,9 +279,12 @@ const updateSize = () => {
 
 onMounted(() => {
 	ctx = canvas.value?.getContext('2d') || null
+	if (ctx) {
+		ctx.lineJoin = 'round'
+	}
 	window.addEventListener('resize', updateSize)
-	const ro = new ResizeObserver(() => updateSize())
-	ro.observe(document.body)
+	resizeObserver = new ResizeObserver(() => updateSize())
+	resizeObserver.observe(document.body)
 	updateSize()
 	animationFrame = requestAnimationFrame(draw)
 })
@@ -315,16 +292,18 @@ onMounted(() => {
 onUnmounted(() => {
 	cancelAnimationFrame(animationFrame)
 	window.removeEventListener('resize', updateSize)
+	resizeObserver?.disconnect()
+	resizeObserver = null
 })
 </script>
 
 <style scoped>
 .diamond-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	pointer-events: none;
+	z-index: 0;
 }
 </style>
