@@ -60,7 +60,11 @@ strong {
 }
 
 button {
-	background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent-cyan), var(--color-primary)), var(--color-primary));
+	background: linear-gradient(
+		135deg,
+		color-mix(in srgb, var(--color-accent-cyan), var(--color-primary)),
+		var(--color-primary)
+	);
 	border-radius: 8px;
 	border: none;
 	color: var(--color-bg);
@@ -73,7 +77,8 @@ button {
 
 	&:hover,
 	&:active {
-		box-shadow: 0 4px 15px color-mix(in srgb, var(--color-primary) 40%, transparent);
+		box-shadow: 0 4px 15px
+			color-mix(in srgb, var(--color-primary) 40%, transparent);
 		transform: translateY(-2px);
 		cursor: pointer;
 		color: var(--color-bg);
@@ -96,7 +101,8 @@ input {
 	&:focus {
 		outline: none;
 		border-color: var(--color-primary);
-		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+		box-shadow: 0 0 0 2px
+			color-mix(in srgb, var(--color-primary) 20%, transparent);
 	}
 }
 
@@ -115,7 +121,11 @@ h2 {
 
 ::selection {
 	color: white;
-	background-color: color-mix(in srgb, var(--color-accent-cyan) 60%, transparent);
+	background-color: color-mix(
+		in srgb,
+		var(--color-accent-cyan) 60%,
+		transparent
+	);
 }
 
 .gradient-box-border {

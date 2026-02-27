@@ -77,7 +77,9 @@ function scrollToCard(index: number) {
 }
 
 onMounted(() => {
-	scrollContainer.value?.addEventListener('scroll', onScroll, { passive: true })
+	scrollContainer.value?.addEventListener('scroll', onScroll, {
+		passive: true,
+	})
 	onScroll()
 })
 

@@ -26,18 +26,37 @@ export default defineNuxtConfig({
 			meta: [
 				{
 					name: 'description',
-					content: 'bākꜩ - Tezos baking, staking, and delegation service',
+					content:
+						'bākꜩ - Tezos baking, staking, and delegation service',
 				},
 				{ name: 'theme-color', content: '#0f172a' },
-				{ property: 'og:title', content: 'bākꜩ — Tezos Baking Service' },
-				{ property: 'og:description', content: 'bākꜩ - Tezos baking service' },
+				{
+					property: 'og:title',
+					content: 'bākꜩ — Tezos Baking Service',
+				},
+				{
+					property: 'og:description',
+					content: 'bākꜩ - Tezos baking service',
+				},
 				{ property: 'og:type', content: 'website' },
 				{ property: 'og:url', content: 'https://baktz.com' },
-				{ property: 'og:image', content: 'https://baktz.com/baktz-logo-500x500.webp' },
+				{
+					property: 'og:image',
+					content: 'https://baktz.com/baktz-logo-500x500.webp',
+				},
 				{ name: 'twitter:card', content: 'summary' },
-				{ name: 'twitter:title', content: 'bākꜩ — Tezos Baking Service' },
-				{ name: 'twitter:description', content: 'bākꜩ - Tezos baking service' },
-				{ name: 'twitter:image', content: 'https://baktz.com/baktz-logo-500x500.webp' },
+				{
+					name: 'twitter:title',
+					content: 'bākꜩ — Tezos Baking Service',
+				},
+				{
+					name: 'twitter:description',
+					content: 'bākꜩ - Tezos baking service',
+				},
+				{
+					name: 'twitter:image',
+					content: 'https://baktz.com/baktz-logo-500x500.webp',
+				},
 			],
 			title: 'bākꜩ — Tezos Baking Service',
 		},
@@ -53,18 +72,18 @@ export default defineNuxtConfig({
 			subsets: ['latin', 'latin-ext'],
 			fallbacks: {
 				'sans-serif': ['Arial'],
-				'monospace': ['Courier New'],
-				'serif': [],
-				'cursive': [],
-				'fantasy': [],
+				monospace: ['Courier New'],
+				serif: [],
+				cursive: [],
+				fantasy: [],
 				'system-ui': [],
 				'ui-serif': [],
 				'ui-sans-serif': [],
 				'ui-monospace': [],
 				'ui-rounded': [],
-				'emoji': [],
-				'math': [],
-				'fangsong': [],
+				emoji: [],
+				math: [],
+				fangsong: [],
 			},
 		},
 		families: [
@@ -94,7 +113,14 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [
 			nodePolyfills({
-				include: ['buffer', 'util', 'stream', 'events', 'string_decoder', 'process'],
+				include: [
+					'buffer',
+					'util',
+					'stream',
+					'events',
+					'string_decoder',
+					'process',
+				],
 				globals: { Buffer: true, global: true },
 			}),
 		],

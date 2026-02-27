@@ -191,6 +191,7 @@ const frameInterval = isMobile ? 1000 / 30 : 0
 
 const draw = (now: number = 0) => {
 	if (!canvas.value || !ctx) return
+	const c = ctx
 
 	// Throttle to 30fps on mobile
 	if (isMobile && now - lastFrameTime < frameInterval) {
@@ -207,8 +208,8 @@ const draw = (now: number = 0) => {
 	const viewTop = scrollY
 	const viewBottom = scrollY + window.innerHeight
 
-	ctx.clearRect(0, 0, canvasW, canvasH)
-	ctx.lineJoin = 'round'
+	c.clearRect(0, 0, canvasW, canvasH)
+	c.lineJoin = 'round'
 
 	diamonds.forEach((d) => {
 		// Drift movement
@@ -222,7 +223,8 @@ const draw = (now: number = 0) => {
 		if (d.y > canvasH) d.vy = -Math.abs(d.vy)
 
 		// Skip off-screen diamonds
-		if (d.y + d.size * 1.5 < viewTop || d.y - d.size * 1.5 > viewBottom) return
+		if (d.y + d.size * 1.5 < viewTop || d.y - d.size * 1.5 > viewBottom)
+			return
 
 		// Ultra-slow rotation
 		d.rotX += d.speedRotX
@@ -255,7 +257,7 @@ const draw = (now: number = 0) => {
 			return [x * d.size + d.x, y * d.size + d.y, z]
 		})
 
-		ctx!.globalAlpha = d.opacity
+		c.globalAlpha = d.opacity
 
 		faces.forEach((f) => {
 			const v0 = projected[f[0]]
@@ -266,20 +268,20 @@ const draw = (now: number = 0) => {
 				(v1[1] - v0[1]) * (v2[0] - v0[0])
 
 			if (cpz > 0) {
-				ctx!.beginPath()
-				ctx!.moveTo(v0[0], v0[1])
-				ctx!.lineTo(v1[0], v1[1])
-				ctx!.lineTo(v2[0], v2[1])
-				ctx!.closePath()
-				ctx!.fillStyle = 'rgba(129, 140, 248, 0.05)'
-				ctx!.fill()
+				c.beginPath()
+				c.moveTo(v0[0], v0[1])
+				c.lineTo(v1[0], v1[1])
+				c.lineTo(v2[0], v2[1])
+				c.closePath()
+				c.fillStyle = 'rgba(129, 140, 248, 0.05)'
+				c.fill()
 				// Wider translucent stroke for glow, then crisp thin stroke
-				ctx!.lineWidth = 3
-				ctx!.strokeStyle = 'rgba(129, 140, 248, 0.15)'
-				ctx!.stroke()
-				ctx!.lineWidth = 1.2
-				ctx!.strokeStyle = '#818cf8'
-				ctx!.stroke()
+				c.lineWidth = 3
+				c.strokeStyle = 'rgba(129, 140, 248, 0.15)'
+				c.stroke()
+				c.lineWidth = 1.2
+				c.strokeStyle = '#818cf8'
+				c.stroke()
 			}
 		})
 	})

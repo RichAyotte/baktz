@@ -6,9 +6,7 @@ type Delegate = {
 	active: boolean
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: lazy-loaded SDK instance
 let dAppClient: any
-// biome-ignore lint/suspicious/noExplicitAny: lazy-loaded SDK enum
 let TezosOperationType: any
 
 async function ensureWalletLoaded() {
