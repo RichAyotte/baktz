@@ -1,4 +1,4 @@
-import { baktzDelegateAddress } from '~/constants'
+import { baktzDelegateAddress, tzktApiBase } from '~/constants'
 
 type Delegate = {
 	alias: string
@@ -25,7 +25,7 @@ async function ensureWalletLoaded() {
 }
 
 async function getDelegate(address: string): Promise<Delegate | null> {
-	const request = `https://api.tzkt.io/v1/accounts?address=${address}`
+	const request = `${tzktApiBase}/accounts?address=${address}`
 	const response = await fetch(request)
 	const [{ delegate }] = await response.json()
 	return delegate

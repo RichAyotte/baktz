@@ -6,8 +6,7 @@
 			</a>
 			<nav class="desktop-nav">
 				<a href="#features">Features</a>
-				<!-- <a href="#fees">Fees</a> -->
-				<!-- <a href="#earnings">Earnings</a> -->
+				<a href="#stats">Performance</a>
 				<a href="#about">About</a>
 			</nav>
 		</div>
@@ -18,8 +17,7 @@
 	<main>
 		<section-home id="home" />
 		<section-features id="features" />
-		<!-- <section-fees id="fees" /> -->
-		<!-- <section-earnings id="earnings" /> -->
+		<section-baker-stats id="stats" />
 		<section-about id="about" />
 	</main>
 </template>
