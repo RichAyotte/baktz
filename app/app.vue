@@ -82,8 +82,16 @@ main {
 	& > * {
 		max-width: var(--max-content-width);
 		margin: 0 auto;
-		padding: 80px 20px;
+		padding: clamp(60px, 8vw, 120px) 20px;
 		scroll-margin-top: 80px; /* Offset for sticky header */
+
+		@media (width >= 768px) {
+			padding-inline: 30px;
+		}
+	}
+
+	& > *:first-child {
+		padding-block: 0;
 	}
 
 	/* Add a subtle gradient divider line between sections */

@@ -21,6 +21,7 @@ import HomeTitle from './home-title.vue'
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	min-height: calc(100svh - 100px);
 }
 
 .hero-content {

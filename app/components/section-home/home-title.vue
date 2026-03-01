@@ -5,6 +5,10 @@
 			<br/>
 			<span class="diamond-text">Diamond Hands</span>
 		</h1>
+		<p class="tagline">
+			Stake or delegate your tez and earn rewards
+			with low fees and automated payouts.
+		</p>
 	</div>
 </template>
 
@@ -31,6 +35,14 @@
 		background-clip: text;
 		filter: drop-shadow(0 4px 20px color-mix(in srgb, var(--color-accent-cyan) 30%, transparent));
 	}
+}
 
+.tagline {
+	font-size: clamp(1.1rem, 2vw, 1.35rem);
+	line-height: 1.6;
+	color: var(--color-text-muted);
+	max-width: 500px;
+	text-align: center;
+	margin-top: 1.5rem;
 }
 </style>
