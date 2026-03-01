@@ -89,13 +89,6 @@ onUnmounted(() => {
 
 const features = [
 	{
-		title: 'Customer Support',
-		description:
-			'Reach us anytime on <a target="_blank" href="https://x.com/realbaktz">X</a> or by <a target="_blank" href="mailto:support@baktz.com">email</a> — we\'re here to help',
-		iconUrl: bellConciergeSolid,
-		aspectRatio: '1/1',
-	},
-	{
 		title: 'Low Fees',
 		description: 'Just 5% for stakers and 10% for delegators',
 		iconUrl: moneyBillImg,
@@ -128,6 +121,13 @@ const features = [
 			'Part of the Tezos community since 2017, committed to its long-term success',
 		iconUrl: peopleGroupSolid,
 		aspectRatio: '5/4',
+	},
+	{
+		title: 'Customer Support',
+		description:
+			'Reach us anytime on <a target="_blank" href="https://x.com/realbaktz">X</a> or by <a target="_blank" href="mailto:support@baktz.com">email</a> — we\'re here to help',
+		iconUrl: bellConciergeSolid,
+		aspectRatio: '1/1',
 	},
 ]
 </script>
