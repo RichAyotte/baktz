@@ -56,7 +56,7 @@ export interface BakerStats {
 	stakingCapacity: { percentage: number; free: number } | null
 	delegationCapacity: { percentage: number; free: number } | null
 	attestRate: number | null
-	dalSlots: { attested: number; attestable: number } | null
+	dalSlots: number | null
 	tz4Signer: boolean | null
 	apyStaker: number | null
 	apyDelegator: number | null
@@ -135,11 +135,9 @@ function computeStats(
 		attestRate =
 			totalExpected > 0 ? (totalAttested / totalExpected) * 100 : 100
 
-		dalSlots = {
-			attested: delegate.dal_participation.delegate_attested_dal_slots,
-			attestable:
-				delegate.dal_participation.delegate_attestable_dal_slots,
-		}
+		const attestable = delegate.dal_participation.delegate_attestable_dal_slots
+		const attested = delegate.dal_participation.delegate_attested_dal_slots
+		dalSlots = attestable > 0 ? (attested / attestable) * 100 : 100
 
 		tz4Signer = delegate.consensus_key.active.pkh.startsWith('tz4')
 	}

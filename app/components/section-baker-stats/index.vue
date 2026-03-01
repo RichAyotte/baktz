@@ -27,9 +27,9 @@
 				:prefix="stats?.attestRate != null ? '&#10003; ' : undefined"
 			/>
 			<StatCard
-				label="DAL"
-				:value="stats?.dalSlots ? `${stats.dalSlots.attested}/${stats.dalSlots.attestable}` : '—'"
-				:prefix="stats?.dalSlots ? '&#10003; ' : undefined"
+				label="DAL Attest Rate"
+				:value="stats?.dalSlots != null ? formatPct(stats.dalSlots) : '—'"
+				:prefix="stats?.dalSlots != null ? '&#10003; ' : undefined"
 			/>
 			<StatCard
 				label="TZ4 BLS Signer"
