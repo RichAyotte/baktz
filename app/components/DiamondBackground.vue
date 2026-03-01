@@ -18,6 +18,12 @@ const FACE_COUNT = 40
 const FILL_STYLE = 'rgba(129, 140, 248, 0.05)'
 const STROKE_GLOW = 'rgba(129, 140, 248, 0.25)'
 const STROKE_CRISP = '#a5b4fc'
+const MIN_OPACITY = 0.03
+const MAX_OPACITY = 0.1
+const OPACITY_RANGE = MAX_OPACITY - MIN_OPACITY
+const MIN_OCCLUSION = 0.05
+const MAX_OCCLUSION = 0.92
+const OCCLUSION_RANGE = MAX_OCCLUSION - MIN_OCCLUSION
 
 // Symmetrical Brilliant-cut diamond geometry
 const segments = 10
@@ -70,12 +76,21 @@ for (let i = 0; i < segments; i++) {
 
 const faceData = new Uint8Array(tmpFaces.flat())
 
-// Pre-multiplied face indices → projected buffer offsets (avoid ×3 per face per frame)
-const faceOffsets = new Uint8Array(FACE_COUNT * 3)
-for (let i = 0; i < faceOffsets.length; i++) {
-	const idx = faceData[i]
-	if (idx === undefined) continue
-	faceOffsets[i] = idx * 3
+// Pre-expanded face offsets: [v0x, v0y, v1x, v1y, v2x, v2y] per face
+// Avoids ×3 and +1 arithmetic per face per frame
+const faceOffsets = new Uint8Array(FACE_COUNT * 6)
+for (let i = 0; i < FACE_COUNT; i++) {
+	const src = i * 3
+	const dst = i * 6
+	const i0 = (faceData[src] as number) * 3
+	const i1 = (faceData[src + 1] as number) * 3
+	const i2 = (faceData[src + 2] as number) * 3
+	faceOffsets[dst] = i0
+	faceOffsets[dst + 1] = i0 + 1
+	faceOffsets[dst + 2] = i1
+	faceOffsets[dst + 3] = i1 + 1
+	faceOffsets[dst + 4] = i2
+	faceOffsets[dst + 5] = i2 + 1
 }
 
 // Pre-allocated projection buffer — reused every frame, zero allocations
@@ -84,13 +99,14 @@ const projected = new Float64Array(VERTEX_COUNT * 3)
 const FOCAL_LENGTH = 800
 const Z_MIN = -300
 const Z_MAX = 300
+const Z_RANGE = Z_MAX - Z_MIN
 
 interface Diamond {
 	x: number
 	y: number
 	z: number
 	size: number
-	opacity: number
+	opacityJitter: number
 	vx: number
 	vy: number
 	vz: number
@@ -113,7 +129,7 @@ const diamonds: Diamond[] = Array.from({ length: DIAMOND_COUNT }, (_, i) => ({
 	y: 200 + i * 600,
 	z: rand(Z_MIN, Z_MAX),
 	size: rand(80, 280),
-	opacity: rand(0.04, 0.07),
+	opacityJitter: rand(-0.01, 0.01),
 	vx: rand(0.04, 0.15) * (i % 2 === 0 ? 1 : -1),
 	vy: rand(0.04, 0.12) * (Math.random() < 0.25 ? -1 : 1),
 	vz: rand(0.02, 0.08) * (Math.random() < 0.5 ? -1 : 1),
@@ -152,6 +168,9 @@ const draw = (now: number = 0) => {
 	const viewBottom = scrollY + window.innerHeight
 
 	c.clearRect(0, 0, canvasW, canvasH)
+
+	// Sort back-to-front: farthest (highest z) first, closest last
+	diamonds.sort((a, b) => b.z - a.z)
 
 	for (const d of diamonds) {
 		// Drift movement
@@ -204,57 +223,55 @@ const draw = (now: number = 0) => {
 		const dx = d.x
 		const dy = d.y
 
-		// Project all vertices into pre-allocated buffer — zero allocations
+		// Project all vertices (x, y only) into pre-allocated buffer
 		for (let vi = 0; vi < VERTEX_COUNT; vi++) {
 			const off = vi * 3
-			const vx = vertData[off]
-			const vy = vertData[off + 1]
-			const vz = vertData[off + 2]
-			if (vx === undefined || vy === undefined || vz === undefined)
-				continue
+			const vx = vertData[off] as number
+			const vy = vertData[off + 1] as number
+			const vz = vertData[off + 2] as number
 			projected[off] = (r00 * vx + r01 * vy + r02 * vz) * size + dx
 			projected[off + 1] = (r10 * vx + r11 * vy + r12 * vz) * size + dy
-			projected[off + 2] = r20 * vx + r21 * vy + r22 * vz
 		}
 
-		c.globalAlpha = d.opacity * scale
+		// Depth-based opacity: closest (Z_MIN) = brightest, farthest (Z_MAX) = dimmest
+		const depthFactor = (Z_MAX - d.z) / Z_RANGE
+		const alpha = Math.max(
+			0,
+			Math.min(
+				1,
+				MIN_OPACITY + depthFactor * OPACITY_RANGE + d.opacityJitter,
+			),
+		)
+		const occlusionAlpha = MIN_OCCLUSION + depthFactor * OCCLUSION_RANGE
 
-		// Batch all front-facing triangles into one compound path per diamond
-		// 3 draw calls per diamond instead of 3 × N per face (~20x fewer draw calls)
+		// Build compound path of front-facing triangles (shared by both passes)
 		c.beginPath()
 		for (let fi = 0; fi < FACE_COUNT; fi++) {
-			const foff = fi * 3
-			const i0 = faceOffsets[foff]
-			const i1 = faceOffsets[foff + 1]
-			const i2 = faceOffsets[foff + 2]
-			if (i0 === undefined || i1 === undefined || i2 === undefined)
-				continue
+			const foff = fi * 6
+			const v0x = projected[faceOffsets[foff] as number] as number
+			const v0y = projected[faceOffsets[foff + 1] as number] as number
+			const v1x = projected[faceOffsets[foff + 2] as number] as number
+			const v1y = projected[faceOffsets[foff + 3] as number] as number
+			const v2x = projected[faceOffsets[foff + 4] as number] as number
+			const v2y = projected[faceOffsets[foff + 5] as number] as number
 
-			const v0x = projected[i0]
-			const v0y = projected[i0 + 1]
-			const v1x = projected[i1]
-			const v1y = projected[i1 + 1]
-			const v2x = projected[i2]
-			const v2y = projected[i2 + 1]
-			if (
-				v0x === undefined ||
-				v0y === undefined ||
-				v1x === undefined ||
-				v1y === undefined ||
-				v2x === undefined ||
-				v2y === undefined
-			)
-				continue
-
-			const cpz = (v1x - v0x) * (v2y - v0y) - (v1y - v0y) * (v2x - v0x)
-
-			if (cpz > 0) {
+			if ((v1x - v0x) * (v2y - v0y) - (v1y - v0y) * (v2x - v0x) > 0) {
 				c.moveTo(v0x, v0y)
 				c.lineTo(v1x, v1y)
 				c.lineTo(v2x, v2y)
 				c.closePath()
 			}
 		}
+
+		// Occlusion pass: erase previously-drawn diamond pixels behind this one
+		c.globalCompositeOperation = 'destination-out'
+		c.globalAlpha = occlusionAlpha
+		c.fillStyle = '#000'
+		c.fill()
+
+		// Style pass: decorative fill and strokes on top
+		c.globalCompositeOperation = 'source-over'
+		c.globalAlpha = alpha * scale
 		c.fillStyle = FILL_STYLE
 		c.fill()
 		c.lineWidth = 3
