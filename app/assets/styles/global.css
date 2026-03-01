@@ -145,7 +145,61 @@ h2 {
 	backdrop-filter: blur(12px);
 	transition:
 		transform 0.3s ease,
-		box-shadow 0.3s ease;
+		box-shadow 0.3s ease,
+		opacity 0.3s ease;
+}
+
+body.tooltip-open
+	.section-baker-stats
+	.gradient-box-border:not(.tooltip-active) {
+	opacity: 0.4;
+}
+
+.info-bubble {
+	position: absolute;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	max-width: 220px;
+	width: max-content;
+	padding: 10px 12px;
+	background: var(--color-bg-tooltip);
+	backdrop-filter: blur(12px);
+	border: 1px solid
+		color-mix(in srgb, var(--color-accent-cyan) 25%, transparent);
+	border-left: 3px solid var(--color-accent-cyan);
+	border-radius: 4px 8px 8px 4px;
+	box-shadow:
+		0 2px 4px rgba(0, 0, 0, 0.2),
+		0 8px 24px rgba(0, 0, 0, 0.3),
+		0 20px 48px rgba(0, 0, 0, 0.2);
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--color-text);
+	text-transform: none;
+	letter-spacing: normal;
+	z-index: 9999;
+}
+
+.info-bubble-icon {
+	width: 14px;
+	height: 14px;
+	flex-shrink: 0;
+	opacity: 0.6;
+}
+
+.tooltip-fade-enter-active,
+.tooltip-fade-leave-active {
+	transition:
+		opacity 0.2s ease,
+		transform 0.2s ease;
+}
+
+.tooltip-fade-enter-from,
+.tooltip-fade-leave-to {
+	opacity: 0;
 }
 
 .img-text {

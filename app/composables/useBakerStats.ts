@@ -154,12 +154,9 @@ export function useBakerStats() {
 			const totalExpected = currentExpected + histExpected
 			const totalAttested = currentAttested + histAttested
 			attestRate =
-				totalExpected > 0
-					? (totalAttested / totalExpected) * 100
-					: 100
+				totalExpected > 0 ? (totalAttested / totalExpected) * 100 : 100
 
-			const attestable =
-				d.dal_participation.delegate_attestable_dal_slots
+			const attestable = d.dal_participation.delegate_attestable_dal_slots
 			const attested = d.dal_participation.delegate_attested_dal_slots
 			dalSlots = attestable > 0 ? (attested / attestable) * 100 : 100
 
@@ -177,8 +174,7 @@ export function useBakerStats() {
 		if (r && c) {
 			const blocksPerCycle = c.blocks_per_cycle
 			const minDelay = Number(c.minimal_block_delay)
-			const cyclesPerYear =
-				(365.25 * 86400) / (blocksPerCycle * minDelay)
+			const cyclesPerYear = (365.25 * 86400) / (blocksPerCycle * minDelay)
 			const completed = r.filter((rw) => rw.futureBlocks === 0)
 
 			const stakerRates = completed
@@ -192,8 +188,7 @@ export function useBakerStats() {
 				})
 			if (stakerRates.length > 0) {
 				const avg =
-					stakerRates.reduce((a, b) => a + b, 0) /
-					stakerRates.length
+					stakerRates.reduce((a, b) => a + b, 0) / stakerRates.length
 				apyStaker = avg * cyclesPerYear * 100
 			}
 
@@ -254,10 +249,7 @@ export function useBakerStats() {
 			`${tzktApiBase}/rewards/bakers/${addr}?limit=10&sort.desc=id&select=futureBlocks,expectedEndorsements,missedEndorsements,blockRewardsStakedShared,attestationRewardsStakedShared,dalAttestationRewardsStakedShared,blockRewardsDelegated,attestationRewardsDelegated,dalAttestationRewardsDelegated,externalStakedBalance,externalDelegatedBalance`,
 			rewards,
 		)
-		fetch(
-			`${tezosRpcBase}/chains/main/blocks/head/metadata`,
-			blockMetadata,
-		)
+		fetch(`${tezosRpcBase}/chains/main/blocks/head/metadata`, blockMetadata)
 		fetch(
 			`${tzktApiBase}/blocks?proposer=${addr}&limit=1&sort.desc=level&select=level,lbToggle`,
 			bakerBlocks,

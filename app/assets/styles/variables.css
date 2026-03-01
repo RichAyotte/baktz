@@ -24,6 +24,7 @@
 		var(--color-text-muted) 20%,
 		transparent
 	);
+	--color-bg-tooltip: #334155;
 	--color-scrollbar-thumb: #334155;
 	--color-scrollbar-thumb-hover: #475569;
 	--max-content-width: 1200px;
