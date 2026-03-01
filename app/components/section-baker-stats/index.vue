@@ -2,56 +2,53 @@
 	<section class="section-baker-stats">
 		<h2 class="section-heading">Performance</h2>
 
-		<div v-if="loading && !stats" class="loading">Loading stats...</div>
-		<template v-else-if="stats">
-			<div class="capacity-row">
-				<CapacityBar
-					v-if="stats.stakingCapacity"
-					label="Staking Capacity"
-					:percentage="stats.stakingCapacity.percentage"
-					:free="formatTez(stats.stakingCapacity.free)"
-					bar-color="var(--color-accent-cyan)"
-				/>
-				<StatCard v-else label="Staking Capacity" value="—" />
-				<CapacityBar
-					v-if="stats.delegationCapacity"
-					label="Delegation Capacity"
-					:percentage="stats.delegationCapacity.percentage"
-					:free="formatTez(stats.delegationCapacity.free)"
-					bar-color="#f59e0b"
-				/>
-				<StatCard v-else label="Delegation Capacity" value="—" />
-			</div>
-			<div class="stats-row">
-				<StatCard
-					label="Attest Rate"
-					:value="stats.attestRate != null ? formatPct(stats.attestRate) : '—'"
-					:prefix="stats.attestRate != null ? '&#10003; ' : undefined"
-				/>
-				<StatCard
-					label="DAL"
-					:value="stats.dalSlots ? `${stats.dalSlots.attested}/${stats.dalSlots.attestable}` : '—'"
-					:prefix="stats.dalSlots ? '&#10003; ' : undefined"
-				/>
-				<StatCard
-					label="TZ4 BLS Signer"
-					:value="stats.tz4Signer != null ? (stats.tz4Signer ? 'Yes' : 'No') : '—'"
-					:prefix="stats.tz4Signer ? '&#10003; ' : undefined"
-				/>
-				<StatCard
-					label="APY (Staker · 5% fee)"
-					:value="stats.apyStaker != null ? formatPct(stats.apyStaker) : '—'"
-				/>
-				<StatCard
-					label="APY (Delegator · 10% fee)"
-					:value="stats.apyDelegator != null ? formatPct(stats.apyDelegator) : '—'"
-				/>
-				<StatCard
-					label="Liquidity Baking"
-					:value="stats.liquidityBaking ? `${stats.liquidityBaking.bakerVoteOn ? 'On' : 'Off'} · ${formatPct(stats.liquidityBaking.emaPct)} EMA` : '—'"
-				/>
-			</div>
-		</template>
+		<div class="capacity-row">
+			<CapacityBar
+				v-if="stats?.stakingCapacity"
+				label="Staking Capacity"
+				:percentage="stats.stakingCapacity.percentage"
+				:free="formatTez(stats.stakingCapacity.free)"
+				bar-color="var(--color-accent-cyan)"
+			/>
+			<StatCard v-else label="Staking Capacity" value="—" />
+			<CapacityBar
+				v-if="stats?.delegationCapacity"
+				label="Delegation Capacity"
+				:percentage="stats.delegationCapacity.percentage"
+				:free="formatTez(stats.delegationCapacity.free)"
+				bar-color="#f59e0b"
+			/>
+			<StatCard v-else label="Delegation Capacity" value="—" />
+		</div>
+		<div class="stats-row">
+			<StatCard
+				label="Attest Rate"
+				:value="stats?.attestRate != null ? formatPct(stats.attestRate) : '—'"
+				:prefix="stats?.attestRate != null ? '&#10003; ' : undefined"
+			/>
+			<StatCard
+				label="DAL"
+				:value="stats?.dalSlots ? `${stats.dalSlots.attested}/${stats.dalSlots.attestable}` : '—'"
+				:prefix="stats?.dalSlots ? '&#10003; ' : undefined"
+			/>
+			<StatCard
+				label="TZ4 BLS Signer"
+				:value="stats?.tz4Signer != null ? (stats.tz4Signer ? 'Yes' : 'No') : '—'"
+				:prefix="stats?.tz4Signer ? '&#10003; ' : undefined"
+			/>
+			<StatCard
+				label="APY (Staker · 5% fee)"
+				:value="stats?.apyStaker != null ? formatPct(stats.apyStaker) : '—'"
+			/>
+			<StatCard
+				label="APY (Delegator · 10% fee)"
+				:value="stats?.apyDelegator != null ? formatPct(stats.apyDelegator) : '—'"
+			/>
+			<StatCard
+				label="Liquidity Baking"
+				:value="lbDisplay"
+			/>
+		</div>
 		<p class="data-sources">
 			Data from
 			<a href="https://ecadlabs.com" target="_blank">ECAD Labs</a>
@@ -65,7 +62,15 @@
 import CapacityBar from './capacity-bar.vue'
 import StatCard from './stat-card.vue'
 
-const { stats, loading } = useBakerStats()
+const { stats } = useBakerStats()
+
+const voteLabels = { on: 'On', off: 'Off', pass: 'Pass' } as const
+const lbDisplay = computed(() => {
+	const lb = stats.value?.liquidityBaking
+	if (!lb) return '—'
+	const vote = lb.bakerVote != null ? voteLabels[lb.bakerVote] : '—'
+	return `${vote} · ${formatPct(lb.emaPct)} EMA`
+})
 
 function formatTez(value: number): string {
 	if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`
@@ -115,13 +120,6 @@ function formatPct(value: number): string {
 	@media (width >= 768px) {
 		grid-template-columns: repeat(3, 1fr);
 	}
-}
-
-.loading {
-	text-align: center;
-	color: var(--color-text-muted);
-	font-size: 1rem;
-	padding: 40px 0;
 }
 
 .data-sources {

@@ -34,9 +34,7 @@ interface RpcBlockMetadata {
 }
 
 interface TzKtCycleRewards {
-	cycle: number
 	futureBlocks: number
-	expectedBlocks: number
 	expectedEndorsements: number
 	missedEndorsements: number
 	blockRewardsStakedShared: number
@@ -50,6 +48,7 @@ interface TzKtCycleRewards {
 }
 
 interface TzKtBlock {
+	level: number
 	lbToggle: boolean | null
 }
 
@@ -61,7 +60,10 @@ export interface BakerStats {
 	tz4Signer: boolean | null
 	apyStaker: number | null
 	apyDelegator: number | null
-	liquidityBaking: { emaPct: number; bakerVoteOn: boolean } | null
+	liquidityBaking: {
+		emaPct: number
+		bakerVote: 'on' | 'off' | 'pass' | null
+	} | null
 }
 
 function mutezToTez(mutez: number): number {
@@ -184,8 +186,13 @@ function computeStats(
 		const lbEmaThreshold = 1_000_000_000
 		const emaPct =
 			(blockMetadata.liquidity_baking_toggle_ema / lbEmaThreshold) * 100
-		const bakerVoteOn = bakerBlock?.lbToggle !== true
-		liquidityBaking = { emaPct, bakerVoteOn }
+		let bakerVote: 'on' | 'off' | 'pass' | null = null
+		if (bakerBlock != null) {
+			if (bakerBlock.lbToggle === true) bakerVote = 'on'
+			else if (bakerBlock.lbToggle === false) bakerVote = 'off'
+			else bakerVote = 'pass'
+		}
+		liquidityBaking = { emaPct, bakerVote }
 	}
 
 	return {
@@ -223,13 +230,13 @@ export function useBakerStats() {
 				`${tezosRpcBase}/chains/main/blocks/head/context/constants`,
 			),
 			$fetch<TzKtCycleRewards[]>(
-				`${tzktApiBase}/rewards/bakers/${addr}?limit=10&sort.desc=id`,
+				`${tzktApiBase}/rewards/bakers/${addr}?limit=10&sort.desc=id&select=futureBlocks,expectedEndorsements,missedEndorsements,blockRewardsStakedShared,attestationRewardsStakedShared,dalAttestationRewardsStakedShared,blockRewardsDelegated,attestationRewardsDelegated,dalAttestationRewardsDelegated,externalStakedBalance,externalDelegatedBalance`,
 			),
 			$fetch<RpcBlockMetadata>(
 				`${tezosRpcBase}/chains/main/blocks/head/metadata`,
 			),
 			$fetch<TzKtBlock[]>(
-				`${tzktApiBase}/blocks?baker=${addr}&limit=1&sort.desc=id`,
+				`${tzktApiBase}/blocks?proposer=${addr}&limit=1&sort.desc=level&select=level,lbToggle`,
 			),
 		])
 
