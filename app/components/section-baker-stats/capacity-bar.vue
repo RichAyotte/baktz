@@ -1,7 +1,10 @@
 <template>
 	<div class="capacity-bar gradient-box-border">
 		<div class="capacity-header">
-			<span class="capacity-label">{{ label }}</span>
+			<span class="capacity-label">
+				{{ label }}
+				<InfoTooltip v-if="tooltip" :text="tooltip" />
+			</span>
 			<span class="capacity-free">{{ free }} free</span>
 		</div>
 		<div class="bar-track">
@@ -15,11 +18,14 @@
 </template>
 
 <script setup lang="ts">
+import InfoTooltip from './info-tooltip.vue'
+
 defineProps<{
 	label: string
 	percentage: number
 	free: string
 	barColor: string
+	tooltip?: string
 }>()
 </script>
 

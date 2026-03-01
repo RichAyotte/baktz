@@ -1,18 +1,26 @@
 <template>
 	<div class="stat-card gradient-box-border">
-		<span class="stat-label">{{ label }}</span>
+		<span class="stat-label">
+			{{ label }}
+			<InfoTooltip v-if="tooltip" :text="tooltip" />
+		</span>
 		<span class="stat-value">
 			<span v-if="prefix" class="stat-prefix">{{ prefix }}</span>
 			{{ value }}
 		</span>
+		<span v-if="subtitle" class="stat-subtitle">{{ subtitle }}</span>
 	</div>
 </template>
 
 <script setup lang="ts">
+import InfoTooltip from './info-tooltip.vue'
+
 defineProps<{
 	label: string
 	value: string
 	prefix?: string
+	tooltip?: string
+	subtitle?: string
 }>()
 </script>
 
@@ -41,5 +49,10 @@ defineProps<{
 
 .stat-prefix {
 	color: var(--color-secondary);
+}
+
+.stat-subtitle {
+	font-size: 0.75rem;
+	color: var(--color-text-muted);
 }
 </style>
