@@ -7,17 +7,19 @@
 			<nav class="desktop-nav">
 				<a href="#features">Features</a>
 				<a href="#stats">Performance</a>
+				<a href="#russignol">Russignol</a>
 				<a href="#about">About</a>
 			</nav>
 		</div>
 	</header>
-	
+
 	<diamond-background />
 
 	<main>
 		<section-home id="home" />
 		<section-features id="features" />
 		<section-baker-stats id="stats" />
+		<section-russignol id="russignol" />
 		<section-about id="about" />
 	</main>
 </template>
@@ -63,12 +65,15 @@
 	font-weight: 600;
 	font-size: 1.05rem;
 	letter-spacing: 0.02em;
-	transition: color 0.3s ease, text-shadow 0.3s ease;
+	transition:
+		color 0.3s ease,
+		text-shadow 0.3s ease;
 }
 
 .desktop-nav a:hover {
 	color: var(--color-primary);
-	text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 40%, transparent);
+	text-shadow: 0 0 10px
+		color-mix(in srgb, var(--color-primary) 40%, transparent);
 }
 
 main {
@@ -80,14 +85,14 @@ main {
 		padding: 80px 20px;
 		scroll-margin-top: 80px; /* Offset for sticky header */
 	}
-	
+
 	/* Add a subtle gradient divider line between sections */
 	& > section:not(:first-child) {
 		position: relative;
 	}
-	
+
 	& > section:not(:first-child)::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 10%;
