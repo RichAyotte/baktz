@@ -14,7 +14,7 @@
 					href="#stats"
 					:class="{ active: activeSection === 'stats' }"
 					@click="onNavClick('stats')"
-				>Performance</a>
+				>Metrics</a>
 				<a
 					href="#russignol"
 					:class="{
