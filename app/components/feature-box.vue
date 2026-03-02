@@ -22,14 +22,15 @@
 				}"
 			/>
 		</template>
-		<p v-html="description" />
+		<p v-if="description" v-html="description" />
+		<p v-else><slot /></p>
 	</div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
 	title: string
-	description: string
+	description?: string
 	iconUrl: string
 	aspectRatio?: string
 	stat?: string

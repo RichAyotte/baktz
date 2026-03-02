@@ -2,13 +2,11 @@
 	<section class="section-russignol">
 		<h2 class="section-heading">Powered by Russignol</h2>
 		<p class="intro">
-			Built by the creator of <BaktzLogo size="1.15rem" />,
+			Our custom open-source hardware signer,
 			<a href="https://russignol.com" target="_blank" rel="noopener"
 				>Russignol</a
-			>
-			is an open-source hardware signer on a Raspberry Pi Zero 2W with
-			e-ink touchscreen — purpose-built for fast BLS signatures and
-			reliable baking.
+			>, runs on a Raspberry Pi Zero 2W with an e-ink touchscreen —
+			purpose-built for fast BLS signatures and reliable baking.
 		</p>
 		<div class="device-illustration">
 			<img
@@ -25,15 +23,15 @@
 					title="Speed"
 					stat="~6ms"
 					stat-label="BLS signatures"
-					description="Built in Rust with the audited <a href='https://github.com/supranational/blst' target='_blank' rel='noopener'>blst</a> library and no garbage collector. A 7.4MB system image means fast boot with nothing unnecessary running."
+					description="Built in Rust with the audited <a href='https://github.com/supranational/blst' target='_blank' rel='noopener'>blst</a> library and no garbage collector for consistent, lightning-fast performance."
 					:icon-url="boltIcon"
 				/>
 				<feature-box
 					class="gradient-box-border"
 					title="Security"
 					stat="7.4MB"
-					stat-label="compressed image"
-					description="Keys never leave the device. WiFi, Bluetooth, and SSH are compiled out of the kernel. Hardened Linux with AES-256-GCM PIN protection and high watermark anti-double-baking."
+					stat-label="system image"
+					description="A tiny footprint minimizes the attack surface and boot time. Keys never leave the device. WiFi, Bluetooth, and all unnecessary drivers are compiled out of the hardened kernel. Includes AES-256-GCM PIN protection and high watermark anti-double-baking."
 					:icon-url="shieldIcon"
 				/>
 				<feature-box
@@ -41,9 +39,12 @@
 					title="Open Source"
 					stat="MIT"
 					stat-label="licensed"
-					description="Fully auditable codebase — inspect every line that touches your keys. Created and battle-tested by an active Tezos baker."
 					:icon-url="codeIcon"
-				/>
+				>
+					Fully auditable codebase — inspect every line that secures the baker.
+					Created and battle-tested in-house to provide
+					<BaktzLogo size="1rem" /> delegators with top-tier reliability.
+				</feature-box>
 			</div>
 			<div class="fade-left" :class="{ visible: showLeftFade }" />
 			<div
