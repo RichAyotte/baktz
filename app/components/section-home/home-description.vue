@@ -17,7 +17,7 @@
 				@click="delegate"
 				class="primary-cta"
 			>
-				Connect Wallet to Bake
+				Connect Wallet to Delegate or Stake
 			</button>
 
 			<div class="divider">
