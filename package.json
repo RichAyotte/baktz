@@ -17,17 +17,17 @@
 		"typecheck": "vue-tsc --noEmit"
 	},
 	"dependencies": {
-		"@tezos-x/octez.connect-sdk": "^4.8.3",
-		"nuxt": "^4.4.2",
-		"vite-plugin-node-polyfills": "^0.25.0",
-		"vue": "^3.5.30",
-		"vue-router": "^5.0.4"
+		"@tezos-x/octez.connect-sdk": "^4.8.5",
+		"nuxt": "^4.4.8",
+		"vite-plugin-node-polyfills": "^0.28.0",
+		"vue": "^3.5.38",
+		"vue-router": "^5.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.8",
+		"@biomejs/biome": "^2.4.16",
 		"@nuxt/fonts": "^0.14.0",
 		"@nuxt/image": "^2.0.0",
-		"typescript": "^5.9.3",
-		"vue-tsc": "^3.2.6"
+		"typescript": "^6.0.3",
+		"vue-tsc": "^3.3.4"
 	}
 }
