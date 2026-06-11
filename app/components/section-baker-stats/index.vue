@@ -82,8 +82,6 @@
 
 			<p class="data-sources">
 				Data from
-				<a href="https://ecadlabs.com" target="_blank">ECAD Labs</a>
-				&amp;
 				<a href="https://tzkt.io" target="_blank">TzKT</a>
 			</p>
 		</div>
